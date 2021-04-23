@@ -4,7 +4,13 @@ class UsuarioController {
 
 	
 	async store(request, response) {
-		
+		const { id_usuario, nome, email } = await Usuario.create(request.body);
+
+		return response.json({
+			id_usuario,
+			nome,
+			email
+		});
 	}
 
 	async update(request, response) {
