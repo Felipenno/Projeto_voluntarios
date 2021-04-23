@@ -1,0 +1,33 @@
+============= Install =================
+npm init -y
+npm install express --save
+npm install sequelize --save
+npm install mysql2 --save
+npm install jsonwebtoken --save
+npm install bcryptjs --save
+
+npm install nodemon --save-dev
+npm install sucrase --save-dev 
+
+npm install sequelize-cli -g
+npm install express-generator -g
+
+npm install express sequelize mysql2 jsonwebtoken bcryptjs --save
+
+========== Sequelize ======================
+sequelize db:create                             >> cria banco
+
+sequelize migration:create --name=NOMETABELA    >> cria um modelo de migrattion
+sequelize db:migrate                            >> executa a migration(cria tabela)
+
+sequelize db:migrate:undo:all                   >> Apaga as tabelas
+sequelize db:migrate:undo                       >> desfaz a ultima migration
+sequelize db:migrate:undo:all --to MIGRATION    >> desfaz a migration especificada
+
+sequelize --help
+
+================== Git ======================
+git checkout -b NOMEBRANCH master   >> cria uma nova branch e copia a branch master para ela.
+git checkout NOMEBRANCH             >> troca a branch ativa para a especificada.
+git push -u origin NOMERMOTO        >> cria uma branch remota e da push pra ele.
+git merge NOMEBRANCH >>             junta a brach ativa à branch especificada.
