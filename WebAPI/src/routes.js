@@ -12,10 +12,10 @@ routes.get('/usuario/:id', UsuarioController.show);
 routes.put('/usuario/:id', UsuarioController.editar);
 routes.delete('/usuario/:id', UsuarioController.destroy);
 
-routes.post('/endereco/:id', EnderecoController.store);
+routes.post('/enderecos/:id', EnderecoController.store);
 routes.get('/enderecos', EnderecoController.listar);
 routes.put('/enderecos/:id', EnderecoController.editar);
-routes.put('/enderecos/apagar/:id', EnderecoController.apagar);
+routes.delete('/enderecos/apagar/:id', EnderecoController.apagar);
 
 routes.post('/voluntario', VoluntarioControllers.store);
 routes.put('/voluntario/:id', VoluntarioControllers.update);

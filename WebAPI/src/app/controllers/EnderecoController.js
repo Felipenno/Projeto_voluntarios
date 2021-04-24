@@ -23,8 +23,8 @@ class EnderecoController {
 			return response.status(500).send({message: `Erro interno: ( ${erro} )`});
 		});
 
-		response.send(endereco);
 	}
+
 	async listar(request, response) {
 		try{
 		const endereco = await Endereco.findAll();
@@ -55,6 +55,7 @@ class EnderecoController {
 			});
 		});
 	}
+	
 	async apagar(request, response) {
 
 		const id = request.params.id;
