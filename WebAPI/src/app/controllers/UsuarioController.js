@@ -25,13 +25,15 @@ class UsuarioController {
 				response.status(500).send({ errorMessage: `Erro interno: ( ${err} )` })
 			});
 	}
-	async index(request, response){
-
-    const usuarios = await Usuario.findAll({
-      include: { association: 'endereco' }
-    });
-
-    return response.json(usuarios);
+	async show(request, response){
+		try{
+			const usuario = await Usuario.findByPk(request.params.id);
+			return response.json(usuario);
+		}catch(err){
+			return response.status(400).json({ error: err.message});
+		}
+	}
+	async listar(request, response) {
 
 	}
 	

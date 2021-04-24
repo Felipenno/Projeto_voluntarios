@@ -1,15 +1,16 @@
 import { Router } from 'express';
 import UsuarioController from './app/controllers/UsuarioController';
+import VoluntarioControllers from './app/controllers/VoluntarioControllers';
 
 const routes = new Router();
 
 routes.post('/usuario', UsuarioController.store);
-
-routes.get('/usuarios', UsuarioController.index);
-
-
+routes.get('/usuario', UsuarioController.listar);
+routes.get('/usuario/:id', UsuarioController.show);
 routes.put('/usuario/:id', UsuarioController.editar);
 routes.delete('/usuario/:id', UsuarioController.destroy);
+
+routes.get('/voluntario', VoluntarioControllers.index);
 
 
 
