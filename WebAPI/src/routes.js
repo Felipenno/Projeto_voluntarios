@@ -6,6 +6,8 @@ const routes = new Router();
 routes.post('/usuario', UsuarioController.store);
 routes.get('/usuario', UsuarioController.listar);
 routes.put('/usuario/:id', UsuarioController.editar);
+routes.delete('/usuario/:id', UsuarioController.destroy);
+
 
 
 
