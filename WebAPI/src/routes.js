@@ -20,5 +20,8 @@ routes.put('/enderecos/:id', EnderecoController.editar);
 
 
 
+routes.post('/voluntario', VoluntarioControllers.store);
+
+routes.put('/voluntario/:id', VoluntarioControllers.update);
 
 export default routes;
