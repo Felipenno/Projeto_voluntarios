@@ -28,16 +28,20 @@ class VoluntarioControllers {
 		const id = request.params.id;
 
 		Voluntario.update(request.body, {
-			where: {id_voluntario : id}
+			where: { fk_id_usuario : id}
 		  })
-		  .then(data => {
-			if (data == 1) {
+		  .then(voluntario => {
+			if (voluntario == 1) {
 			  response.send({
 				message: "Serviço atualizado"
 			  });
-			} 
+			} else{
+				response.send({
+					message: "Não foi possível atualizar serviço"
+				});
+			}
 		  })
-		  
+
          return response.json({
 			servico,
             descricao_servico,
