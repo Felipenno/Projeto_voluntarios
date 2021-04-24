@@ -1,4 +1,5 @@
 import Usuario from '../models/Usuario';
+import Endereco from '../models/Endereco';
 
 class UsuarioController {
 
@@ -33,7 +34,14 @@ class UsuarioController {
 		}
 	}
 	async index(request, response) {
+		try{
+			const usuario = await Usuario.findAll();
+			return response.json(usuario);
+		}catch(err){
+			return response.status(400).json({error: err.message});
+		}
 
+<<<<<<< HEAD
 		Usuario.findAll()
 			.then((data) => {
 				response.send(data);
@@ -45,6 +53,8 @@ class UsuarioController {
 				});
 			});
 		
+=======
+>>>>>>> b1029fd7b4b609c947f9f09c2fe6570050d41a30
 	}
 	
     async editar(request, response) {

@@ -1,10 +1,11 @@
 import { Router } from 'express';
+import EnderecoController from './app/controllers/EnderecoController';
 import UsuarioController from './app/controllers/UsuarioController';
 import VoluntarioControllers from './app/controllers/VoluntarioControllers';
 
 const routes = new Router();
 
-routes.post('/usuario', UsuarioController.store);
+routes.post('/usuarios', UsuarioController.store);
 routes.get('/usuario', UsuarioController.index);
 routes.get('/usuario/:id', UsuarioController.show);
 routes.put('/usuario/:id', UsuarioController.editar);
@@ -14,8 +15,13 @@ routes.get('/voluntario', VoluntarioControllers.index);
 routes.delete('/voluntario/:id', VoluntarioControllers.destroy);
 
 
+routes.get('/enderecos', EnderecoController.listar);
+routes.put('/enderecos/:id', EnderecoController.editar);
 
 
 
+routes.post('/voluntario', VoluntarioControllers.store);
+
+routes.put('/voluntario/:id', VoluntarioControllers.update);
 
 export default routes;
