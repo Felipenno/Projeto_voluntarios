@@ -16,7 +16,7 @@ routes.delete('/voluntario/:id', VoluntarioControllers.destroy);
 
 
 routes.get('/enderecos', EnderecoController.listar);
-
+routes.put('/enderecos/:id', EnderecoController.editar);
 
 
 

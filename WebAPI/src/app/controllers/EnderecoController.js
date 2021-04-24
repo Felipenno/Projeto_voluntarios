@@ -15,6 +15,28 @@ class EnderecoController {
 		}
 	}
 
+	async editar(request, response) {
+		const id = request.params.id;
+
+		Endereco.update( request.body, {where: { id_endereco: id}})
+		.then(endereco => {
+			if(endereco == 1){
+				response.send({
+					message: "O Endereço foi atualizado"
+				});
+			} else {
+				response.send({
+					message: "Não foi possível atualizar o endereço"
+				});
+			};
+		})
+		.catch(erro => {
+			response.status(500).send({
+				message: "Não foi possível atualizar o endereço"
+			});
+		});
+	}
+
 	
 }
 
