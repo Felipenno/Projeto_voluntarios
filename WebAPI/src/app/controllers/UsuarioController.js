@@ -33,7 +33,13 @@ class UsuarioController {
 			return response.status(400).json({ error: err.message});
 		}
 	}
-	async listar(request, response) {
+	async index(request, response) {
+		try{
+			const usuario = await Usuario.findAll();
+			return response.json(usuario);
+		}catch(err){
+			return response.status(400).json({error: err.message});
+		}
 
 	}
 	

@@ -6,10 +6,8 @@ const routes = new Router();
 
 routes.post('/usuarios', UsuarioController.store);
 routes.put('/usuarios/:id', UsuarioController.update);
-
-routes.get('/usuarios', UsuarioController.index);
-
-
+routes.get('/usuario', UsuarioController.index);
+routes.get('/usuario/:id', UsuarioController.show);
 routes.put('/usuario/:id', UsuarioController.editar);
 routes.delete('/usuario/:id', UsuarioController.destroy);
 
