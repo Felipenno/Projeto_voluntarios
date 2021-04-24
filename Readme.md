@@ -16,9 +16,9 @@
 
 ## Documentação
 
-- [Wireframe (Projeto no figma)](https://www.figma.com/file/TsFiHugnTGK0awiUWxkQcz/Wireframe?node-id=0%3A1)
-- [Modelagem Conceitual](https://github.com/MartinObrecht/VLTs/blob/main/Documenta%C3%A7%C3%A3o/Banco%20de%20dados/bd_modelagem_conceitual.png)
-- [Modelagem lógica](https://github.com/MartinObrecht/VLTs/blob/main/Documenta%C3%A7%C3%A3o/Banco%20de%20dados/bd_modelagem_logica.png)
+- [Wireframe (Projeto no figma)](https://www.figma.com/file/HvTmrCOHUhX9hgWGDxY3Uk/Wireframe-completo?node-id=0%3A1)
+- [Modelagem Conceitual](https://github.com/Felipenno/Projeto_voluntarios/blob/master/Documenta%C3%A7%C3%A3o/Banco%20de%20dados/diagrama_conceitual.png)
+- [Modelagem lógica](https://github.com/Felipenno/Projeto_voluntarios/blob/master/Documenta%C3%A7%C3%A3o/Banco%20de%20dados/diagrama_l%C3%B3gico.png)
 
 <hr>
 
