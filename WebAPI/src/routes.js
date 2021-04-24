@@ -12,7 +12,7 @@ routes.get('/usuario/:id', UsuarioController.show);
 routes.put('/usuario/:id', UsuarioController.editar);
 routes.delete('/usuario/:id', UsuarioController.destroy);
 
-
+routes.post('/endereco/:id', EnderecoController.store);
 routes.get('/enderecos', EnderecoController.listar);
 routes.put('/enderecos/:id', EnderecoController.editar);
 routes.put('/enderecos/apagar/:id', EnderecoController.apagar);
@@ -22,7 +22,6 @@ routes.put('/voluntario/:id', VoluntarioControllers.update);
 routes.get('/voluntario', VoluntarioControllers.index);
 routes.get('/voluntario/:id', VoluntarioControllers.show);
 routes.delete('/voluntario/:id', VoluntarioControllers.destroy);
-
 
 routes.get('/solicitacoes', SolicitacoesController.index);
 routes.get('/solicitacoes/:id', SolicitacoesController.show);
