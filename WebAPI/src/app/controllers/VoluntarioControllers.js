@@ -4,8 +4,7 @@ class VoluntarioControllers {
 
 	async store(request, response) {
 
-		
-		
+				
 		const {id_voluntario, fk_id_usuario, servico, descricao_servico, avaliacao } = await Voluntario.create(request.body);
 
 		if(!servico || !descricao_servico){
@@ -42,6 +41,14 @@ class VoluntarioControllers {
 		  })
 
 		
+	}
+	async show(request, response){
+		try{
+			const voluntario = await Voluntario.findByPk(request.params.id);
+			return response.json(voluntario);
+		}catch(err){
+			return response.status(400).json({ error: err.message});
+		}
 	}
 	async index(request, response) {
 		try{
