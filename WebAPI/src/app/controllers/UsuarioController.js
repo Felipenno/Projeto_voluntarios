@@ -44,6 +44,7 @@ class UsuarioController {
 						err.message || "Erro interno ao buscar Usuario"
 				});
 			});
+		
 	}
 	
     async editar(request, response) {
