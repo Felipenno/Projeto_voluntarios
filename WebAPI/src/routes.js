@@ -4,7 +4,14 @@ import UsuarioController from './app/controllers/UsuarioController';
 const routes = new Router();
 
 routes.post('/usuario', UsuarioController.store);
+
 routes.get('/usuarios', UsuarioController.index);
+
+
+routes.put('/usuario/:id', UsuarioController.editar);
+
+
+
 
 
 export default routes;
