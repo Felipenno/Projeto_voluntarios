@@ -56,9 +56,19 @@ class UsuarioController {
 			});
 		});
 	}
-	
-	
-	
+	async destroy(request, response) {
+		try{
+			const usuario  = await Usuario.findByPk(request.params.id);
+
+			await usuario.destroy(request.body);
+
+			return response.json({ message: `Usuario Excluido` });
+		}catch(err){
+			return response.status(400).json({error:err.message});
+		}
+
+	}
+					
 }
 
 

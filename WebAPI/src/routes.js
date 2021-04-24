@@ -9,6 +9,8 @@ routes.get('/usuarios', UsuarioController.index);
 
 
 routes.put('/usuario/:id', UsuarioController.editar);
+routes.delete('/usuario/:id', UsuarioController.destroy);
+
 
 
 
