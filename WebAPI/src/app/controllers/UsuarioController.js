@@ -37,12 +37,32 @@ class UsuarioController {
 				});
 			});
 	}
+	
+    async editar(request, response) {
+		const id = request.params.id;
 
-
+		Usuario.update( request.body, {where: { id_usuario: id}})
+		.then(usuario => {
+			if(usuario == 1){
+				response.send({
+					message: "Usuário atualizado"
+				});
+			} else {
+				response.send({
+					message: "Não foi possível localizar o usuário"
+				});
+			};
+		})
+		.catch(err => {
+			response.status(500).send({
+				message: `Erro interno ao atualiar o usuário de id: ${id}.`
+			});
+		});
+	}
+	
+	
+	
 }
-
-
-
 
 
 export default new UsuarioController();
