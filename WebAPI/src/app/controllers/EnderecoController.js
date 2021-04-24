@@ -36,6 +36,29 @@ class EnderecoController {
 			});
 		});
 	}
+	async apagar(request, response) {
+
+		const id = request.params.id;
+
+		Endereco.destroy({where : {fk_id_usuario : id }})
+		.then(num => {
+			if(num ==1){
+				response.send({
+					message: "Endereço apagado com sucesso"
+				});
+			} else {
+				response.send({
+					message: "Não foi possível apagar o endereço"
+				});
+			}
+		})
+		.catch(err => {
+			response.status(500).send({
+				message: "Erro interno ao apagar o endereco"
+			})
+		})
+
+	}
 
 	
 }

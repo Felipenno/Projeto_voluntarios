@@ -15,6 +15,7 @@ routes.delete('/usuario/:id', UsuarioController.destroy);
 
 routes.get('/enderecos', EnderecoController.listar);
 routes.put('/enderecos/:id', EnderecoController.editar);
+routes.put('/enderecos/apagar/:id', EnderecoController.apagar);
 
 routes.post('/voluntario', VoluntarioControllers.store);
 routes.put('/voluntario/:id', VoluntarioControllers.update);
