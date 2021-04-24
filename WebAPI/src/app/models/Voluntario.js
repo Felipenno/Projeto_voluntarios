@@ -10,7 +10,7 @@ class Voluntario extends Model {
             },
             fk_id_usuario: Sequelize.INTEGER,
             servico: Sequelize.STRING,
-            sobre_servico: Sequelize.TEXT,
+            descricao_servico: Sequelize.TEXT,
             avaliacao: Sequelize.INTEGER,
             
         },
