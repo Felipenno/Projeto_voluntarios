@@ -41,20 +41,6 @@ class UsuarioController {
 			return response.status(400).json({error: err.message});
 		}
 
-<<<<<<< HEAD
-		Usuario.findAll()
-			.then((data) => {
-				response.send(data);
-			})
-			.catch((err) => {
-				response.status(500).send({
-					message:
-						err.message || "Erro interno ao buscar Usuario"
-				});
-			});
-		
-=======
->>>>>>> b1029fd7b4b609c947f9f09c2fe6570050d41a30
 	}
 	
     async editar(request, response) {
