@@ -9,4 +9,5 @@ routes.post('/usuario', UsuarioController.store);
 routes.post('/voluntario', VoluntarioControllers.store);
 
 routes.put('/voluntario/:id', VoluntarioControllers.update);
+
 export default routes;
