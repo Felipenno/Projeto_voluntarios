@@ -32,7 +32,7 @@ class UsuarioController {
 			return response.status(400).json({ error: err.message});
 		}
 	}
-	async listar(request, response) {
+	async index(request, response) {
 
 		Usuario.findAll()
 			.then((data) => {
