@@ -40,7 +40,7 @@ class EnderecoController {
 
 		const id = request.params.id;
 
-		Endereco.destroy({where : {fk_id_usuario : id }})
+		Endereco.destroy({where : {id_endereco : id }})
 		.then(num => {
 			if(num ==1){
 				response.send({
