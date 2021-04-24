@@ -14,6 +14,7 @@ routes.put('/usuario/:id', UsuarioController.editar);
 routes.delete('/usuario/:id', UsuarioController.destroy);
 
 routes.get('/voluntario', VoluntarioControllers.index);
+routes.delete('/voluntario/:id', VoluntarioControllers.destroy);
 
 
 
