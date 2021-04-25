@@ -22,4 +22,6 @@ routes.delete('/voluntario/:id', VoluntarioControllers.destroy);
 
 routes.put('/solicitacoes/:id', SolicitacoesController.update);
 
+routes.put('solicitacoes/:id', SolicitacoesController.index)
+
 export default routes;
