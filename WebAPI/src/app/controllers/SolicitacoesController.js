@@ -5,30 +5,16 @@ class SolicitacoesController {
 	
 	async store(request, response) {
 		
-		const id_usuario = request.params.id;
+		const {id} = request.params;
 
-		const { id_solicitacoes, servico, dia, status, descrica_problema, data_criacao, data_encerramento, nota} = request.body
+		const { id_voluntario, ...data} = request.body;
 
-		await Solicitacoes.create({
-			servico: servico,
-			dia: dia,
-			status: status,
-			descrica_problema: descrica_problema,
-			data_criacao: data_criacao,
-			data_encerramento: data_encerramento,
-			nota: nota,
-			uSolicitacoes: [
-				{fk_id_usuario: id_usuario},
-				{fk_id_solicitacoes: id_solicitacoes}
-			]
-		}, {
-			include: [ 'usuarios' ]
-		})
-		.then(data => {
-			return response.send(data)
-		}).catch( err => {
-			return response.status(500).send({ message: `Erro interno: ${err}.`});
-		});
+		const solicitacoes = await Solicitacoes.create(data);
+
+		const usuarioSolicitacoes = await solicitacoes.addUsuario([id, id_voluntario]);
+
+		return response.send(usuarioSolicitacoes);
+
 	}	
 }
 
