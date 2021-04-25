@@ -48,7 +48,7 @@ class SolicitacoesController {
 		  .then(data => {
 			if (data == 1) {
 			  response.send({
-				message: "Solicitação atualizada"
+				message: "Solicitação atualizada com sucesso"
 			  });
 			} else {
 			  response.send({
