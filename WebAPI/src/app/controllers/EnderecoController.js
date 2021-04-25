@@ -1,11 +1,30 @@
 import Endereco from '../models/Endereco';
+import Usuario from '../models/Usuario';
 
 class EnderecoController {
 
-	
 	async store(request, response) {
+		 
+		const { id } = request.params;
+
+		const usuario = await Usuario.findByPk( id )
+
+		if(!usuario){
+			return request.status(400).send({ erro: "Usuário não existe"})
+		}
+
+		const enderecoBody = request.body;
+		enderecoBody.fk_id_usuario = id;
 		
+		await Endereco.create(enderecoBody)
+		.then(data => {
+			return response.send(data);
+		}).catch(erro => {
+			return response.status(500).send({message: `Erro interno: ( ${erro} )`});
+		});
+
 	}
+
 	async listar(request, response) {
 		try{
 		const endereco = await Endereco.findAll();
@@ -35,6 +54,30 @@ class EnderecoController {
 				message: "Não foi possível atualizar o endereço"
 			});
 		});
+	}
+	
+	async apagar(request, response) {
+
+		const id = request.params.id;
+
+		Endereco.destroy({where : {id_endereco : id }})
+		.then(num => {
+			if(num ==1){
+				response.send({
+					message: "Endereço apagado com sucesso"
+				});
+			} else {
+				response.send({
+					message: "Não foi possível apagar o endereço"
+				});
+			}
+		})
+		.catch(err => {
+			response.status(500).send({
+				message: "Erro interno ao apagar o endereco"
+			})
+		})
+
 	}
 
 	
