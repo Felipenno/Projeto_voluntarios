@@ -9,7 +9,7 @@ class Solicitacoes extends Model {
                 autoIncrement: true,
             },
             servico: Sequelize.STRING,
-            descricao_servico: Sequelize.TEXT,
+            descricao_problema: Sequelize.TEXT,
             dia: Sequelize.DATE,
             status: Sequelize.STRING,
             data_criacao: Sequelize.DATE,
