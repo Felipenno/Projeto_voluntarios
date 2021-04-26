@@ -5,6 +5,7 @@ import UsuarioController from './app/controllers/UsuarioController';
 import VoluntarioControllers from './app/controllers/VoluntarioControllers';
 import SolicitacoesController from './app/controllers/SolicitacoesController';
 
+
 const routes = new Router();
 
 routes.post('/usuarios', UsuarioController.store);
@@ -33,5 +34,7 @@ routes.get('/solicitacoes/:id', SolicitacoesController.show);
 routes.delete('/solicitacoes/:id', SolicitacoesController.destroy);
 routes.put('solicitacoes/:id', SolicitacoesController.index);
 routes.put('/solicitacoes/:id', SolicitacoesController.update);
+routes.post('/usuarios/:id/solicitacoes', SolicitacoesController.store);
+
 
 export default routes;
