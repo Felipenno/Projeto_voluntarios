@@ -5,6 +5,14 @@ class SolicitacoesController {
 	
 	async store(request, response) {
 		
+		const {id} = request.params;
+		const {id_voluntario, ...data} = request.body
+
+		const solicitacoes = await Solicitacoes.create(data)
+
+		const result = await solicitacoes.addUsuarios([id, id_voluntario]);
+
+		return response.send(result);
 	}
 
 	async listarPorStatus(request, response){
