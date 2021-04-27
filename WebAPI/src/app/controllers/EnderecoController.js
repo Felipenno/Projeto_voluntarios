@@ -37,7 +37,7 @@ class EnderecoController {
 	async editar(request, response) {
 		const id = request.params.id;
 
-		Endereco.update( request.body, {where: { id_endereco: id}})
+		Endereco.update( request.body, {where: { fk_id_usuario: id}})
 		.then(endereco => {
 			if(endereco == 1){
 				response.send({

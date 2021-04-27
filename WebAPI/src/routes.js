@@ -18,7 +18,6 @@ routes.get('/enderecos', EnderecoController.listar);
 routes.put('/enderecos/:id', EnderecoController.editar);
 routes.post('/enderecos/:id', EnderecoController.store);
 routes.get('/enderecos', EnderecoController.listar);
-routes.put('/enderecos/:id', EnderecoController.editar);
 routes.delete('/enderecos/apagar/:id', EnderecoController.apagar);
 
 routes.post('/voluntario', VoluntarioControllers.store);
