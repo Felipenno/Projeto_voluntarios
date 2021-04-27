@@ -9,7 +9,7 @@ module.exports = {
         autoIncrement: true,
         allowNull: false
       },
-      fk_id_usuario : {
+      fk_id_usuario: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: { model: 'tb_usuario', key: 'id_usuario'},
