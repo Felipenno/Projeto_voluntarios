@@ -23,7 +23,10 @@ class UsuarioController {
 			} else {
 				response.send({ messsage: "Não foi possível atualizar o usuário!"});
 			}
-		});
+		})
+		.catch( err => {
+			response.send(err || { message: `Erro interno ao atualizar usuário.`})
+		})
 	}
 }
 

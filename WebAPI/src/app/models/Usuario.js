@@ -35,7 +35,6 @@ class Usuario extends Model {
 
     static associate(models){
         this.hasOne(models.Endereco, { foreignKey: 'fk_id_usuario', as: 'endereco' })
-        this.hasOne(models.Voluntario, { foreignKey: 'fk_id_usuario', as: 'voluntario' })
         this.belongsToMany(models.Solicitacoes, { foreignKey: 'fk_id_usuario', through: 'tb_usuario_solicitacoes', as: 'solicitacoes' })
     }
 }
