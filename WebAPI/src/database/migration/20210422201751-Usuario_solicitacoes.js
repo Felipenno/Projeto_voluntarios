@@ -2,32 +2,26 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('tb_voluntario', { 
-      id_voluntario: {
+    return queryInterface.createTable('tb_usuario_solicitacoes', { 
+      id_usuario_solicitacoes: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
       },
-      fk_id_usuario : {
+      fk_id_usuario: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: { model: 'tb_usuario', key: 'id_usuario'},
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
-      servico:{
-        type: Sequelize.STRING(30),
-        allowNull: true,
-      },
-      descricao_servico:{
-        type: Sequelize.TEXT,
-        allowNull: true,
-      },
-      avaliacao:{
+      fk_id_solicitacoes : {
         type: Sequelize.INTEGER,
         allowNull: false,
-        defaultValue: 0
+        references: { model: 'tb_solicitacoes', key: 'id_solicitacoes'},
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       
     });
@@ -35,6 +29,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('tb_voluntario');
+    await queryInterface.dropTable('tb_usuario_solicitacoes');
   }
 };

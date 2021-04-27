@@ -2,16 +2,14 @@ import Solicitacoes from '../models/Solicitacoes';
 
 class SolicitacoesController {
 	
-	async store(request, response) {
-		
-		const {id} = request.params;
-		const { id_voluntario, ...data} = request.body;
-
-		const solicitacoes = await Solicitacoes.create(data);
-
-		const usuarioSolicitacoes = await solicitacoes.addUsuario([id, id_voluntario]);
-
-		return response.send(usuarioSolicitacoes);
+	async store(request, response) {		
+		try {
+			const solicitacoes = await Solicitacoes.create(request.body);
+			const usuarioSolicitacoes = await solicitacoes.addUsuario(id);
+			return response.send({solicitacoes, usuarioSolicitacoes});
+		} catch (error) {
+			response.send({ message: 'Erro ao criar solicitação!'});
+		}
 	}
 
 	async listarPorStatus(request, response){
@@ -88,6 +86,7 @@ class SolicitacoesController {
 			}
 		  })
 	}
+		
 }
 
 export default new SolicitacoesController();

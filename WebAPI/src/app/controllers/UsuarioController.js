@@ -53,16 +53,12 @@ class UsuarioController {
 					message: "Usuário atualizado"
 				});
 			} else {
-				response.send({
-					message: "Não foi possível localizar o usuário"
-				});
-			};
+				response.send({ messsage: "Não foi possível atualizar o usuário!"});
+			}
 		})
-		.catch(err => {
-			response.status(500).send({
-				message: `Erro interno ao atualiar o usuário de id: ${id}.`
-			});
-		});
+		.catch( err => {
+			response.send(err || { message: `Erro interno ao atualizar usuário.`})
+		})
 	}
 	async destroy(request, response) {
 		try{
