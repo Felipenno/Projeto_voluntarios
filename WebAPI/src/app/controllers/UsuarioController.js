@@ -55,9 +55,6 @@ class UsuarioController {
 					
 				}
 			}
-				
-			
-			
 		}).then(usuario => {
 			return response.send(usuario)
 		}).catch(erro => {

@@ -16,5 +16,4 @@ routes.put('/voluntario/:id', VoluntarioControllers.update);
 routes.get('/usuario/endereco/solicitacoes/:id', UsuarioController.listarPorLocalizacao);
 
 
-
 export default routes;
