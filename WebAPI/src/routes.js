@@ -4,9 +4,12 @@ import SolicitacoesController from './app/controllers/SolicitacoesController';
 import UsuarioController from './app/controllers/UsuarioController';
 import VoluntarioControllers from './app/controllers/VoluntarioControllers';
 import SolicitacoesController from './app/controllers/SolicitacoesController';
+import SessionController from './app/controllers/SessionController';
 
 
 const routes = new Router();
+
+routes.post('/session', SessionController.store);
 
 routes.post('/usuarios', UsuarioController.store);
 routes.get('/usuario', UsuarioController.index);

@@ -29,8 +29,12 @@ class Usuario extends Model {
                 usuario.senha = await bcrypt.hash(usuario.senhaV, 8);
             }
         });
-        return this;
 
+        return this;
+    }
+
+    checkPassword(senhaV) {
+        return bcrypt.compare(senhaV, this.senha);
     }
 
     static associate(models){
