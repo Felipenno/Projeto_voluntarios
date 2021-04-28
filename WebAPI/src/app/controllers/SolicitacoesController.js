@@ -1,4 +1,6 @@
 import Solicitacoes from '../models/Solicitacoes';
+import Endereco from '../models/Endereco';
+import Usuario from '../models/Usuario';
 
 class SolicitacoesController {
 
@@ -6,6 +8,10 @@ class SolicitacoesController {
 	async store(request, response) {
 		
 	}
+
+	
+	
+
 
 	async update(request, response){
 
@@ -26,6 +32,9 @@ class SolicitacoesController {
 			}
 		  })
 	}
-}
+
+	
+	}
+
 
 export default new SolicitacoesController();

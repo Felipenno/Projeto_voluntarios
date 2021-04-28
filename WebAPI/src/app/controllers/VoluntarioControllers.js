@@ -1,3 +1,4 @@
+import Usuario from '../models/Usuario';
 import Voluntario from '../models/Voluntario';
 
 class VoluntarioControllers {
@@ -45,6 +46,8 @@ class VoluntarioControllers {
 	}
 
 	
+	
+
 }
 
 export default new VoluntarioControllers();
