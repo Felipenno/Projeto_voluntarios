@@ -1,36 +1,42 @@
 import Solicitacoes from '../models/Solicitacoes';
+import Usuario from '../models/Usuario';
 
 class SolicitacoesController {
-
 	
 	async store(request, response) {
 		
 		const {id} = request.params;
-		const {id_voluntario, ...data} = request.body
+		const { id_voluntario, ...data} = request.body;
 
-		const solicitacoes = await Solicitacoes.create(data)
+		const solicitacoes = await Solicitacoes.create(data);
 
-		const result = await solicitacoes.addUsuarios([id, id_voluntario]);
+		const usuarioSolicitacoes = await solicitacoes.addUsuario([id, id_voluntario]);
 
-		return response.send(result);
+		return response.send(usuarioSolicitacoes);
 	}
 
 	async listarPorStatus(request, response){
-		const { status, id } = request.params
+		const { status, tipo, id } = request.params
 
-		await Solicitacoes.findAll({
+		await Usuario.findAll({
+			attributes: ['id_usuario'],
 			where:{
-				status
+				id_usuario: id, //'concluido, criado, andamento'
 			},
 			include: {
-				association: "usuarios",
-				attributes: ["nome", "telefone" ],
-				through: {
-					where: {fk_id_usuario: id}
-				}
+				association: 'solicitacoes',
+				where:{
+					status
+				},
+				include:{
+					association: 'usuarios',
+					where:{
+						tipo
+					}
+				},
 			}
-		}).then(solicitacoes => {
-			return response.send(solicitacoes)
+		}).then(user => {
+			return response.send(user)
 		}).catch(erro => {
 			return response.status(500).send({message: `Erro interno: ( ${erro} )`})
 		})

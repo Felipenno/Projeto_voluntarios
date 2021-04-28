@@ -5,6 +5,7 @@ import UsuarioController from './app/controllers/UsuarioController';
 import VoluntarioControllers from './app/controllers/VoluntarioControllers';
 import SolicitacoesController from './app/controllers/SolicitacoesController';
 
+
 const routes = new Router();
 
 routes.post('/usuarios', UsuarioController.store);
@@ -27,12 +28,15 @@ routes.delete('/voluntario/:id', VoluntarioControllers.destroy);
 routes.get('/voluntario/:id', VoluntarioControllers.show);
 
 
-routes.get('/solicitacoes/:status/usuario/:id', SolicitacoesController.listarPorStatus);
+routes.get('/solicitacoes/:status/usuario/:tipo/:id', SolicitacoesController.listarPorStatus);
+routes.get('/solicitacoes/status', SolicitacoesController.listarPorStatus);
 routes.post('/solicitacoes/:id', SolicitacoesController.store);
 routes.get('/solicitacoes', SolicitacoesController.index);
 routes.get('/solicitacoes/:id', SolicitacoesController.show);
 routes.delete('/solicitacoes/:id', SolicitacoesController.destroy);
 routes.put('solicitacoes/:id', SolicitacoesController.index);
 routes.put('/solicitacoes/:id', SolicitacoesController.update);
+routes.post('/usuarios/:id/solicitacoes', SolicitacoesController.store);
+
 
 export default routes;
