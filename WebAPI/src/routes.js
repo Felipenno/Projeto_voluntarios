@@ -27,7 +27,9 @@ routes.delete('/voluntario/:id', VoluntarioControllers.destroy);
 routes.get('/voluntario/:id', VoluntarioControllers.show);
 
 
-routes.get('/solicitacoes/:status/usuario/:id', SolicitacoesController.listarPorStatus);
+routes.get('/solicitacoes/:status/usuario/:tipo/:id', SolicitacoesController.listarPorStatus);
+routes.get('/solicitacoes/status', SolicitacoesController.listarPorStatus);
+routes.post('/solicitacoes/:id', SolicitacoesController.store);
 routes.get('/solicitacoes', SolicitacoesController.index);
 routes.get('/solicitacoes/:id', SolicitacoesController.show);
 routes.delete('/solicitacoes/:id', SolicitacoesController.destroy);
