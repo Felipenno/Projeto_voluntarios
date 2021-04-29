@@ -77,6 +77,10 @@ class SolicitacoesController {
 
 	}
 
+	
+	
+
+
 	async update(request, response){
 
 		const id = request.params.id;

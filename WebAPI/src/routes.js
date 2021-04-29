@@ -3,9 +3,8 @@ import EnderecoController from './app/controllers/EnderecoController';
 import SolicitacoesController from './app/controllers/SolicitacoesController';
 import UsuarioController from './app/controllers/UsuarioController';
 import VoluntarioControllers from './app/controllers/VoluntarioControllers';
-import SolicitacoesController from './app/controllers/SolicitacoesController';
+import EnderecoController from './app/controllers/EnderecoController';
 import SessionController from './app/controllers/SessionController';
-
 
 const routes = new Router();
 
@@ -39,6 +38,9 @@ routes.delete('/solicitacoes/:id', SolicitacoesController.destroy);
 routes.put('solicitacoes/:id', SolicitacoesController.index);
 routes.put('/solicitacoes/:id', SolicitacoesController.update);
 routes.post('/usuarios/:id/solicitacoes', SolicitacoesController.store);
+
+
+routes.get('/usuario/endereco/solicitacoes/:id', UsuarioController.listarPorLocalizacao);
 
 
 export default routes;

@@ -1,5 +1,9 @@
 import Usuario from '../models/Usuario';
 import Endereco from '../models/Endereco';
+import Solicitacoes from '../models/Solicitacoes';
+
+
+
 
 class UsuarioController {
 
@@ -39,9 +43,40 @@ class UsuarioController {
 			return response.json(usuario);
 		}catch(err){
 			return response.status(400).json({error: err.message});
-		}
-
+		};
 	}
+
+	async listarPorLocalizacao(request, response){
+		
+		const {id}= request.params;
+		 
+		const {endereco} = await Usuario.findByPk(id,{
+			
+			include: { 
+			association:'endereco',
+		
+		}
+		})
+		
+		 await Solicitacoes.findAll({
+			where: {status: "criado"},
+			include: {
+				association: "usuarios",
+				where:{tipo: 's'},
+				attributes: ["nome"],
+				include: {
+					association: "endereco",
+					where: {estado: endereco.estado},
+					attributes: ["estado", "cidade"],
+					
+				}
+			}
+		}).then(usuario => {
+			return response.send(usuario)
+		}).catch(erro => {
+			return response.status(500).send({message: `Erro interno: ( ${erro} )`})
+		});
+	} 
 	
     async editar(request, response) {
 		const id = request.params.id;
