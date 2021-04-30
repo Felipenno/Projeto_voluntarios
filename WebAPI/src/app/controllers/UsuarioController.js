@@ -43,23 +43,33 @@ class UsuarioController {
 
 	}
 	
-    async editar(request, response) {
-		const id = request.params.id;
+    async update(request, response) {
+		const { email, senhaV } = request.body;
 
-		Usuario.update( request.body, {where: { id_usuario: id}})
-		.then(usuario => {
-			if(usuario == 1){
-				response.send({
-					message: "Usuário atualizado"
-				});
-			} else {
-				response.send({ messsage: "Não foi possível atualizar o usuário!"});
+		const usuario = await Usuario.findByPk(request.id_usuario);
+
+		if (email && email !== usuario.email) {
+			const usuarioExiste = await Usuario.findOne({ where: { email }});
+
+			if (usuarioExiste) {
+				return response.status(400).json({ erro: 'Usuário já existe! '});
 			}
-		})
-		.catch( err => {
-			response.send(err || { message: `Erro interno ao atualizar usuário.`})
-		})
+		}
+
+		if (senhaV && !(await usuario.checkPassword(senhaV))) {
+			return response.status(401).json({ erro: 'Senha incorreta.' });
+		}
+
+		const { id, nome, provider } = await usuario.update(request.body);
+
+		return response.json({ 
+			id,
+			nome,
+			email,
+			provider
+		});
 	}
+
 	async destroy(request, response) {
 		try{
 			const usuario  = await Usuario.findByPk(request.params.id);

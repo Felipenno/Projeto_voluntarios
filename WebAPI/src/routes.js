@@ -6,15 +6,21 @@ import VoluntarioControllers from './app/controllers/VoluntarioControllers';
 import SolicitacoesController from './app/controllers/SolicitacoesController';
 import SessionController from './app/controllers/SessionController';
 
+import authMiddlewares from './app/middlewares/auth';
+
 
 const routes = new Router();
 
+
+
 routes.post('/session', SessionController.store);
+routes.use(authMiddlewares);
 
 routes.post('/usuarios', UsuarioController.store);
 routes.get('/usuario', UsuarioController.index);
 routes.get('/usuario/:id', UsuarioController.show);
-routes.put('/usuario/:id', UsuarioController.editar);
+//routes.put('/usuario/:id', UsuarioController.editar);
+routes.put('/usuarios', UsuarioController.update)
 routes.delete('/usuario/:id', UsuarioController.destroy);
 
 routes.get('/enderecos', EnderecoController.listar);
