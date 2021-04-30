@@ -19,7 +19,6 @@ routes.use(authMiddlewares);
 routes.post('/usuarios', UsuarioController.store);
 routes.get('/usuario', UsuarioController.index);
 routes.get('/usuario/:id', UsuarioController.show);
-//routes.put('/usuario/:id', UsuarioController.editar);
 routes.put('/usuarios', UsuarioController.update)
 routes.delete('/usuario/:id', UsuarioController.destroy);
 
