@@ -1,4 +1,4 @@
-============= Install =================
+=============== Install ========================
 npm init -y
 npm install express --save
 npm install sequelize --save
@@ -14,7 +14,7 @@ npm install express-generator -g
 
 npm install express sequelize mysql2 jsonwebtoken bcryptjs --save
 
-========== Sequelize ======================
+============= Sequelize =========================
 sequelize db:create                             >> cria banco
 
 sequelize migration:create --name=NOMETABELA    >> cria um modelo de migrattion
@@ -26,8 +26,15 @@ sequelize db:migrate:undo:all --to MIGRATION    >> desfaz a migration especifica
 
 sequelize --help
 
-================== Git ======================
+================== Git =========================
 git checkout -b NOMEBRANCH master   >> cria uma nova branch e copia a branch master para ela.
 git checkout NOMEBRANCH             >> troca a branch ativa para a especificada.
 git push -u origin NOMERMOTO        >> cria uma branch remota e da push pra ele.
-git merge NOMEBRANCH >>             junta a brach ativa à branch especificada.
+git merge NOMEBRANCH                >> junta a brach ativa à branch especificada.
+
+=================== Angular =============================
+npm install -g @angular/cli                     >> instala a cli do angular de forma global
+ng new NOMEPROJETO                              >> cria um novo projeto do angular com o nome especificado
+ng g s PASTA-E/OU-NOME-ARQUIVO                  >> gera uma classe do tipo service
+ng g c PASTA-E/OU-NOME-ARQUIVO                  >> gera um componente
+ng g class PASTA-E/OU-NOME-ARQUIVO --type=model >> gera uma model
