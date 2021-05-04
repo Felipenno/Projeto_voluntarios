@@ -5,6 +5,7 @@ npm install sequelize --save
 npm install mysql2 --save
 npm install jsonwebtoken --save
 npm install bcryptjs --save
+npm i --save cors
 
 npm install nodemon --save-dev
 npm install sucrase --save-dev 

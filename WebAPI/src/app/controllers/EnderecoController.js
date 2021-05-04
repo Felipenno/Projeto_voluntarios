@@ -4,19 +4,17 @@ import Usuario from '../models/Usuario';
 class EnderecoController {
 
 	async store(request, response) {
-		 
-		const { id } = request.params;
 
-		const usuario = await Usuario.findByPk( id )
+		const usuario = await Usuario.findByPk( request.id_usuario ) 
 
 		if(!usuario){
 			return request.status(400).send({ erro: "Usuário não existe"})
 		}
 
-		const enderecoBody = request.body;
-		enderecoBody.fk_id_usuario = id;
+		const endereco = request.body;
+		endereco.fk_id_usuario = request.id_usuario;
 		
-		await Endereco.create(enderecoBody)
+		await Endereco.create(endereco)
 		.then(data => {
 			return response.send(data);
 		}).catch(erro => {
