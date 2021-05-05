@@ -30,7 +30,7 @@ routes.get('/voluntario', VoluntarioControllers.index);
 routes.delete('/voluntario/:id', VoluntarioControllers.destroy);
 routes.get('/voluntario/:id', VoluntarioControllers.show);
 
-routes.get('/solicitacoes/:status/usuario/:tipo/:id', SolicitacoesController.listarPorStatus);
+routes.get('/solicitacoes/:status/usuario/:tipo', SolicitacoesController.listarPorStatus);
 routes.post('/solicitacoes/:id', SolicitacoesController.store);
 routes.get('/solicitacoes', SolicitacoesController.index);
 routes.get('/solicitacoes/:id', SolicitacoesController.show);
