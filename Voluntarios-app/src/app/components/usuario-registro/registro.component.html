@@ -1,0 +1,39 @@
+<div class="container my-5 col-8">
+  <h1>Registro</h1>
+  <hr>
+
+  <div > 
+    <div class="form-group" >
+      <label for="email">Email</label>
+      <input [(ngModel)]="usuario.email"  id="email" type="email" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+      <label for="senha">Senha</label>
+      <input [(ngModel)]="usuario.senhaV" id="senha" type="password" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="repetir-senha">Repetir senha</label>
+      <input [(ngModel)]="repetirSenha" id="repetir-senha" type="password" class="form-control"  />
+    </div>
+
+    <div class="form-group">
+      <label for="nome">Nome completo</label>
+      <input [(ngModel)]="usuario.nome" id="nome" type="text" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="cpf">CPF</label>
+      <input [(ngModel)]="usuario.cpf" id="cpf" type="text" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="telefone">Telefone</label>
+      <input [(ngModel)]="usuario.telefone" for id="telefone" type="text" class="form-control" />
+    </div>
+    <button (click)="salvarUsuario()" class="btn btn-primary mr-5">Continuar</button>
+
+    <a routerLink="/home" class="btn btn-secondary">Voltar para a página inicial</a>
+  </div>
+</div>
