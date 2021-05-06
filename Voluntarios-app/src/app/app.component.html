@@ -27,7 +27,7 @@
         </li>
       </ul>
       <form class="d-sm-flex">
-        <button class="btn btn-outline-light button" type="submit">
+        <button [routerLink]="['/login']" class="btn btn-outline-light button">
           Entrar
         </button>
       </form>
@@ -35,6 +35,6 @@
   </div>
 </nav>
 
-<div class="container mt-4">
+<div class="container pageloader">
   <router-outlet></router-outlet>
 </div>
