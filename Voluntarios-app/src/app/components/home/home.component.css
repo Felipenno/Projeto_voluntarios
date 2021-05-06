@@ -2,7 +2,14 @@ button {
   background-color: #0202a8;
   border-radius: 25px;
   border-color: blue;
+}
+
+section.conteudo {
+  padding: 60px;
+  margin: auto;
 
 }
 
-
+.txt {
+  text-align: center;
+}
