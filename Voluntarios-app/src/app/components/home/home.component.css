@@ -1,13 +1,5 @@
-.button {
-  background-color: #0202a8;
-  border-radius: 15px;
-  border-color: blue;
-  width: 100%;
+git .h1 {
+  color: #0202a8;
   text-align: center;
-  margin-top: 10px;
-
-}
-
-.teste {
-  padding: 70px;
+  padding: 40px;
 }
