@@ -9,6 +9,7 @@ import { RegistroComponent } from './components/usuario-registro/registro.compon
 import { LoginComponent } from './components/usuario-login/login.component';
 import { UsuarioAtualizarComponent } from './components/usuario-atualizar/usuario-atualizar.component';
 import { EnderecoComponent } from './components/endereco/endereco.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { EnderecoComponent } from './components/endereco/endereco.component';
     RegistroComponent,
     LoginComponent,
     UsuarioAtualizarComponent,
-    EnderecoComponent
+    EnderecoComponent,
+    HomeComponent
 
   ],
   imports: [
