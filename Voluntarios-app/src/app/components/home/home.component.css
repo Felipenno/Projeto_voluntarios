@@ -1,5 +1,29 @@
-git .h1 {
-  color: #0202a8;
-  text-align: center;
-  padding: 40px;
-}
+ .h1 {
+   color: #0202a8;
+   text-align: center;
+   padding: 40px;
+ }
+
+ .blockquote-footer {
+   margin: auto;
+   padding: auto;
+
+ }
+
+ .btnSo {
+   background-color: #0202a8;
+   border-radius: 17px;
+   border-color: blue;
+   margin-top: 10px;
+   padding: 5px;
+   text-align: center;
+   margin: auto;
+ }
+
+ .sobre .card-header {
+
+   padding: 20px;
+   background-color: #0202a8;
+   color: aliceblue;
+   font-size: 20px;
+ }
