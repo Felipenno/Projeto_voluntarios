@@ -1,0 +1,44 @@
+<div class="container my-5 col-8">
+  <h1>Endereço</h1>
+  <hr>
+
+  <div > 
+    <div class="form-group" >
+      <label for="cep">Cep</label>
+      <input [(ngModel)]="endereco.cep"  id="cep" type="text" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+      <label for="estado">Estado</label>
+      <input [(ngModel)]="endereco.estado" id="estado" type="text" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="cidade">Cidade</label>
+      <input [(ngModel)]="endereco.cidade" id="cidade" type="text" class="form-control"  />
+    </div>
+
+    <div class="form-group">
+      <label for="bairro">Bairro</label>
+      <input [(ngModel)]="endereco.bairro" id="bairro" type="text" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="rua">Rua</label>
+      <input [(ngModel)]="endereco.rua" id="rua" type="text" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="numero">Número</label>
+      <input [(ngModel)]="endereco.numero" for id="numero" type="number" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="complemento">Complemento</label>
+      <input [(ngModel)]="endereco.complemento" id="complemento" type="text" class="form-control" />
+    </div>
+
+    <button (click)="salvarEndereco()" class="btn btn-primary">Finalizar</button>
+
+  </div>
+</div>
