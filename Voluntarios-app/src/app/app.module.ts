@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { RegistroComponent } from './components/usuario-registro/registro.component';
 import { LoginComponent } from './components/usuario-login/login.component';
 import { EnderecoComponent } from './components/endereco/endereco.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { EnderecoComponent } from './components/endereco/endereco.component';
     AppComponent,
     RegistroComponent,
     LoginComponent,
-    EnderecoComponent
+    EnderecoComponent,
+    HomeComponent
 
   ],
   imports: [

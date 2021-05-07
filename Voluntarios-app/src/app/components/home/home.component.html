@@ -26,7 +26,7 @@
         nisi, non iste illo sed rem deleniti autem. Reprehenderit, unde
         accusantium!
       </p>
-      <a href="#" class="btn btn-primary btnSo">Registrar Como Solicitante </a>
+      <a [routerLink]="['/registro', 's']" class="btn btn-primary btnSo">Registrar Como Solicitante </a>
     </div>
     <div class="col-md-6 align-self-center text-center">
       <img
@@ -53,14 +53,14 @@
         nisi, non iste illo sed rem deleniti autem. Reprehenderit, unde
         accusantium!
       </p>
-      <a href="#" class="btn btn-primary btnSo">Registrar Como Voluntario </a>
+      <a [routerLink]="['/registro', 'v']" class="btn btn-primary btnSo">Registrar Como Voluntario </a>
     </div>
   </div>
 </div>
 <br />
 <div class="container">
   <div class="card sobre">
-    <div class="card-header">Sobre</div>
+    <div class="card-header" id="card-sobre">Sobre</div>
     <div class="card-body conteudosobre">
       <h5 class="card-title">Sobre Nossa Empresa</h5>
       <p class="card-text">
