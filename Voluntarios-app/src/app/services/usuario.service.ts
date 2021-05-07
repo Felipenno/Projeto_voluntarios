@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { Login } from "../models/Login";
 import { Usuario } from "../models/Usuario";
 
 @Injectable({
@@ -20,4 +21,7 @@ export class UsuarioService{
     atualizarUsuario(usuario: Usuario): Observable<Usuario>{
         return this.httpClient.put<Usuario>(`${this.apiUrl}usuario/atualizar`, usuario);
     }
+    loginUsuario(login: Login): Observable<any>{
+        return this.httpClient.post<Login>(`${this.apiUrl}session`, login)
 } //colocar no app.module
+}

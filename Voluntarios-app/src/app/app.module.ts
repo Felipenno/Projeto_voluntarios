@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { RegistroComponent } from './components/usuario-registro/registro.component';
 import { LoginComponent } from './components/usuario-login/login.component';
 import { UsuarioAtualizarComponent } from './components/usuario-atualizar/usuario-atualizar.component';
+import { EnderecoComponent } from './components/endereco/endereco.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { UsuarioAtualizarComponent } from './components/usuario-atualizar/usuari
     RegistroComponent,
     LoginComponent,
     UsuarioAtualizarComponent,
+    EnderecoComponent
 
   ],
   imports: [

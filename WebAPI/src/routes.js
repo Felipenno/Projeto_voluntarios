@@ -21,7 +21,7 @@ routes.delete('/usuario/:id', UsuarioController.destroy);
 
 routes.get('/enderecos', EnderecoController.listar);
 routes.put('/enderecos', EnderecoController.editar);
-routes.post('/enderecos', EnderecoController.store);
+routes.post('/endereco/:id', EnderecoController.store);
 routes.delete('/enderecos/apagar/', EnderecoController.apagar);
 
 routes.post('/voluntario', VoluntarioControllers.store);
