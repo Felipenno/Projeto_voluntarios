@@ -17,4 +17,7 @@ export class UsuarioService{
     registrarUsuario(usuario: Usuario): Observable<Usuario>{
         return this.httpClient.post<Usuario>(`${this.apiUrl}usuario`, usuario);
     }
+    atualizarUsuario(usuario: Usuario): Observable<Usuario>{
+        return this.httpClient.put<Usuario>(`${this.apiUrl}usuario/atualizar`, usuario);
+    }
 } //colocar no app.module

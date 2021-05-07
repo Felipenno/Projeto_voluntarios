@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { RegistroComponent } from './components/usuario-registro/registro.component';
 import { LoginComponent } from './components/usuario-login/login.component';
+import { UsuarioAtualizarComponent } from './components/usuario-atualizar/usuario-atualizar.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { LoginComponent } from './components/usuario-login/login.component';
     AppComponent,
     RegistroComponent,
     LoginComponent,
+    UsuarioAtualizarComponent,
 
   ],
   imports: [
