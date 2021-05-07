@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Login } from 'src/app/models/Login';
-import { UsuarioService } from 'src/app/services/usuario.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,13 +14,15 @@ export class LoginComponent implements OnInit {
 
   token: string;
 
-  constructor(private usuarioService: UsuarioService) { }
+  loginForm:FormGroup;
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
 
   logar():void{
-    this.usuarioService.loginUsuario(this.login).subscribe({
+    this.authService.loginUsuario(this.login).subscribe({
       next: data => {
         this.token = data.token;
         console.log("Login >>>>>>>>", data)

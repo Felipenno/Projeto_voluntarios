@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from 'src/app/models/Usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -12,7 +13,9 @@ export class RegistroComponent implements OnInit {
 
   usuario:Usuario = new Usuario();
 
-  repetirSenha:string = '';
+  confirmarSenha:string = '';
+
+  registroForm:FormGroup;
 
   constructor(
     private usuarioService: UsuarioService, 
@@ -26,7 +29,7 @@ export class RegistroComponent implements OnInit {
     this.usuario.tipo = this.activatedRoute.snapshot.paramMap.get('tipo');
   }
 
-  salvarUsuario(): void{
+  criarUsuario(): void{
     this.usuarioService.registrarUsuario(this.usuario).subscribe({
       next: data => { 
         console.log("Salvo com sucesso", data)

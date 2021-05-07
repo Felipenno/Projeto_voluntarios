@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registro/:tipo', component: RegistroComponent },
+  
   { path: 'usuario/atualizar', component: UsuarioAtualizarComponent },
   { path: 'endereco/:id', component:EnderecoComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
