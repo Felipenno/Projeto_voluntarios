@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Login } from 'src/app/models/Login';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -20,8 +21,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private auth: AuthService
-    ) { }
+    private auth: AuthService,
+    private toastr: ToastrService
+  ) { }
 
   ngOnInit() {
     if(this.auth.estaLogado()){
@@ -36,15 +38,17 @@ export class LoginComponent implements OnInit {
         if(tipoUsuario === 's'){
           this.mensagem = 'Logado com sucesso';
           this.router.navigate(['/home']);
+          this.toastr.success('Logado com sucesso', "Sucesso!");
         }
         if(tipoUsuario === 'v'){
           this.mensagem = 'Logado com sucesso';
           this.router.navigate(['/home']);
+          this.toastr.success('Logado com sucesso!', 'Sucesso!');
         }
       
       },
       error => {
-        this.mensagem = 'Dados incorretos';
+        this.toastr.error('Dados incorretos', 'Erro!');
       }
     )
   }

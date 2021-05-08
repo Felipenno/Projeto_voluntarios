@@ -42,3 +42,6 @@ ng g class PASTA-E/OU-NOME-ARQUIVO --type=model >> gera uma model
 
 npm i @auth0/angular-jwt
 ng g g auth/auth
+
+npm install ngx-toastr --save
+npm install @angular/animations --save
