@@ -1,5 +1,5 @@
 <div class="container my-5 col-8">
-  <h1>Registro</h1>
+  <h1>{{registroTipo}}</h1>
   <hr>
 
   <div > 
@@ -32,8 +32,12 @@
       <label for="telefone">Telefone</label>
       <input [(ngModel)]="usuario.telefone" for id="telefone" type="text" class="form-control" />
     </div>
-    <button (click)="criarUsuario()" class="btn btn-primary mr-5">Continuar</button>
 
-    <button routerLink="/home" class="btn btn-secondary">Voltar para a página inicial</button>
+    <div class="form-row mt-3">
+      <button (click)="criarUsuario()" class="btn btn-primary">Continuar</button>
+
+      <button routerLink="/home" class="btn btn-secondary ms-5">Voltar para a página inicial</button>
+    </div>
+    
   </div>
 </div>

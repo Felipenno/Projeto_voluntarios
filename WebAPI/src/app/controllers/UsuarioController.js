@@ -1,9 +1,5 @@
 import Usuario from '../models/Usuario';
-import Endereco from '../models/Endereco';
 import Solicitacoes from '../models/Solicitacoes';
-
-
-
 
 class UsuarioController {
 

@@ -16,4 +16,4 @@ export class EnderecoService{
         return this.httpClient.post<Endereco>(`${this.apiUrl}endereco/${id}`, endereco);
     }
     
-} //colocar no app.module
+}

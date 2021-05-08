@@ -12,21 +12,23 @@ export class AuthService {
 
   private apiUrl: string = 'http://localhost:8080/'
   jwtHelper = new JwtHelperService();
-  decodedToken: any;
 
   constructor(private httpClient: HttpClient) { }
 
   loginUsuario(login: Login): Observable<any> {
     return this.httpClient.post<Login>(`${this.apiUrl}session`, login).pipe(
       map((response: any) => {
-        const user = response;
-        if (user) {
-          localStorage.setItem('token', user.token);
-          this.decodedToken = this.jwtHelper.decodeToken(user.token);
-          //sessionStorage.setItem('username', this.decodedToken.unique_name);
+        const data = response;
+        if (data) {
+          localStorage.setItem('token', data.token);
+          const userInfo = this.jwtHelper.decodeToken(data.token);
+
+          localStorage.setItem('username', userInfo.nome)
+          localStorage.setItem('usertype', userInfo.tipo)
         }
       })
     )
+
   }
 
   estaLogado(){

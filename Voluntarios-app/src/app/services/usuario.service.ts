@@ -20,5 +20,5 @@ export class UsuarioService{
         return this.httpClient.put<Usuario>(`${this.apiUrl}usuario/atualizar`, usuario);
     }
    
-} //colocar no app.module
+}
 

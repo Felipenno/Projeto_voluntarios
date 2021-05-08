@@ -12,6 +12,7 @@ const routes = new Router();
 
 routes.post('/usuario', UsuarioController.store);
 routes.post('/session', SessionController.store);
+routes.post('/endereco/:id', EnderecoController.store);
 routes.use(authMiddlewares);
 
 routes.get('/usuario', UsuarioController.index);
@@ -21,7 +22,7 @@ routes.delete('/usuario/:id', UsuarioController.destroy);
 
 routes.get('/enderecos', EnderecoController.listar);
 routes.put('/enderecos', EnderecoController.editar);
-routes.post('/endereco/:id', EnderecoController.store);
+
 routes.delete('/enderecos/apagar/', EnderecoController.apagar);
 
 routes.post('/voluntario', VoluntarioControllers.store);

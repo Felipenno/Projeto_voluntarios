@@ -1,39 +1,4 @@
-<nav
-  class="navbar navbar-expand-sm fixed-top navbar-dark"
-  style="background-color: #000080"
->
-  <div class="container-fluid">
-    <a class="navbar-brand align-self-sm-auto" href="#/home">
-      <img src="assets/img/logo1.png" alt="logo" width="" height="40" />
-    </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="#card-sobre">Sobre</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contato</a>
-        </li>
-      </ul>
-      <form class="d-sm-flex">
-        <button [routerLink]="['/login']" class="btn btn-outline-light button">
-          Entrar
-        </button>
-      </form>
-    </div>
-  </div>
-</nav>
+<app-nav></app-nav>
 
 <div class="container pageloader">
   <router-outlet></router-outlet>

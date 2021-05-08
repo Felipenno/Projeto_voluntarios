@@ -27,9 +27,12 @@
         <label for="telefone">Telefone</label>
         <input [(ngModel)]="usuarioAtual.telefone" for id="telefone" type="text" class="form-control" />
       </div>
-      <button (click)="update()" class="btn btn-primary mr-5">Atualizar</button>
-  
-      <a routerLink="/home" class="btn btn-secondary">Voltar para a página inicial</a>
+
+      <div class="mt-4">
+        <button (click)="update()" class="btn btn-primary ">Atualizar</button>
+    
+        <a routerLink="/home" class="btn btn-secondary ms-5">Voltar para a página inicial</a>
+      </div>
     </div>
   </div>
   

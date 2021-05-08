@@ -39,3 +39,6 @@ ng new NOMEPROJETO                              >> cria um novo projeto do angul
 ng g s PASTA-E/OU-NOME-ARQUIVO                  >> gera uma classe do tipo service
 ng g c PASTA-E/OU-NOME-ARQUIVO                  >> gera um componente
 ng g class PASTA-E/OU-NOME-ARQUIVO --type=model >> gera uma model
+
+npm i @auth0/angular-jwt
+ng g g auth/auth

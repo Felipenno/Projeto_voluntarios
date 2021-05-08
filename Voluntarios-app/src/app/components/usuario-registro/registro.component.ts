@@ -12,8 +12,8 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class RegistroComponent implements OnInit {
 
   usuario:Usuario = new Usuario();
-
-  confirmarSenha:string = '';
+  confirmarSenha: string;
+  registroTipo = 'Registro'
 
   registroForm:FormGroup;
 
@@ -27,13 +27,19 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit():void {
     this.usuario.tipo = this.activatedRoute.snapshot.paramMap.get('tipo');
+
+    if(this.usuario.tipo === 's'){
+      this.registroTipo = 'Registrar Como Solicitante'
+    }
+    if(this.usuario.tipo === 'v'){
+      this.registroTipo = 'Registrar Como Voluntário'
+    }
   }
 
   criarUsuario(): void{
     this.usuarioService.registrarUsuario(this.usuario).subscribe({
       next: data => { 
-        console.log("Salvo com sucesso", data)
-        this.router.navigate(['/endereco', data.id_usuario])
+        this.router.navigate(['/usuario/endereco', data.id_usuario])
       },
       error: err => console.log("Error: ", err)
     });

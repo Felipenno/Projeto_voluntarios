@@ -1,5 +1,5 @@
-<div>
-  <img src="" alt="">
+<div class="d-flex justify-content-evenly align-items-center h-75">
+  <img class="img-fluid d-none d-lg-block" src="assets/img/login.svg" alt="imagem-login" width="50%" height="20px">
   <div>
     <h1>Login</h1>
 
@@ -8,14 +8,18 @@
       <input [(ngModel)]="login.email" id="email" type="email" class="form-control" />
     </div>
 
-    <div class="form-group">
+    <div class="form-group mt-2">
       <label for="senha">Senha</label>
       <input [(ngModel)]="login.senhaV" id="senha" type="password" class="form-control" />
     </div>
-  
-    <button (click)="logar()" class="btn btn-primary mr-5">Entrar</button>
+    
+    <div class="form-row mt-3">
+      <button (click)="logar()" class="btn btn-primary">Entrar</button>
 
-    <button routerLink="/home" class="btn btn-secondary">Voltar para a página inicial</button>
+      <button routerLink="/home" class="btn btn-secondary ms-5">Voltar para a página inicial</button>
+    </div>
+    
+    <h3>{{mensagem}}</h3>
 
   </div>
 </div>

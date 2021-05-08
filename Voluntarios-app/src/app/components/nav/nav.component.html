@@ -1,0 +1,42 @@
+
+<nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="background-color: #000080">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="assets/img/logo1.png" alt="logo" width="" height="50" />
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown" style="margin-bottom: 10px; font-size: 18px;" >
+
+      <ul class="navbar-nav ">
+        <li class="nav-item">
+          <a class="nav-link active"  href="#">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active"  href="#card-sobre">Sobre</a>
+        </li>
+      </ul>
+      <!-- d-flex justify-content-between -->
+      <div class="navbar-nav ms-auto">
+        <button *ngIf="!logado()" [routerLink]="['/usuario/login']" class="btn btn-outline-light button">
+          Entrar
+        </button>
+        <div *ngIf="logado()" class="dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{nomeUsuario()}}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end drop-links" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" (click)="linkPainel()" >Seu painel</a></li>
+            <li><a class="dropdown-item" (click)="linkAtualizarDados()" >Atualizar dados cadastrais</a></li>
+            <li><a class="dropdown-item" (click)="linkAtualizarEndereco()" >Atualizar endereço</a></li>
+            <li><a class="dropdown-item" (click)="linkSair()" >Sair</a></li>
+          </ul>
+        </div>
+      </div>
+      
+
+    </div>
+  </div>
+</nav>

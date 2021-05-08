@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Endereco } from 'src/app/models/Endereco';
+import { AuthService } from 'src/app/services/auth.service';
 import { EnderecoService } from 'src/app/services/endereco.service';
 
 @Component({
@@ -16,10 +17,14 @@ export class EnderecoComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private enderecoService: EnderecoService,
-    private router: Router
+    private router: Router,
+    private auth: AuthService
     ) { }
 
   ngOnInit() {
+    if(this.auth.estaLogado()){
+      this.router.navigate(['/home']);
+    }
     this.id = +this.activatedRoute.snapshot.paramMap.get('id');
   }
 
@@ -27,7 +32,7 @@ export class EnderecoComponent implements OnInit {
     this.enderecoService.criarEndereco(this.endereco, this.id).subscribe({
       next: data => {
         console.log("salvo com sucesso", data);
-        this.router.navigate(['/login'])
+        this.router.navigate(['usuario/login'])
       },
       error: err => console.log("Error: ", err)
     })
