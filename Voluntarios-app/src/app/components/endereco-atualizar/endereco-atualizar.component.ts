@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Endereco } from 'src/app/models/Endereco';
 import { EnderecoService } from 'src/app/services/endereco.service';
 
@@ -15,7 +16,8 @@ export class EnderecoAtualizarComponent implements OnInit {
 
 
   constructor(private enderecoService: EnderecoService,
-              private router: Router) { }
+              private router: Router,
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.preencherEndereco()
@@ -37,10 +39,10 @@ export class EnderecoAtualizarComponent implements OnInit {
   atualizarEndereco():void{
     this.enderecoService.atualizarEndereco(this.endereco).subscribe({
       next: data => {
-        console.log("Atualizado com sucesso!", data);
+        this.toastr.success('Atualizado com sucesso', 'Atualizado');
         this.router.navigate(['home'])
       },
-      error: err => console.log("Error: ", err)
+      error: err => this.toastr.error("Erro ao atualizar ", 'Algo deu errado!')
     })
   }
 }
