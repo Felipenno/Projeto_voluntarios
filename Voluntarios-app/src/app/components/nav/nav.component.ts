@@ -38,7 +38,7 @@ export class NavComponent implements OnInit {
   }
 
   linkAtualizarEndereco(){
-    //this.router.navigate(['/usuario/endereco']);
+    this.router.navigate(['/endereco/atualizar']);
   }
 
 

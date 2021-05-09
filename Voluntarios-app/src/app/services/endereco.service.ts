@@ -15,5 +15,11 @@ export class EnderecoService{
     criarEndereco(endereco:Endereco, id: number): Observable<Endereco>{
         return this.httpClient.post<Endereco>(`${this.apiUrl}endereco/${id}`, endereco);
     }
+    atualizarEndereco(endereco: Endereco): Observable<Endereco>{
+        return this.httpClient.put<Endereco>(`${this.apiUrl}enderecos`, endereco);
+    }
+    pegarEndereco(): Observable<Endereco>{
+        return this.httpClient.get<Endereco>(`${this.apiUrl}endereco/selecionar`)
+    }
     
 }

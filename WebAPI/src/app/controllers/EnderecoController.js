@@ -33,6 +33,15 @@ class EnderecoController {
 		}
 	}
 
+	async listarUm(request, response) {
+		try{
+		const endereco = await Endereco.findOne({where: {fk_id_usuario:request.id_usuario}});
+		return response.json(endereco);
+	}catch(err){
+		return response.status(400).json({ error: err.message});
+		}
+	}
+
 	async editar(request, response) {
 		Endereco.update(request.body, {where:{fk_id_usuario:request.id_usuario}})
 		.then(endereco => {

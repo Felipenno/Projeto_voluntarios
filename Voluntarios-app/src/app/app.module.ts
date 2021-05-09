@@ -17,6 +17,7 @@ import { UsuarioAtualizarComponent } from './components/usuario-atualizar/usuari
 import { EnderecoComponent } from './components/endereco/endereco.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavComponent } from './components/nav/nav.component';
+import { EnderecoAtualizarComponent } from './components/endereco-atualizar/endereco-atualizar.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { NavComponent } from './components/nav/nav.component';
     LoginComponent,
     UsuarioAtualizarComponent,
     EnderecoComponent,
-    HomeComponent
+    HomeComponent,
+    EnderecoAtualizarComponent
 
   ],
   imports: [
