@@ -1,5 +1,9 @@
 import Usuario from '../models/Usuario';
 import Endereco from '../models/Endereco';
+import Solicitacoes from '../models/Solicitacoes';
+
+
+
 
 class UsuarioController {
 
@@ -39,31 +43,68 @@ class UsuarioController {
 			return response.json(usuario);
 		}catch(err){
 			return response.status(400).json({error: err.message});
+		};
+	}
+
+	async listarPorLocalizacao(request, response){
+		
+		const {id}= request.params;
+		 
+		const {endereco} = await Usuario.findByPk(id,{
+			
+			include: { 
+			association:'endereco',
+		
+		}
+		})
+		
+		 await Solicitacoes.findAll({
+			where: {status: "criado"},
+			include: {
+				association: "usuarios",
+				where:{tipo: 's'},
+				attributes: ["nome"],
+				include: {
+					association: "endereco",
+					where: {estado: endereco.estado},
+					attributes: ["estado", "cidade"],
+					
+				}
+			}
+		}).then(usuario => {
+			return response.send(usuario)
+		}).catch(erro => {
+			return response.status(500).send({message: `Erro interno: ( ${erro} )`})
+		});
+	} 
+	
+    async update(request, response) {
+		const { email, senhaV } = request.body;
+
+		const usuario = await Usuario.findByPk(request.id_usuario);
+
+		if (email && email !== usuario.email) {
+			const usuarioExiste = await Usuario.findOne({ where: { email }});
+
+			if (usuarioExiste) {
+				return response.status(400).json({ erro: 'Usuário já existe! '});
+			}
 		}
 
-	}
-	
-    async editar(request, response) {
-		const id = request.params.id;
+		if (senhaV && !(await usuario.checkPassword(senhaV))) {
+			return response.status(401).json({ erro: 'Senha incorreta.' });
+		}
 
-		Usuario.update( request.body, {where: { id_usuario: id}})
-		.then(usuario => {
-			if(usuario == 1){
-				response.send({
-					message: "Usuário atualizado"
-				});
-			} else {
-				response.send({
-					message: "Não foi possível localizar o usuário"
-				});
-			};
-		})
-		.catch(err => {
-			response.status(500).send({
-				message: `Erro interno ao atualiar o usuário de id: ${id}.`
-			});
+		const { id, nome, provider } = await usuario.update(request.body);
+
+		return response.json({ 
+			id,
+			nome,
+			email,
+			provider
 		});
 	}
+
 	async destroy(request, response) {
 		try{
 			const usuario  = await Usuario.findByPk(request.params.id);

@@ -1,4 +1,6 @@
+import Usuario from '../models/Usuario';
 import Voluntario from '../models/Voluntario';
+
 
 class VoluntarioControllers {
 
@@ -51,6 +53,7 @@ class VoluntarioControllers {
 		}
 	}
 	async index(request, response) {
+
 		try{
 			 const voluntario = await Voluntario.findAll();
 
@@ -59,7 +62,8 @@ class VoluntarioControllers {
 		}catch(err){
 			return response.status(400).json({error:err.message});
 		}
-					
+			
+		
 	}
 	async destroy(request, response) {
 		try{
@@ -75,6 +79,8 @@ class VoluntarioControllers {
 	}
 
 	
+	
+
 }
 
 export default new VoluntarioControllers();

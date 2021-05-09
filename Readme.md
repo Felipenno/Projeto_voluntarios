@@ -16,7 +16,7 @@
 
 ## Documentação
 
-- [Wireframe (Projeto no figma)](https://www.figma.com/file/HvTmrCOHUhX9hgWGDxY3Uk/Wireframe-completo?node-id=0%3A1)
+- [Wireframe (Projeto no figma)](https://www.figma.com/file/OsBsvRMnXCuRFm1bv0AEFp/Wireframe?node-id=0%3A1) 
 - [Modelagem Conceitual](https://github.com/Felipenno/Projeto_voluntarios/blob/master/Documenta%C3%A7%C3%A3o/Banco%20de%20dados/diagrama_conceitual.png)
 - [Modelagem lógica](https://github.com/Felipenno/Projeto_voluntarios/blob/master/Documenta%C3%A7%C3%A3o/Banco%20de%20dados/diagrama_l%C3%B3gico.png)
 

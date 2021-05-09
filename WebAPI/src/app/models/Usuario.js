@@ -29,13 +29,16 @@ class Usuario extends Model {
                 usuario.senha = await bcrypt.hash(usuario.senhaV, 8);
             }
         });
-        return this;
 
+        return this;
+    }
+
+    checkPassword(senhaV) {
+        return bcrypt.compare(senhaV, this.senha);
     }
 
     static associate(models){
         this.hasOne(models.Endereco, { foreignKey: 'fk_id_usuario', as: 'endereco' })
-        this.hasOne(models.Voluntario, { foreignKey: 'fk_id_usuario', as: 'voluntario' })
         this.belongsToMany(models.Solicitacoes, { foreignKey: 'fk_id_usuario', through: 'tb_usuario_solicitacoes', as: 'solicitacoes' })
     }
 }
