@@ -17,12 +17,12 @@ class SolicitacoesController {
 	}
 
 	async listarPorStatus(request, response){
-		const { status, tipo, id } = request.params
+		const { status, tipo } = request.params
 
 		await Usuario.findAll({
 			attributes: ['id_usuario'],
 			where:{
-				id_usuario: id, //'concluido, criado, andamento'
+				id_usuario: request.id_usuario, //'concluido, criado, andamento'
 			},
 			include: {
 				association: 'solicitacoes',

@@ -1,5 +1,6 @@
 import express from 'express';
 import routes from '../src/routes';
+import cors from 'cors'
 import './database/index';
 
 class App {
@@ -12,6 +13,8 @@ class App {
 
     middlewares() {
         this.server.use(express.json());
+        this.server.use(express.urlencoded({extended:true}))
+        this.server.use(cors({origin: "http://localhost:4200"}));
     }
 
     routes() {

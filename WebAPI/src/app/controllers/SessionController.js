@@ -17,15 +17,10 @@ class SessionController {
             return res.status(401).json({ erro: 'Senha não confere!' });
         }
 
-        const { id_usuario, nome } = usuario;
+        const { id_usuario, nome, tipo } = usuario;
 
         return res.json({
-            usuario: {
-                id_usuario,
-                nome,
-                email,
-            },
-            token: jwt.sign({ id_usuario }, authConfig.secret, {
+            token: jwt.sign({ id_usuario, nome, tipo }, authConfig.secret, {
                 expiresIn: authConfig.expiresIn,
             })
         });

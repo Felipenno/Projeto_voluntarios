@@ -1,0 +1,10 @@
+.button {
+    background-color: #0202a8;
+    border-radius: 15px;
+    border-color: blue;
+    margin-top: 5px;
+  }
+
+  .drop-links li a{
+    cursor: pointer;
+  }

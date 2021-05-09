@@ -1,0 +1,42 @@
+ .h1 {
+   color: #0202a8;
+   text-align: center;
+
+ }
+
+ .blockquote-footer {
+   margin: auto;
+   padding: auto;
+
+ }
+
+ .btnSo {
+   background-color: #0202a8;
+   border-radius: 16px;
+   border-color: blue;
+   margin-top: 10px;
+   text-align: center;
+   margin: auto;
+ }
+
+ .sobre .card-header {
+
+   background-color: #0202a8;
+   color: aliceblue;
+   font-size: 20px;
+ }
+
+ .footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #0202a8;
+   color: white;
+   text-align: center;
+ }
+
+ #rodape {
+   padding: 30px;
+   position: relative;
+ }
