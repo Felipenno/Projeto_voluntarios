@@ -4,7 +4,9 @@ import { Observable } from "rxjs";
 import { Solicitacoes } from '../models/Solicitacoes'; 
 
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class SolicitacoesService {
 
     private apiUrl: string = 'http://localhost:8080/'
