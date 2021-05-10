@@ -19,8 +19,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { EnderecoAtualizarComponent } from './components/endereco-atualizar/endereco-atualizar.component';
 import { EnderecoComponent } from './components/endereco-criar/endereco.component';
 import { UsuarioVoluntarioComponent } from  './components/usuario-voluntario/usuario-voluntario.component';
-import { PainelSolicitanteComponent } from './components/painel-solicitante/painel-solicitante.component';
-
+import {PainelSolicitanteComponent} from './components/painel-solicitante/painel-solicitante.component'
 
 @NgModule({
   declarations: [
@@ -34,10 +33,6 @@ import { PainelSolicitanteComponent } from './components/painel-solicitante/pain
     EnderecoAtualizarComponent,
     UsuarioVoluntarioComponent,
     PainelSolicitanteComponent,
-
-
-
-
   ],
   imports: [
     BrowserModule,

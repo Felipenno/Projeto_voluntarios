@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Solicitacoes } from 'src/app/models/Solicitacoes';
+import { SolicitacoesService } from 'src/app/services/solicitacoes.service';
 
 @Component({
   selector: 'app-painel-solicitante',
@@ -7,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PainelSolicitanteComponent implements OnInit {
 
-  constructor() { }
+  solicitacoes: Solicitacoes = new Solicitacoes();
+
+  constructor(private router: Router,
+    private solicitacoesServico: SolicitacoesService,
+  ) { }
 
   ngOnInit() {
   }
