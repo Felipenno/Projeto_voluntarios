@@ -1,4 +1,4 @@
-export class Volunatrio {
+export class Voluntario {
   id_voluntario: number;
   fk_id_usuario: number;
   servico: string;

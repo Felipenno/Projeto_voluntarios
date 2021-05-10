@@ -5,6 +5,8 @@ import { HomeComponent } from './components/home/home.component';
 import { UsuarioAtualizarComponent } from './components/usuario-atualizar/usuario-atualizar.component';
 import { LoginComponent } from './components/usuario-login/login.component';
 import { RegistroComponent } from './components/usuario-registro/registro.component';
+import { UsuarioVoluntarioComponent} from './components/usuario-voluntario/usuario-voluntario.component';
+
 
 const routes: Routes = [
  
@@ -14,8 +16,11 @@ const routes: Routes = [
   
   { path: 'usuario/atualizar', component: UsuarioAtualizarComponent },
   { path: 'endereco/:id', component:EnderecoComponent },
+  { path: 'usuario/voluntario', component: UsuarioVoluntarioComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
+ 
+  
 ];
 
 @NgModule({
