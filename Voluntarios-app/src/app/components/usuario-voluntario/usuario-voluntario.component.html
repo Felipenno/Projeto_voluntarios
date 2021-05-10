@@ -1,30 +1,58 @@
-<table class="table table-striped table-dark table-bordered border-light">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Voluntário</th>
-      <th scope="col">Telefone</th>
-      <th scope="col">Serviço</th>
-      <th scope="col">Dia do Serviço</th>
-      <th scope="col">Criado</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+  <h1>Painel Voluntário</h1>
+  <h4>Escolha uma solicitação para ajudar</h4>
+  <table class="table table-striped table-light table-bordered border-light">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Serviço</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Cidade</th>
+        <th scope="col">Data</th>
+        <th scope="col">Descrição</th>
+        <th>-----</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let  solicitacoes of solicitacao; let i = index">
+
+        <th>{{solicitacoes.usuarios[0].nome}}</th>
+        <th>{{solicitacoes.servico}}</th>
+        <th>{{solicitacoes.usuarios[0].endereco.estado}}</th>
+        <th>{{solicitacoes.usuarios[0].endereco.cidade}}</th>
+        <th>{{solicitacoes.dia}}</th>
+        <th>{{solicitacoes.descricao_problema}}</th>
+        <button href="#teste" (click)="aceitarSolicitacao()">Aceitar</button>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4>Solicitações em Andamento</h4>
+  <table id="teste" class="table table-striped table-light table-bordered border-light">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Serviço</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Cidade</th>
+        <th scope="col">Data</th>
+        <th scope="col">Telefone</th>
+        <th scope="col">Descrição</th>
+        <th>-----</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let  items of solicitacaoAndamento; let i = index">
+
+        <th>{{items?.solicitacao[0]?.usuarios[0].nome}}</th>
+        <th>{{items?.solicitacao[0]?.servico}}</th>
+        <th>{{items?.solicitacao[0]?.dia}}</th>
+        <th>{{items?.solicitacao[0]?.usuarios[0].telefone}}</th>
+        <th>{{items?.solicitacao[0]?.descricao_problema}}</th>
+
+      </tr>
+    </tbody>
+
+  </table>
+
+</div>

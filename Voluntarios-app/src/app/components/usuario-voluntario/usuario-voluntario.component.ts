@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Solicitacoes } from 'src/app/models/Solicitacoes';
-import {Voluntario } from 'src/app/models/Voluntario';
+import { Usuario } from 'src/app/models/Usuario';
 import { SolicitacoesService } from 'src/app/services/solicitacoes.service';
 
 
@@ -14,8 +14,8 @@ import { SolicitacoesService } from 'src/app/services/solicitacoes.service';
 export class UsuarioVoluntarioComponent implements OnInit {
   
   
-  solicitacao: Solicitacoes = new Solicitacoes();
-  displayedColumns = ['servico', 'descricao_problema', 'dia']
+  solicitacao: Solicitacoes[] = []
+  solicitacaoAndamento: Usuario[] = []
 
 
   constructor(
@@ -25,13 +25,43 @@ export class UsuarioVoluntarioComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.listarSolicitacoesAbertas();
+    this.listarEmAndamento();
+    
   }
 
-  listarPorStatus(status: string): void {
-    this.solicitacoesService.listarSolicitacoes(this.solicitacao)
+  listarSolicitacoesAbertas(): void {
+    this.solicitacoesService.listarSolicitacoes()
     .subscribe(
       data => {
         this.solicitacao = data;
+        console.log(data)
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    
+
+  }
+
+  aceitarSolicitacao(): void {
+    this.solicitacoesService.aceitar()
+    .subscribe
+     data => {
+       this.router.navigate(['/']);
+
+      }
+    
+   
+
+  }
+
+  listarEmAndamento(): void {
+    this.solicitacoesService.listarStatusAndamento()
+    .subscribe(
+      data => {
+        this.solicitacaoAndamento = data;
         console.log(data)
       },
       error => {
