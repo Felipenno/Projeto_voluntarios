@@ -33,6 +33,7 @@ import { UsuarioVoluntarioComponent } from  './components/usuario-voluntario/usu
     HomeComponent,
     EnderecoAtualizarComponent,
     UsuarioVoluntarioComponent,
+    
 
   ],
   imports: [

@@ -17,9 +17,9 @@ export class NavComponent implements OnInit {
   ngOnInit() {
   }
 
-  mostrarMenu() {
+ /*  mostrarMenu() {
     return this.router.url !== '/usuario/login';
-  }
+  } */
 
   logado() {
     return this.authService.estaLogado();
@@ -30,7 +30,13 @@ export class NavComponent implements OnInit {
   }
 
   linkPainel(){
-    //this.router.navigate(['usuario/painel']);
+    const usuarioPainel = localStorage.getItem('usertype')
+    switch(usuarioPainel){
+      case 's': this.router.navigate(['/painel/solicitante']); break;
+      case 'v': this.router.navigate(['/painel/voluntario']); break;
+      default: this.router.navigate(['/home']); break;
+    }
+    
   }
 
   linkAtualizarDados(){
