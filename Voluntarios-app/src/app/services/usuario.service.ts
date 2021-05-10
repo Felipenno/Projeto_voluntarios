@@ -19,6 +19,10 @@ export class UsuarioService{
     atualizarUsuario(usuario: Usuario): Observable<Usuario>{
         return this.httpClient.put<Usuario>(`${this.apiUrl}usuarios`, usuario);
     }
+
+    pegarUsuario(): Observable<Usuario> {
+        return this.httpClient.get<Usuario>(`${this.apiUrl}usuarios/selecionar`)
+    }
    
 }
 

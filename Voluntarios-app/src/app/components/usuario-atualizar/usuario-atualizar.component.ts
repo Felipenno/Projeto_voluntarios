@@ -20,9 +20,19 @@ export class UsuarioAtualizarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    
+    this.preencherUsuario();
   }
 
+
+  preencherUsuario():void {
+    this.usuarioService.pegarUsuario()
+    .subscribe({
+      next: data => {
+        this.usuarioAtual = data;
+      },
+      error: err => console.log("Error: ", err)      
+    })
+  }
 
   update(): void{
     this.usuarioService.atualizarUsuario(this.usuarioAtual)
