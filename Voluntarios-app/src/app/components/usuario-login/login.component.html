@@ -3,23 +3,37 @@
   <div>
     <h1>Login</h1>
 
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input [(ngModel)]="login.email" id="email" type="email" class="form-control" />
-    </div>
+    <form [formGroup]="loginForm">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input class="form-control" 
+        [ngClass]="{'is-invalid': lf.email.errors && lf.email.touched}" 
+        formControlName="email" 
+        id="email" type="email"
+        />
 
-    <div class="form-group mt-2">
-      <label for="senha">Senha</label>
-      <input [(ngModel)]="login.senhaV" id="senha" type="password" class="form-control" />
-    </div>
-    
-    <div class="form-row mt-3">
-      <button (click)="logar()" class="btn btn-primary">Entrar</button>
+        <div *ngIf="lf.email.errors?.required" class="invalid-feedback">Email é obrigatória.</div>
+        <div *ngIf="lf.email.errors?.maxlength" class="invalid-feedback">Email deve ter no máximo 40 caracteres.</div>
+        <div *ngIf="lf.email.errors?.email" class="invalid-feedback">Formato incorreto para um email.</div>
+      </div>
+      
+      <div class="form-group mt-2">
+        <label for="senha">Senha</label>
+        <input class="form-control"
+        [ngClass]="{'is-invalid': lf.senhaV.errors && lf.senhaV.touched}" 
+        formControlName="senhaV" 
+        id="senha" type="password"
+        />
 
-      <button routerLink="/home" class="btn btn-secondary ms-5">Voltar para a página inicial</button>
-    </div>
-    
-    <h3>{{mensagem}}</h3>
+        <div *ngIf="lf.senhaV.errors?.required" class="invalid-feedback">Senha é obrigatória.</div>
+        <div *ngIf="lf.senhaV.errors?.maxlength" class="invalid-feedback">Senha deve ter no máximo 60 caracteres.</div>
+      </div>
+
+      <div class="form-row mt-3">
+        <button (click)="logar()" class="btn btn-primary" [disabled]="loginForm.invalid">Entrar</button>
+        <button routerLink="/home" class="btn btn-secondary ms-5">Voltar para a página inicial</button>
+      </div>
+    </form>
 
   </div>
 </div>
