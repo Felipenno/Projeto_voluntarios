@@ -34,14 +34,20 @@ export class EnderecoAtualizarComponent implements OnInit {
   validacao():void{
     this.enderecoForm = this.formBuilder.group({
       cep: ['', [Validators.required, Validators.maxLength(20)]],
-      estado: ['', [Validators.required, Validators.maxLength(30)]]
-    });
+      estado: ['', [Validators.required, Validators.maxLength(25)]],
+      cidade: ['', [Validators.required, Validators.maxLength(40)]],
+      bairro: ['', [Validators.required, Validators.maxLength(25)]],
+      rua: ['', [Validators.required, Validators.maxLength(30)]],
+      numero: ['', [Validators.required]],
+      complemento: ['', [Validators.maxLength(20)]]
+    })
   }
 
   preencherEndereco():void{
     this.enderecoService.pegarEndereco().subscribe({
       next: data => {
         this.endereco = data;
+        this.enderecoForm.patchValue(this.endereco);
       },
       error: err => console.log("Error: ", err)
     })
