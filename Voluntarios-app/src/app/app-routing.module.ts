@@ -8,8 +8,9 @@ import { LoginComponent } from './components/usuario-login/login.component';
 import { RegistroComponent } from './components/usuario-registro/registro.component';
 import { EnderecoAtualizarComponent } from './components/endereco-atualizar/endereco-atualizar.component';
 import { EnderecoComponent } from './components/endereco-criar/endereco.component';
-import { UsuarioVoluntarioComponent} from './components/usuario-voluntario/usuario-voluntario.component';
+import { UsuarioVoluntarioComponent } from './components/painel-voluntario/usuario-voluntario.component';
 import { PainelSolicitanteComponent } from './components/painel-solicitante/painel-solicitante.component';
+
 
 const routes: Routes = [
  
@@ -20,9 +21,9 @@ const routes: Routes = [
   
   { path :'endereco/atualizar', component: EnderecoAtualizarComponent, canActivate: [AuthGuard]},  
   { path: 'usuario/atualizar', component: UsuarioAtualizarComponent, canActivate: [AuthGuard] },
-  { path: 'usuario/voluntario', component: UsuarioVoluntarioComponent},
   { path: 'painel/solicitante', component: PainelSolicitanteComponent},
-
+  { path: 'painel/voluntario', component: UsuarioVoluntarioComponent},
+  
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
  

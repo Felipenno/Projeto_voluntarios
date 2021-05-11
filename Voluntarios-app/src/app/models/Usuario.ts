@@ -1,3 +1,6 @@
+import { Endereco } from "./Endereco";
+import { Solicitacoes } from "./Solicitacoes";
+
 export class Usuario {
     id_usuario: number;
     nome: string;
@@ -6,4 +9,8 @@ export class Usuario {
     telefone: string;
     cpf: string;
     tipo: string;
+
+    endereco: Endereco
+    solicitacoes: Solicitacoes[]
+    
 }

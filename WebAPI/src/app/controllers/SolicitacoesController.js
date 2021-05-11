@@ -20,19 +20,26 @@ class SolicitacoesController {
 		const { status, tipo } = request.params
 
 		await Usuario.findAll({
-			attributes: ['id_usuario'],
+			attributes: [],
 			where:{
 				id_usuario: request.id_usuario, //'concluido, criado, andamento'
 			},
 			include: {
 				association: 'solicitacoes',
+				through:{ attributes: [] },
 				where:{
 					status
 				},
 				include:{
+					attributes: ['nome', 'telefone', 'email'],
 					association: 'usuarios',
+					through:{ attributes: [] },
 					where:{
 						tipo
+					},
+					include: {
+						association :'endereco',
+						attributes: ['estado', 'cidade']
 					}
 				},
 			}
@@ -77,10 +84,6 @@ class SolicitacoesController {
 
 	}
 
-	
-	
-
-
 	async update(request, response){
 
 		const id = request.params.id;
@@ -99,6 +102,25 @@ class SolicitacoesController {
 			  });
 			}
 		  })
+	}
+
+	async adicionarVoluntario(request, response){
+
+		const{id_solicitacoes} = request.params;
+
+		const solicitacoes = await Solicitacoes.findByPk(id_solicitacoes)
+		solicitacoes.addUsuario(request.params.id);
+
+		await Solicitacoes.update(request.body,{where: id_solicitacoes} )
+	}
+
+	async concluirSolicitação(request, response){
+
+	}
+
+	async cancelarSolicitacao(request, response){
+		const{id_solicitacoes} = request.params;
+		Solicitacoes.destroy({where: id_solicitacoes})
 	}
 		
 }
