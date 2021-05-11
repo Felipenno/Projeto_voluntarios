@@ -31,5 +31,9 @@ export class SolicitacoesService {
     listarSolicitacoesPorStatus(status: string, tipoUsuario: string): Observable<Usuario[]> {
         return this.httpClient.get<Usuario[]>(`${this.apiUrl}solicitacoes/${status}/usuario/${tipoUsuario}`);
     }
-    
+    excluirSolicitacoes(id_solicitacoes: number): Observable<Solicitacoes>{
+      return this.httpClient.delete<Solicitacoes>(`${this.apiUrl}solicitacoes/:id`);
+  }
+
+
 }

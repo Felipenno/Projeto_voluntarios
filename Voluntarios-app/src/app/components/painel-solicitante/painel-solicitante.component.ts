@@ -16,6 +16,7 @@ export class PainelSolicitanteComponent implements OnInit {
   solicitacoes: Usuario[] = []
   solicitacoesConcluidas: Usuario[] = []
   novaSolicitacao: Solicitacoes = new Solicitacoes()
+  excluirSolicitacoes:Solicitacoes = new Solicitacoes()
 
 
   constructor(private router: Router,
@@ -64,10 +65,17 @@ export class PainelSolicitanteComponent implements OnInit {
   }
 
   cancelarSolicitacao(): void{
-    
+    this.solicitacoesServico.excluirSolicitacoes(this.excluirSolicitacoes.id_solicitacoes)
+      .subscribe({
+        next: data => {
+          this.toastr.success('Solicitacão Excluida')
+          
+        },
+        error: err => this.toastr.error('Algo deu errado!')
+      })
   }
 
-  
+
   criarSolicitacao(): void{
     this.novaSolicitacao.data_criacao = new Date("2021/11/05");
     this.novaSolicitacao.status = "Criado!"
@@ -80,7 +88,7 @@ export class PainelSolicitanteComponent implements OnInit {
         console.log(this.novaSolicitacao);
       },
       error: err => this.toastr.error("Erro ao criar solicitação", "Algo deu errado")
-    
+
     })
 
 }}
