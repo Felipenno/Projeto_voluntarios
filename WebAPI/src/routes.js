@@ -47,10 +47,6 @@ routes.put('/solicitacoes/:id', SolicitacoesController.index);
 routes.put('/solicitacoes/:id', SolicitacoesController.update);
 routes.post('/usuarios/:id/solicitacoes', SolicitacoesController.store);
 
-<<<<<<< HEAD
-routes.get('/usuario/endereco/solicitacoes', UsuarioController.listarPorLocalizacao);
-=======
 routes.get('/usuario/solicitacoes/abertas', UsuarioController.listarPorLocalizacao);
->>>>>>> 155b1120d0175b65492388e1a555d5e6f89ea581
 
 export default routes;
