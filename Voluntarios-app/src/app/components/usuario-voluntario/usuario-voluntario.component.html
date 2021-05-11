@@ -44,11 +44,11 @@
     <tbody>
       <tr *ngFor="let  items of solicitacaoAndamento; let i = index">
 
-        <th>{{items?.solicitacao[0]?.usuarios[0].nome}}</th>
-        <th>{{items?.solicitacao[0]?.servico}}</th>
-        <th>{{items?.solicitacao[0]?.dia}}</th>
-        <th>{{items?.solicitacao[0]?.usuarios[0].telefone}}</th>
-        <th>{{items?.solicitacao[0]?.descricao_problema}}</th>
+        <th>{{items?.nome}}</th>
+        <th>{{solicitacao[0].servico}}</th>
+        <th>{{solicitacao[0]?.dia}}</th>
+        <th>{{items.telefone}}</th>
+        <th>{{solicitacao[0]?.descricao_problema}}</th>
 
       </tr>
     </tbody>

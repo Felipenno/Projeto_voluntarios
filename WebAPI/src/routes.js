@@ -1,4 +1,6 @@
-import { Router } from 'express';
+import {
+    Router
+} from 'express';
 import EnderecoController from './app/controllers/EnderecoController';
 import SolicitacoesController from './app/controllers/SolicitacoesController';
 import UsuarioController from './app/controllers/UsuarioController';
@@ -41,6 +43,6 @@ routes.put('solicitacoes/:id', SolicitacoesController.index);
 routes.put('/solicitacoes/:id', SolicitacoesController.update);
 routes.post('/usuarios/:id/solicitacoes', SolicitacoesController.store);
 
-routes.get('/usuario/endereco/solicitacoes/:id', UsuarioController.listarPorLocalizacao);
+routes.get('/usuario/endereco/solicitacoes', UsuarioController.listarPorLocalizacao);
 
 export default routes;

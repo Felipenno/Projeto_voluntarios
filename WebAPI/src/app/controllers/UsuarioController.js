@@ -5,16 +5,31 @@ class UsuarioController {
 
 	async store(request, response) {
 
-		const { nome, email, senhaV, telefone, cpf, tipo } = request.body
+		const {
+			nome,
+			email,
+			senhaV,
+			telefone,
+			cpf,
+			tipo
+		} = request.body
 
 		if (!nome || !email || !senhaV || !telefone || !cpf || !tipo) {
-			return response.status(400).send({ message: "Não pode haver campos vazios " })
+			return response.status(400).send({
+				message: "Não pode haver campos vazios "
+			})
 		}
 
-		const usuarioExiste = await Usuario.findOne({ where: { email: request.body.email } });
+		const usuarioExiste = await Usuario.findOne({
+			where: {
+				email: request.body.email
+			}
+		});
 
 		if (usuarioExiste) {
-			return response.status(400).json({ erro: 'Usuário já existe!' })
+			return response.status(400).json({
+				erro: 'Usuário já existe!'
+			})
 		}
 
 		await Usuario.create(request.body)
@@ -22,78 +37,109 @@ class UsuarioController {
 				data.senha = '********';
 				response.send(data);
 			}).catch(err => {
-				response.status(500).send({ errorMessage: `Erro interno: ( ${err} )` })
+				response.status(500).send({
+					errorMessage: `Erro interno: ( ${err} )`
+				})
 			});
 	}
-	async show(request, response){
-		try{
+	async show(request, response) {
+		try {
 			const usuario = await Usuario.findByPk(request.params.id);
 			return response.json(usuario);
-		}catch(err){
-			return response.status(400).json({ error: err.message});
+		} catch (err) {
+			return response.status(400).json({
+				error: err.message
+			});
 		}
 	}
 	async index(request, response) {
-		try{
+		try {
 			const usuario = await Usuario.findAll();
 			return response.json(usuario);
-		}catch(err){
-			return response.status(400).json({error: err.message});
+		} catch (err) {
+			return response.status(400).json({
+				error: err.message
+			});
 		};
 	}
 
-	async listarPorLocalizacao(request, response){
-		
-		const {id}= request.params;
-		 
-		const {endereco} = await Usuario.findByPk(id,{
-			
-			include: { 
-			association:'endereco',
-		
-		}
+	async listarPorLocalizacao(request, response) {
+
+
+
+		const {
+			endereco
+		} = await Usuario.findByPk(request.id_usuario, {
+
+			include: {
+				association: 'endereco',
+
+			}
 		})
-		
-		 await Solicitacoes.findAll({
-			where: {status: "criado"},
+
+		await Solicitacoes.findAll({
+			where: {
+				status: "criado"
+			},
 			include: {
 				association: "usuarios",
-				where:{tipo: 's'},
+				where: {
+					tipo: 's'
+				},
 				attributes: ["nome"],
 				include: {
 					association: "endereco",
-					where: {estado: endereco.estado},
+					where: {
+						estado: endereco.estado
+					},
 					attributes: ["estado", "cidade"],
-					
+
 				}
 			}
 		}).then(usuario => {
 			return response.send(usuario)
 		}).catch(erro => {
-			return response.status(500).send({message: `Erro interno: ( ${erro} )`})
+			return response.status(500).send({
+				message: `Erro interno: ( ${erro} )`
+			})
 		});
-	} 
-	
-    async update(request, response) {
-		const { email, senhaV } = request.body;
+	}
+
+	async update(request, response) {
+		const {
+			email,
+			senhaV
+		} = request.body;
 
 		const usuario = await Usuario.findByPk(request.id_usuario);
 
 		if (email && email !== usuario.email) {
-			const usuarioExiste = await Usuario.findOne({ where: { email }});
+			const usuarioExiste = await Usuario.findOne({
+				where: {
+					email
+				}
+			});
 
 			if (usuarioExiste) {
-				return response.status(400).json({ erro: 'Usuário já existe! '});
+				return response.status(400).json({
+					erro: 'Usuário já existe! '
+				});
 			}
 		}
 
 		if (senhaV && !(await usuario.checkPassword(senhaV))) {
-			return response.status(401).json({ erro: 'Senha incorreta.' });
+			return response.status(401).json({
+				erro: 'Senha incorreta.'
+			});
 		}
 
-		const { id, nome, provider } = await usuario.update(request.body);
+		const {
+			id,
+			nome,
+			provider
+		} = await usuario.update(request.body);
 
-		return response.json({ 
+		return response.json({
 			id,
 			nome,
 			email,
@@ -102,18 +148,22 @@ class UsuarioController {
 	}
 
 	async destroy(request, response) {
-		try{
-			const usuario  = await Usuario.findByPk(request.params.id);
+		try {
+			const usuario = await Usuario.findByPk(request.params.id);
 
 			await usuario.destroy(request.body);
 
-			return response.json({ message: `Usuario Excluido` });
-		}catch(err){
-			return response.status(400).json({error:err.message});
+			return response.json({
+				message: `Usuario Excluido`
+			});
+		} catch (err) {
+			return response.status(400).json({
+				error: err.message
+			});
 		}
 
 	}
-					
+
 }
 
 
