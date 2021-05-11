@@ -32,5 +32,4 @@ export class SolicitacoesService {
         return this.httpClient.get<Usuario[]>(`${this.apiUrl}solicitacoes/${status}/usuario/${tipoUsuario}`);
     }
     
-
 }
