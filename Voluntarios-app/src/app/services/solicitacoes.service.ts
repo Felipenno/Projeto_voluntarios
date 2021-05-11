@@ -17,7 +17,7 @@ export class SolicitacoesService {
         return this.httpClient.get<Solicitacoes>(`${this.apiUrl}solicitacoes`);
     }
     registrarSolitacoes(solicitacoes: Solicitacoes): Observable<Solicitacoes> {
-        return this.httpClient.post<Solicitacoes>(`${this.apiUrl} solicitacoes`, solicitacoes);
+        return this.httpClient.post<Solicitacoes>(`${this.apiUrl}solicitacoes`, solicitacoes);
     }
     atualizarSolicitacoes(solicitacoes: Solicitacoes): Observable<Solicitacoes> {
         return this.httpClient.put<Solicitacoes>(`${this.apiUrl}solicitacoes`, solicitacoes);

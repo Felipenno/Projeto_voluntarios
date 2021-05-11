@@ -1,10 +1,54 @@
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="criarSolicitacaoModal" tabindex="-1" aria-labelledby="criarSolicitacaoLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="criarSolicitacaoLabel">Nova solicitação</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="form-group" >
+          <label for="servico">Serviço</label>
+          <input [(ngModel)]="novaSolicitacao.servico"  id="servico" type="text" class="form-control"/>
+        </div>
+
+        <div class="form-group" >
+          <label for="data">Dia do serviço:</label>
+          <input [(ngModel)]="novaSolicitacao.dia"  id="data" type="date" class="form-control"/>
+
+
+        </div>
+
+        <div class="form-group" >
+          <label for="descricao">Descrição do problema</label>
+          <textarea [(ngModel)]="novaSolicitacao.descricao_problema"  id="data" type="text" class="form-control"></textarea> 
+        </div>
+      
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button (click)="criarSolicitacao()" type="button" class="btn btn-primary">Salvar solicitação</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container">
   <h1 class="mb-5 text-center">Painel Solicitante</h1>
 
   
   <h4 class="mt-5">Solicitações Aceitas</h4>
-  <div class="text-end">
-    <a (click)="criarSolicitacao()" class="btn btn-primary mb-3">Criar solicitação</a>
+  <div class="text-end">    
+    <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#criarSolicitacaoModal">
+        Criar solicitação
+    </button>
+
   <table id="tabela-andamento" class="table table-borderless table-hover">
     <thead class="table-dark">
       <tr>
