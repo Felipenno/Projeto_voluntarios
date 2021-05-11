@@ -39,7 +39,6 @@ export class UsuarioAtualizarComponent implements OnInit {
     .subscribe({
       next: data => {
         this.toastr.success('Cadastro atualizado com sucesso!', 'Atualizado');
-        this.router.navigate(['home'])
       },
       error: err => this.toastr.error("Erro ao atualizar ", 'Algo deu errado!')
     });
