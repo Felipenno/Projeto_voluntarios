@@ -16,7 +16,7 @@ routes.post('/endereco/:id', EnderecoController.store);
 routes.use(authMiddlewares);
 
 routes.get('/usuario', UsuarioController.index);
-routes.get('/usuario/:id', UsuarioController.show);
+routes.get('/usuarios/selecionar', UsuarioController.show);
 routes.put('/usuarios', UsuarioController.update)
 routes.delete('/usuario/:id', UsuarioController.destroy);
 

@@ -27,7 +27,7 @@ class UsuarioController {
 	}
 	async show(request, response){
 		try{
-			const usuario = await Usuario.findByPk(request.params.id);
+			const usuario = await Usuario.findByPk(request.id_usuario);
 			return response.json(usuario);
 		}catch(err){
 			return response.status(400).json({ error: err.message});
