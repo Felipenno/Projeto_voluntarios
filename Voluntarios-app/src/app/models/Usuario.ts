@@ -11,5 +11,6 @@ export class Usuario {
     tipo: string;
 
     endereco: Endereco
-    solicitacao: Solicitacoes[]
+    solicitacoes: Solicitacoes[]
+    
 }

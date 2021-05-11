@@ -33,14 +33,18 @@ routes.delete('/voluntario/:id', VoluntarioControllers.destroy);
 routes.get('/voluntario/:id', VoluntarioControllers.show);
 
 routes.get('/solicitacoes/:status/usuario/:tipo', SolicitacoesController.listarPorStatus);
+routes.put('/solicitacoes/adicionar/voluntario/:id_solicitacoes', SolicitacoesController.adicionarVoluntario);
+routes.put('/solicitacoes/concluir/:id_solicitacoes', SolicitacoesController.concluirSolicitação);
+routes.delete('/solicitacoes/cancelar/:id_solicitacoes', SolicitacoesController.cancelarSolicitacao);
+
 routes.post('/solicitacoes/:id', SolicitacoesController.store);
 routes.get('/solicitacoes', SolicitacoesController.index);
 routes.get('/solicitacoes/:id', SolicitacoesController.show);
 routes.delete('/solicitacoes/:id', SolicitacoesController.destroy);
-routes.put('solicitacoes/:id', SolicitacoesController.index);
+routes.put('/solicitacoes/:id', SolicitacoesController.index);
 routes.put('/solicitacoes/:id', SolicitacoesController.update);
 routes.post('/usuarios/:id/solicitacoes', SolicitacoesController.store);
 
-routes.get('/usuario/endereco/solicitacoes/:id', UsuarioController.listarPorLocalizacao);
+routes.get('/usuario/solicitacoes/abertas', UsuarioController.listarPorLocalizacao);
 
 export default routes;

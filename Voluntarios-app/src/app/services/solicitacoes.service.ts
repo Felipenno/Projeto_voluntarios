@@ -14,15 +14,16 @@ export class SolicitacoesService {
 
     constructor(private httpClient: HttpClient) { }
 
-    listarSolicitacoes(): Observable<Solicitacoes[]> {
-        return this.httpClient.get<Solicitacoes[]>(`${this.apiUrl}usuario/endereco/solicitacoes`);
+    listarSolicitacoesAbertas(): Observable<Solicitacoes[]> {
+        return this.httpClient.get<Solicitacoes[]>(`${this.apiUrl}usuario/solicitacoes/abertas`);
     }
 
-    aceitar(): Observable<Solicitacoes[]> {
+    //concluido, criado, andamento'
+    listarSolicitacoesPorStatus(status: string, tipoUsuario: string): Observable<Usuario[]> {
+        return this.httpClient.get<Usuario[]>(`${this.apiUrl}solicitacoes/${status}/usuario/${tipoUsuario}`);
+    }
+
+    /* aceitar(): Observable<Solicitacoes[]> {
         return this.httpClient.post<Solicitacoes[]>(`${this.apiUrl}solicitacoes`,Solicitacoes);
-    }
-
-    listarStatusAndamento(): Observable<Usuario[]> {
-        return this.httpClient.get<Usuario[]>(`${this.apiUrl}solicitacoes/aceito/usuario/s`);
-    }
+    } */
 }

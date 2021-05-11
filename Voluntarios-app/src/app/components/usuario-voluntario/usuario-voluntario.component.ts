@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Solicitacoes } from 'src/app/models/Solicitacoes';
 import { Usuario } from 'src/app/models/Usuario';
 import { SolicitacoesService } from 'src/app/services/solicitacoes.service';
-
-
+import { Constants } from 'src/app/utils/Constants';
 
 @Component({
   selector: 'app-usuario-voluntario',
@@ -14,60 +13,71 @@ import { SolicitacoesService } from 'src/app/services/solicitacoes.service';
 export class UsuarioVoluntarioComponent implements OnInit {
   
   
-  solicitacao: Solicitacoes[] = []
+  solicitacaoAbertas: Solicitacoes[] = []
   solicitacaoAndamento: Usuario[] = []
-
+  solicitacoesConcluidas: Usuario[] = [];
 
   constructor(
     private solicitacoesService : SolicitacoesService,
-    private route: ActivatedRoute,
     private router: Router
   ) { }
 
   ngOnInit() {
     this.listarSolicitacoesAbertas();
     this.listarEmAndamento();
+    this.listarConcluidas();
     
   }
 
   listarSolicitacoesAbertas(): void {
-    this.solicitacoesService.listarSolicitacoes()
+    this.solicitacoesService.listarSolicitacoesAbertas()
     .subscribe(
       data => {
-        this.solicitacao = data;
-        console.log(data)
+        this.solicitacaoAbertas = data;
+        console.log("aberta>>", data)
+        console.log("aberta>>", this.solicitacaoAbertas)
       },
       error => {
         console.log(error);
       }
     );
     
-
-  }
-
-  aceitarSolicitacao(): void {
-    this.solicitacoesService.aceitar()
-    .subscribe
-     data => {
-       this.router.navigate(['/']);
-
-      }
-    
-   
-
   }
 
   listarEmAndamento(): void {
-    this.solicitacoesService.listarStatusAndamento()
+    this.solicitacoesService.listarSolicitacoesPorStatus(Constants.STATUS_ANDAMENTO, Constants.TIPO_SOLICITANTE)
     .subscribe(
       data => {
         this.solicitacaoAndamento = data;
-        console.log(data)
+        console.log("andamento>>", data)
+        console.log("andamento>>", this.solicitacaoAndamento)
       },
       error => {
         console.log(error);
       }
     );
+  }
+
+  listarConcluidas(): void {
+    this.solicitacoesService.listarSolicitacoesPorStatus(Constants.STATUS_CONCLUIDO, Constants.TIPO_SOLICITANTE)
+    .subscribe(
+      data => {
+        this.solicitacoesConcluidas = data;
+        console.log("Concluidas>>", data)
+        console.log("Concluidas2>>", this.solicitacoesConcluidas)
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  escolherSolicitacao(id: number): void {
+    console.log('id:', id)
+  }
+
+  cancelarSolicitacao(id: number): void {
+    console.log('id:', id)
   }
 
 }

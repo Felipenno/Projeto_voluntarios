@@ -44,17 +44,15 @@ class UsuarioController {
 
 	async listarPorLocalizacao(request, response){
 		
-		const {id}= request.params;
 		 
-		const {endereco} = await Usuario.findByPk(id,{
-			
+		const {endereco} = await Usuario.findByPk(request.id_usuario,{
 			include: { 
 			association:'endereco',
+			}
 		
-		}
-		})
-		
-		 await Solicitacoes.findAll({
+		});
+		//concluido, criado, andamento'
+		await Solicitacoes.findAll({ 
 			where: {status: "criado"},
 			include: {
 				association: "usuarios",

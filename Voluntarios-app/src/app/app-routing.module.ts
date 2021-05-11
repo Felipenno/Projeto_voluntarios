@@ -20,9 +20,8 @@ const routes: Routes = [
   
   { path :'endereco/atualizar', component: EnderecoAtualizarComponent, canActivate: [AuthGuard]},  
   { path: 'usuario/atualizar', component: UsuarioAtualizarComponent, canActivate: [AuthGuard] },
-  { path: 'usuario/atualizar', component: UsuarioAtualizarComponent },
   { path: 'endereco/:id', component:EnderecoComponent },
-  { path: 'usuario/voluntario', component: UsuarioVoluntarioComponent},
+  { path: 'painel/voluntario', component: UsuarioVoluntarioComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
  
