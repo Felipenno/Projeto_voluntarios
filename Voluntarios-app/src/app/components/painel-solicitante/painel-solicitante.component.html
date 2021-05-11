@@ -1,47 +1,10 @@
 <div class="container">
-  <h1 class="mb-5 text-center">Painel Voluntário</h1>
+  <h1 class="mb-5 text-center">Painel Solicitante</h1>
 
-  <!-- <h4 class="mt-5">Solicitações Aceitas</h4>
-  <table class="table table-borderless table-hover align-middle">
-    <thead class="table-dark">
-      <tr>
-        <th >Nome</th>
-        <th >Serviço</th>
-        <th >Estado</th>
-        <th >Cidade</th>
-        <th >Dia do serviço</th>
-        <th ></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <ng-container  *ngFor="let items of solicitacaoAbertas; let i = index">
-        <tr>
-          <th>{{items.usuarios[0].nome}}</th>
-          <th>{{items.servico}}</th>
-          <th>{{items.usuarios[0].endereco.estado}}</th>
-          <th>{{items.usuarios[0].endereco.cidade}}</th>
-          <th>{{items.dia | date: 'dd/MM/yyyy'}}</th>
-          <th class="text-end">
-            <a (click)="escolherSolicitacao(items.id_solicitacoes)" class="btn btn-primary">Escolher</a>
-          </th>
-        </tr>
-
-        <tr class="border-top border-dark">
-          <th class="table-success">Decrição do problema: </th>
-          <th colspan="5" >
-            <p>{{items.descricao_problema}}</p>
-          </th>
-        </tr>
-
-         <tr class="table-success"><td colspan="6"></td></tr>
-
-    </ng-container>
-    </tbody>
-  </table> -->
-
-  <h4 class="mt-5">Solicitações em Andamento</h4>
-  <div>
+  
+  <h4 class="mt-5">Solicitações Aceitas</h4>
+  <div class="text-end">
+    <a (click)="criarSolicitacao()" class="btn btn-primary mb-3">Criar solicitação</a>
   <table id="tabela-andamento" class="table table-borderless table-hover">
     <thead class="table-dark">
       <tr>
@@ -50,7 +13,7 @@
         <th >Serviço</th>
         <th >Dia Serviço</th>
         <th >Criado em </th>
-
+        <th >Avaliação </th>
         <th></th>
       </tr>
     </thead>
@@ -61,16 +24,49 @@
         <tr>
           <th>{{item2.usuarios[0].nome}}</th>
           <th>{{item2.usuarios[0].telefone}}</th>
-          <th>{{item2.servico}</th>
+          <th>{{item2.servico}}</th>
           <th>{{item2.dia | date: 'dd/MM/yyyy'}}</th>
           <th>{{item2.data_criacao | date: 'dd/MM/yyyy'}}</th>
 
-          <th class="text-end">
-            <a (click)="item2.id_solicitacoes" class="btn btn-danger">Cancelar</a>
+          <th colspan="2" class="text-end">
+            <a (click)="concluirSolicitacao()" class="btn btn-primary ">Concluir</a>
+            <a (click)="cancelarSolicitacao()" class="btn btn-danger ms-2">Cancelar</a>
           </th>
         </tr>
+        
+         <tr class="table-success"><td colspan="8"></td></tr>
+      </ng-container>
+    </ng-container>
+    </tbody>
+  </table>
 
 
+  <h4 class="mt-5">Solicitações Concluidas</h4>
+  <div>
+  <table id="tabela-andamento" class="table table-borderless table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th >Voluntário</th>
+        <th >Serviço</th>
+        <th >Dia do Serviço</th>
+        <th >Criado em</th>
+        <th >Data final</th>
+        <th>Avaliação</th> <!-- estrelinhas -->
+
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <ng-container  *ngFor="let items of solicitacoesConcluidas">
+        <ng-container  *ngFor="let item2 of items.solicitacoes">
+        <tr>
+          <th>{{item2.usuarios[0].nome}}</th>
+          <th>{{item2.servico}}</th>
+          <th>{{item2.dia | date: 'dd/MM/yyyy'}}</th>
+          <th>{{item2.data_criacao | date: 'dd/MM/yyyy'}}</th>
+          <th>{{item2.data_encerramento | date: 'dd/MM/yyyy'}}</th>
+          <th>{{item2.nota}}</th>
          <tr class="table-success"><td colspan="8"></td></tr>
       </ng-container>
     </ng-container>

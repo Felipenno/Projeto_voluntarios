@@ -13,6 +13,7 @@ import { Constants } from 'src/app/utils/Constants';
 export class PainelSolicitanteComponent implements OnInit {
 
   solicitacoes: Usuario[] = []
+  solicitacoesConcluidas: Usuario[] = []
 
   constructor(private router: Router,
     private solicitacoesServico: SolicitacoesService,
@@ -20,19 +21,50 @@ export class PainelSolicitanteComponent implements OnInit {
 
   ngOnInit() {
     this.listarSolicitacoesAceitas()
+    this.listarSolicitacoesConcluidas();
   }
+
   listarSolicitacoesAceitas(): void{
-    this.solicitacoesServico.listarSolicitacoesPorStatus(Constants.STATUS_CRIADO, Constants.TIPO_VOLUNTARIO)
+    this.solicitacoesServico.listarSolicitacoesPorStatus(Constants.STATUS_ANDAMENTO, Constants.TIPO_VOLUNTARIO)
       .subscribe(
         data => {
 
           this.solicitacoes = data
+          console.log( "aceitas",this.solicitacoes = data
+            )
 
         }, error => {
           console.log(error)
         }
 
       )
+  }
+
+  listarSolicitacoesConcluidas(): void{
+    this.solicitacoesServico.listarSolicitacoesPorStatus(Constants.STATUS_CONCLUIDO, Constants.TIPO_VOLUNTARIO)
+      .subscribe(
+        data => {
+          this.solicitacoesConcluidas = data
+          console.log( "aceitas",this.solicitacoesConcluidas = data
+            )
+
+        }, error => {
+          console.log(error)
+        }
+
+      )
+  }
+
+  concluirSolicitacao(): void{
+
+  }
+
+  cancelarSolicitacao(): void{
+    
+  }
+
+  criarSolicitacao(): void{
+
   }
 
 }
