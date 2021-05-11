@@ -45,6 +45,8 @@ class UsuarioController {
 	async show(request, response) {
 		try {
 			const usuario = await Usuario.findByPk(request.params.id);
+
+
 			return response.json(usuario);
 		} catch (err) {
 			return response.status(400).json({
@@ -66,17 +68,15 @@ class UsuarioController {
 	async listarPorLocalizacao(request, response) {
 
 
-
 		const {
 			endereco
 		} = await Usuario.findByPk(request.id_usuario, {
-
 			include: {
 				association: 'endereco',
-
 			}
-		})
 
+		});
+		//concluido, criado, andamento'
 		await Solicitacoes.findAll({
 			where: {
 				status: "criado"

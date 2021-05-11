@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { Solicitacoes } from '../models/Solicitacoes'; 
+import { Solicitacoes } from '../models/Solicitacoes';
 import { Usuario } from '../models/Usuario';
-
 
 @Injectable({
     providedIn: 'root'
@@ -14,15 +13,23 @@ export class SolicitacoesService {
 
     constructor(private httpClient: HttpClient) { }
 
-    listarSolicitacoes(): Observable<Solicitacoes[]> {
-        return this.httpClient.get<Solicitacoes[]>(`${this.apiUrl}usuario/endereco/solicitacoes`);
+    listarSolicitacoes(solicitacoes: Solicitacoes): Observable<Solicitacoes> {
+        return this.httpClient.get<Solicitacoes>(`${this.apiUrl}solicitacoes`);
+    }
+    registrarSolitacoes(solicitacoes: Solicitacoes): Observable<Solicitacoes> {
+        return this.httpClient.post<Solicitacoes>(`${this.apiUrl} solicitacoes`, solicitacoes);
+    }
+    atualizarSolicitacoes(solicitacoes: Solicitacoes): Observable<Solicitacoes> {
+        return this.httpClient.put<Solicitacoes>(`${this.apiUrl}solicitacoes`, solicitacoes);
     }
 
-    aceitar(): Observable<Solicitacoes[]> {
-        return this.httpClient.post<Solicitacoes[]>(`${this.apiUrl}solicitacoes`,Solicitacoes);
+    listarSolicitacoesAbertas(): Observable<Solicitacoes[]> {
+        return this.httpClient.get<Solicitacoes[]>(`${this.apiUrl}usuario/solicitacoes/abertas`);
     }
 
-    listarStatusAndamento(): Observable<Usuario[]> {
-        return this.httpClient.get<Usuario[]>(`${this.apiUrl}solicitacoes/aceito/usuario/s`);
+    //concluido, criado, andamento'
+    listarSolicitacoesPorStatus(status: string, tipoUsuario: string): Observable<Usuario[]> {
+        return this.httpClient.get<Usuario[]>(`${this.apiUrl}solicitacoes/${status}/usuario/${tipoUsuario}`);
     }
+
 }

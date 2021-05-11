@@ -10,9 +10,6 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { AuthInterceptor } from './auth/auth.interceptor';
 
-
-
-
 import { AppComponent } from './app.component';
 import { RegistroComponent } from './components/usuario-registro/registro.component';
 import { LoginComponent } from './components/usuario-login/login.component';
@@ -21,8 +18,8 @@ import { HomeComponent } from './components/home/home.component';
 import { NavComponent } from './components/nav/nav.component';
 import { EnderecoAtualizarComponent } from './components/endereco-atualizar/endereco-atualizar.component';
 import { EnderecoComponent } from './components/endereco-criar/endereco.component';
-import { UsuarioVoluntarioComponent } from  './components/usuario-voluntario/usuario-voluntario.component';
-
+import { UsuarioVoluntarioComponent } from  './components/painel-voluntario/usuario-voluntario.component';
+import { PainelSolicitanteComponent } from './components/painel-solicitante/painel-solicitante.component';
 
 
 @NgModule({
@@ -36,7 +33,7 @@ import { UsuarioVoluntarioComponent } from  './components/usuario-voluntario/usu
     HomeComponent,
     EnderecoAtualizarComponent,
     UsuarioVoluntarioComponent,
-   
+    PainelSolicitanteComponent,
 
 
   ],

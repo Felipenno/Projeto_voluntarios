@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Usuario } from 'src/app/models/Usuario';
 import { UsuarioService } from "src/app/services/usuario.service";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-usuario-atualizar',
@@ -14,19 +15,36 @@ export class UsuarioAtualizarComponent implements OnInit {
 
   constructor(
     private usuarioService: UsuarioService,
-    private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
-    
+    this.preencherUsuario();
+  }
+
+
+  preencherUsuario():void {
+    this.usuarioService.pegarUsuario()
+    .subscribe({
+      next: data => {
+        this.usuarioAtual = data;
+      },
+      error: err => console.log("Error: ", err)      
+    })
   }
 
   update(): void{
     this.usuarioService.atualizarUsuario(this.usuarioAtual)
     .subscribe({
-      next: data => console.log('Atualizado com sucesso', data),
-      error: erro => console.log('Erro', erro)
+      next: data => {
+        this.toastr.success('Cadastro atualizado com sucesso!', 'Atualizado');
+      },
+      error: err => this.toastr.error("Erro ao atualizar ", 'Algo deu errado!')
     });
+  }
+
+  voltarPaginaAnterior():void{
+    this.router.navigate(['home'])
   }
 }

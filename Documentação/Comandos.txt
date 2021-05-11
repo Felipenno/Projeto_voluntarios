@@ -31,11 +31,9 @@ sequelize --help
 git checkout -b NOMEBRANCH master   >> cria uma nova branch e copia a branch master para ela.
 git checkout NOMEBRANCH             >> troca a branch ativa para a especificada.
 git push -u origin NOMERMOTO        >> cria uma branch remota e da push pra ele.
-<<<<<<< HEAD
 git merge NOMEBRANCH >>             junta a brach ativa à branch especificada.
 
 npm install dentro da pasta backend
-=======
 git merge NOMEBRANCH                >> junta a brach ativa à branch especificada.
 
 =================== Angular =============================
@@ -50,4 +48,3 @@ ng g g auth/auth
 
 npm install ngx-toastr --save
 npm install @angular/animations --save
->>>>>>> master
