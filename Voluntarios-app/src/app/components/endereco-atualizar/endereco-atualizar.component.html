@@ -2,46 +2,76 @@
     <h1>Endereço</h1>
     <hr>
   
+    <form [formGroup]="enderecoForm">
     <div > 
       <div class="form-group" >
         <label for="cep">Cep</label>
-        <input [(ngModel)]="endereco.cep"  id="cep" type="text" class="form-control"/>
+        <input formControlName="cep" id="cep" type="text"class="form-control"
+        [ngClass]="{'is-invalid': ef.cep.errors && ef.cep.touched}" 
+        />
+        <div *ngIf="ef.cep.errors?.required" class="invalid-feedback">CEP é obrigatório.</div>
+        <div *ngIf="ef.cep.errors?.maxlength" class="invalid-feedback">A quantidade máxima de caracteres é 20 .</div>
       </div>
   
       <div class="form-group">
         <label for="estado">Estado</label>
-        <input [(ngModel)]="endereco.estado" id="estado" type="text" class="form-control" />
+        <input formControlName="estado" id="estado" type="text" class="form-control"
+        [ngClass]="{'is-invalid': ef.estado.errors && ef.estado.touched}" 
+        />
+        <div *ngIf="ef.estado.errors?.required" class="invalid-feedback">Estado é obrigatório.</div>
+        <div *ngIf="ef.estado.errors?.maxlength" class="invalid-feedback">A quantidade máxima de caracteres é 25.</div>
+
       </div>
   
       <div class="form-group">
         <label for="cidade">Cidade</label>
-        <input [(ngModel)]="endereco.cidade" id="cidade" type="text" class="form-control"  />
+        <input formControlName="cidade" id="cidade" type="text" class="form-control"
+        [ngClass]="{'is-invalid': ef.cidade.errors && ef.cidade.touched}" 
+        />
+        <div *ngIf="ef.cidade.errors?.required" class="invalid-feedback">Cidade é obrigatória.</div>
+        <div *ngIf="ef.cidade.errors?.maxlength" class="invalid-feedback">A quantidade máxima de caracteres é 40.</div>
       </div>
   
       <div class="form-group">
         <label for="bairro">Bairro</label>
-        <input [(ngModel)]="endereco.bairro" id="bairro" type="text" class="form-control" />
+        <input formControlName="bairro" id="bairro" type="text" class="form-control" 
+        [ngClass]="{'is-invalid': ef.bairro.errors && ef.bairro.touched}" 
+        />
+        <div *ngIf="ef.bairro.errors?.required" class="invalid-feedback">Bairro é obrigatório.</div>
+        <div *ngIf="ef.bairro.errors?.maxlength" class="invalid-feedback">A quantidade máxima de caracteres é 25.</div>
       </div>
   
       <div class="form-group">
         <label for="rua">Rua</label>
-        <input [(ngModel)]="endereco.rua" id="rua" type="text" class="form-control" />
+        <input formControlName="rua" id="rua" type="text" class="form-control"
+        [ngClass]="{'is-invalid': ef.rua.errors && ef.rua.touched}" 
+        />
+        <div *ngIf="ef.rua.errors?.required" class="invalid-feedback">Rua é obrigatória.</div>
+        <div *ngIf="ef.rua.errors?.maxlength" class="invalid-feedback">A quantidade máxima de caracteres é 30.</div>
       </div>
   
       <div class="form-group">
         <label for="numero">Número</label>
-        <input [(ngModel)]="endereco.numero" for id="numero" type="number" class="form-control" />
+        <input formControlName="numero" for id="numero" type="number" class="form-control"
+        [ngClass]="{'is-invalid': ef.numero.errors && ef.numero.touched}" 
+        />
+        <div *ngIf="ef.numero.errors?.required" class="invalid-feedback">Número é obrigatório.</div>
       </div>
   
       <div class="form-group">
         <label for="complemento">Complemento</label>
-        <input [(ngModel)]="endereco.complemento" id="complemento" type="text" class="form-control" />
+        <input formControlName="complemento" id="complemento" type="text" class="form-control"
+        [ngClass]="{'is-invalid': ef.complemento.errors && ef.complemento.touched}" 
+        />
+        <div *ngIf="ef.complemento.errors?.maxlength" class="invalid-feedback">A quantidade máxima de caracteres é 20.</div>
       </div>
       
       <div class="mt-3 d-flex justify-content-between">
       <button (click)="voltarPaginaAnterior()" class="btn btn-secondary">Cancelar</button>
-      <button (click)="atualizarEndereco()" class="btn btn-primary button-update">Salvar</button>
+      <button (click)="atualizarEndereco()" class="btn btn-primary button-update"  [disabled]="enderecoForm.invalid">Salvar</button>
       </div>
     </div>
+  </form>
   </div>
+
   
