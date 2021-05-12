@@ -21,6 +21,7 @@ import { EnderecoAtualizarComponent } from './components/endereco-atualizar/ende
 import { EnderecoComponent } from './components/endereco-criar/endereco.component';
 import { UsuarioVoluntarioComponent } from  './components/painel-voluntario/usuario-voluntario.component';
 import { PainelSolicitanteComponent } from './components/painel-solicitante/painel-solicitante.component';
+import { RatingComponent } from './components/rating/rating.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { PainelSolicitanteComponent } from './components/painel-solicitante/pain
     EnderecoAtualizarComponent,
     UsuarioVoluntarioComponent,
     PainelSolicitanteComponent,
+    RatingComponent,
 
 
   ],

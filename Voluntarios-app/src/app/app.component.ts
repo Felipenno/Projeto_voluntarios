@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgbRating } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-root',
@@ -8,5 +8,5 @@ import { NgbRating } from '@ng-bootstrap/ng-bootstrap';
 })
 export class AppComponent {
   title = 'voluntarios-app';
-  currentRating = 3;
+  
 }

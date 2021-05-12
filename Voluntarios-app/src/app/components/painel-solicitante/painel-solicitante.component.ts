@@ -14,7 +14,7 @@ import {ToastrService} from 'ngx-toastr';
   styleUrls: ['./painel-solicitante.component.css']
 })
 export class PainelSolicitanteComponent implements OnInit {
-
+  
   solicitacoes: Usuario[] = []
   solicitacoesConcluidas: Usuario[] = []
   novaSolicitacao: Solicitacoes = new Solicitacoes()

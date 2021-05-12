@@ -98,7 +98,7 @@
 
                     <th colspan="2" class="text-end">
                       <a (click)="concluirSolicitacao()" class="btn btn-primary ">Concluir</a>
-                      <a (click)="cancelarSolicitacao()" class="btn btn-danger ms-2">Cancelar</a>
+                      <a (click)="cancelarSolicitacao(item2.id_solicitacoes)" class="btn btn-danger ms-2">Cancelar</a>
                     </th>
                   </tr>
 
@@ -123,10 +123,11 @@
                     <th>Data final</th>
                     <th>Avaliação</th> <!-- estrelinhas -->
                     <th>
-                      <ngb-rating [max]="5" [rate]="3"></ngb-rating>
-                    </th>
+                      <app-rating></app-rating>
 
-                    <th></th>
+
+
+                    </th>
                   </tr>
                 </thead>
 
