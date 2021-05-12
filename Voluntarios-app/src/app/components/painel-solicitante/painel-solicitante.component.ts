@@ -86,7 +86,7 @@ export class PainelSolicitanteComponent implements OnInit {
       .subscribe({
         next: data => {
           this.toastr.success('Solicitacão Excluida')
-          
+          this.carregarListas();
         },
         error: err => this.toastr.error('Algo deu errado!')
       })
