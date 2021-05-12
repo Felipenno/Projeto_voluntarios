@@ -35,9 +35,7 @@ export class PainelSolicitanteComponent implements OnInit {
         data => {
 
           this.solicitacoes = data
-          console.log( "aceitas",this.solicitacoes = data
-            )
-
+          console.log("aceitas",this.solicitacoes = data)
         }, error => {
           console.log(error)
         }
