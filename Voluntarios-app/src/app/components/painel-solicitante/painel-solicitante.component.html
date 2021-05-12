@@ -9,8 +9,24 @@
       <div class="modal-body">
 
         <div class="form-group" >
-          <label for="servico">Serviço</label>
-          <input [(ngModel)]="novaSolicitacao.servico"  id="servico" type="text" class="form-control"/>
+          <label for="servico">Profissional voluntário</label>
+
+          <select [(ngModel)]="novaSolicitacao.servico"  id="servico" type="text" class="form-select">
+            <option selected>Selecione um tipo de voluntário</option>
+            <option value="Babá">Babá</option>
+            <option value="Cuidador de Pets">Cuidador de Pets</option>
+            <option value="Diarista">Diarista</option>
+            <option value="Eletricista">Eletricista</option>
+            <option value="Encanador">Encanador</option>
+            <option value="Mecânico">Mecânico</option>            
+            <option value="Pedreiro">Pedreiro</option>
+            <option value="Personal Organizer">Personal Organizer</option>
+            <option value="Professor">Professor</option>            
+            <option value="Tecnico em informática">Técnico em informática</option>
+            <option value="Outro">Outro</option>
+          </select>
+
+          
         </div>
 
         <div class="form-group" >
@@ -29,8 +45,8 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button (click)="criarSolicitacao()" type="button" class="btn btn-primary">Salvar solicitação</button>
+        <button type="button" class="btn btn-danger ms-2" data-bs-dismiss="modal">Cancelar</button>
+        <button (click)="criarSolicitacao()" type="button" class="btn btn-primary" data-bs-dismiss="modal">Salvar solicitação</button>
       </div>
     </div>
   </div>
@@ -51,23 +67,26 @@
         <th >Serviço</th>
         <th >Dia do serviço</th>
         <th >Problema</th>
+        <th></th>
       </tr>
     </thead>
+
     <tbody>
       <ng-container *ngFor="let items of solicitacoesCriadas; let i = index">
         <tr>
           <th>{{items.servico}}</th>
           <th>{{items.dia | date: 'dd/MM/yyyy'}}</th>
           <th>{{items.descricao_problema}}</th>
-          </tr>
+          
+          <th colspan="2" class="text-end">
+          <a (click)="cancelarSolicitacao(items.id_solicitacoes)" class="btn btn-danger ms-2">Cancelar solicitação criada</a>
+          </th>
+        </tr>
+
+        <tr class="table-success"><td colspan="8"></td></tr>
 
       </ng-container>
-    </tbody>
-
-
-
-
-     
+    </tbody>     
   </table>
   
   <h4 class="mt-5">Solicitações Aceitas</h4>
