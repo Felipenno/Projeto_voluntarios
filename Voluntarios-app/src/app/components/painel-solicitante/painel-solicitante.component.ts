@@ -16,8 +16,7 @@ export class PainelSolicitanteComponent implements OnInit {
   solicitacoes: Usuario[] = []
   solicitacoesConcluidas: Usuario[] = []
   novaSolicitacao: Solicitacoes = new Solicitacoes()
-  excluirSolicitacoes:Solicitacoes = new Solicitacoes()
-
+  //excluirSolicitacoes:Solicitacoes = new Solicitacoes()
 
   constructor(private router: Router,
     private solicitacoesServico: SolicitacoesService,
@@ -25,6 +24,10 @@ export class PainelSolicitanteComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.carregarListas();
+  }
+
+  carregarListas(): void{
     this.listarSolicitacoesAceitas()
     this.listarSolicitacoesConcluidas();
   }
@@ -62,8 +65,8 @@ export class PainelSolicitanteComponent implements OnInit {
 
   }
 
-  cancelarSolicitacao(): void{
-    this.solicitacoesServico.excluirSolicitacoes(this.excluirSolicitacoes.id_solicitacoes)
+  cancelarSolicitacao(id:number): void{
+    this.solicitacoesServico.excluirSolicitacoes(id)
       .subscribe({
         next: data => {
           this.toastr.success('Solicitacão Excluida')
@@ -75,15 +78,12 @@ export class PainelSolicitanteComponent implements OnInit {
 
 
   criarSolicitacao(): void{
-    this.novaSolicitacao.data_criacao = new Date("2021/11/05");
-    this.novaSolicitacao.status = "Criado!"
-
+    this.novaSolicitacao.data_criacao = new Date(Date.now());
+    this.novaSolicitacao.status = Constants.STATUS_CRIADO
 
     this.solicitacoesServico.registrarSolitacoes(this.novaSolicitacao).subscribe({
       next: data =>{
         this.toastr.success("Solicitação criada com sucesso!", "Atualizado");
-        console.log(data);
-        console.log(this.novaSolicitacao);
       },
       error: err => this.toastr.error("Erro ao criar solicitação", "Algo deu errado")
 

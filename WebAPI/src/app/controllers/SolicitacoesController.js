@@ -99,7 +99,7 @@ class SolicitacoesController {
 				message: `Não foi possível atualizar o solicitação`
 			  });
 			}
-		  })
+		})
 	}
 
 	async adicionarVoluntario(request, response){
@@ -107,9 +107,25 @@ class SolicitacoesController {
 		const{id_solicitacoes} = request.params;
 
 		const solicitacoes = await Solicitacoes.findByPk(id_solicitacoes)
-		solicitacoes.addUsuario(request.params.id);
 
-		await Solicitacoes.update(request.body,{where: id_solicitacoes} )
+		if(!solicitacoes){
+			return response.status(400).send({erro: 'Solicitação não encontrada'})
+		}
+		
+		await solicitacoes.addUsuario(request.id_usuario);
+		await Solicitacoes.update(request.body, {where: {id_solicitacoes}})
+		.then(alteracoes => {
+			if(alteracoes == 1){
+				response.send({ message: "Solicitação Atualizada!! "})
+			}
+			else(
+				response.send({ message: "Nada alterado"})
+			)
+			
+		}).catch(erro => {
+			return response.status(500).send({message: `Erro interno: ( ${erro} )`})
+		})
+			
 	}
 
 	async concluirSolicitação(request, response){
@@ -118,7 +134,27 @@ class SolicitacoesController {
 
 	async cancelarSolicitacao(request, response){
 		const{id_solicitacoes} = request.params;
-		Solicitacoes.destroy({where: id_solicitacoes})
+
+		const solicitacoes = await Solicitacoes.findByPk(id_solicitacoes)
+
+		if(!solicitacoes){
+			return response.status(400).send({erro: 'Solicitação não encontrada'})
+		}
+		
+		await solicitacoes.removeUsuario(request.id_usuario);
+		await Solicitacoes.update(request.body, {where: {id_solicitacoes}})
+		.then(alteracoes => {
+			if(alteracoes == 1){
+				response.send({ message: "Solicitação Atualizada!! "})
+			}
+			else(
+				response.send({ message: "Nada alterado"})
+			)
+			
+		}).catch(erro => {
+			return response.status(500).send({message: `Erro interno: ( ${erro} )`})
+		})
+		
 	}
 		
 }

@@ -1,3 +1,4 @@
+import { templateJitUrl } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Solicitacoes } from 'src/app/models/Solicitacoes';
@@ -16,6 +17,8 @@ export class UsuarioVoluntarioComponent implements OnInit {
   solicitacaoAbertas: Solicitacoes[] = []
   solicitacaoAndamento: Usuario[] = []
   solicitacoesConcluidas: Usuario[] = [];
+  solicitacaoEscolhida: Solicitacoes = new Solicitacoes();
+  solicitacaoCancelada: Solicitacoes = new Solicitacoes();
 
   constructor(
     private solicitacoesService : SolicitacoesService,
@@ -23,10 +26,13 @@ export class UsuarioVoluntarioComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.carregarListas();
+  }
+
+  carregarListas():void{
     this.listarSolicitacoesAbertas();
     this.listarEmAndamento();
     this.listarConcluidas();
-    
   }
 
   listarSolicitacoesAbertas(): void {
@@ -34,8 +40,6 @@ export class UsuarioVoluntarioComponent implements OnInit {
     .subscribe(
       data => {
         this.solicitacaoAbertas = data;
-        console.log("aberta>>", data)
-        console.log("aberta>>", this.solicitacaoAbertas)
       },
       error => {
         console.log(error);
@@ -49,8 +53,6 @@ export class UsuarioVoluntarioComponent implements OnInit {
     .subscribe(
       data => {
         this.solicitacaoAndamento = data;
-        console.log("andamento>>", data)
-        console.log("andamento>>", this.solicitacaoAndamento)
       },
       error => {
         console.log(error);
@@ -63,8 +65,6 @@ export class UsuarioVoluntarioComponent implements OnInit {
     .subscribe(
       data => {
         this.solicitacoesConcluidas = data;
-        console.log("Concluidas>>", data)
-        console.log("Concluidas2>>", this.solicitacoesConcluidas)
       },
       error => {
         console.log(error);
@@ -73,11 +73,40 @@ export class UsuarioVoluntarioComponent implements OnInit {
   }
 
   escolherSolicitacao(id: number): void {
-    console.log('id:', id)
+    this.solicitacaoEscolhida = this.solicitacaoAbertas.find(item => item.id_solicitacoes === id);
+    this.solicitacaoEscolhida.status = Constants.STATUS_ANDAMENTO;
+
+    this.solicitacoesService.adicionarVoluntario(id, this.solicitacaoEscolhida).subscribe({
+      next: data => {
+        console.log("adicionar Solicitação >>", data)
+        this.carregarListas();
+      },
+      error: err =>{
+        console.log("erro ao adicionar >>", err)
+      }
+    })
   }
 
   cancelarSolicitacao(id: number): void {
-    console.log('id:', id)
+    this.solicitacaoAndamento.map(item => 
+      item.solicitacoes.find(item2 => {
+        if(item2.id_solicitacoes == id){
+          this.solicitacaoCancelada = item2;
+        }
+      }));
+    
+    this.solicitacaoCancelada.status = Constants.STATUS_CRIADO;
+
+    console.log("remove Solicitação >>", this.solicitacaoCancelada)
+    this.solicitacoesService.cancelarSolicitacao(id, this.solicitacaoCancelada).subscribe({
+      next: data => {
+        console.log("remove Solicitação >>", data)
+        this.carregarListas();
+      },
+      error: err =>{
+        console.log("erro ao adicionar >>", err)
+      }
+    });
   }
 
 }

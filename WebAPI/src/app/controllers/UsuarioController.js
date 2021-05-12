@@ -62,7 +62,6 @@ class UsuarioController {
 					association: "endereco",
 					where: {estado: endereco.estado},
 					attributes: ["estado", "cidade"],
-					
 				}
 			}
 		}).then(usuario => {
