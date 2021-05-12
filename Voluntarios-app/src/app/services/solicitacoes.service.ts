@@ -13,8 +13,8 @@ export class SolicitacoesService {
 
     constructor(private httpClient: HttpClient) { }
 
-    listarSolicitacoes(solicitacoes: Solicitacoes): Observable<Solicitacoes> {
-        return this.httpClient.get<Solicitacoes>(`${this.apiUrl}solicitacoes`);
+    listarSolicitacoes(): Observable<Solicitacoes[]>{
+        return this.httpClient.get<Solicitacoes[]>(`${this.apiUrl}solicitacoes`);
     }
     registrarSolitacoes(solicitacoes: Solicitacoes): Observable<Solicitacoes> {
         return this.httpClient.post<Solicitacoes>(`${this.apiUrl}solicitacoes`, solicitacoes);
