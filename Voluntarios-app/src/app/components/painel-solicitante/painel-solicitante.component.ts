@@ -100,6 +100,7 @@ export class PainelSolicitanteComponent implements OnInit {
     this.solicitacoesServico.registrarSolitacoes(this.novaSolicitacao).subscribe({
       next: data =>{
         this.toastr.success("Solicitação criada com sucesso!", "Atualizado");
+        this.carregarListas();
       },
       error: err => this.toastr.error("Erro ao criar solicitação", "Algo deu errado")
 
