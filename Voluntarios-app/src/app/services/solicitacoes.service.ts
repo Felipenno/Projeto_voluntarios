@@ -31,9 +31,20 @@ export class SolicitacoesService {
     listarSolicitacoesPorStatus(status: string, tipoUsuario: string): Observable<Usuario[]> {
         return this.httpClient.get<Usuario[]>(`${this.apiUrl}solicitacoes/${status}/usuario/${tipoUsuario}`);
     }
+
     excluirSolicitacoes(id_solicitacoes: number): Observable<Solicitacoes>{
-      return this.httpClient.delete<Solicitacoes>(`${this.apiUrl}solicitacoes/:id`);
-  }
+      return this.httpClient.delete<Solicitacoes>(`${this.apiUrl}solicitacoes/${id_solicitacoes}`);
+    }
+
+    adicionarVoluntario(id_solicitacoes: number, solicitacoes: Solicitacoes): Observable<Solicitacoes>{
+        return this.httpClient.put<Solicitacoes>(`${this.apiUrl}solicitacoes/adicionar/voluntario/${id_solicitacoes}`, solicitacoes);
+    }
+
+    cancelarSolicitacao(id_solicitacoes: number, solicitacoes: Solicitacoes): Observable<Solicitacoes>{
+        return this.httpClient.put<Solicitacoes>(`${this.apiUrl}solicitacoes/cancelar/voluntario/${id_solicitacoes}`, solicitacoes);
+    }
+
+
 
 
 }
