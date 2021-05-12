@@ -14,7 +14,9 @@ import {ToastrService} from 'ngx-toastr';
 export class PainelSolicitanteComponent implements OnInit {
 
   solicitacoes: Usuario[] = []
+  solicitacoesCriadas: Solicitacoes[] = []
   solicitacoesConcluidas: Usuario[] = []
+
   novaSolicitacao: Solicitacoes = new Solicitacoes()
   //excluirSolicitacoes:Solicitacoes = new Solicitacoes()
 
@@ -28,7 +30,8 @@ export class PainelSolicitanteComponent implements OnInit {
   }
 
   carregarListas(): void{
-    this.listarSolicitacoesAceitas()
+    this.listarSolicitacoesCriadas();
+    this.listarSolicitacoesAceitas();
     this.listarSolicitacoesConcluidas();
   }
 
@@ -59,6 +62,19 @@ export class PainelSolicitanteComponent implements OnInit {
         }
 
       )
+  }
+  listarSolicitacoesCriadas(): void{
+    this.solicitacoesServico.listarSolicitacoes()
+    .subscribe(
+      data => {
+        this.solicitacoesCriadas = data
+        console.log("criado", this.solicitacoesCriadas = data
+        )
+      },error => {
+        console.log(error)
+      }
+
+    )
   }
 
   concluirSolicitacao(): void{

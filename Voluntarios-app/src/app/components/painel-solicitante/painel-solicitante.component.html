@@ -39,12 +39,39 @@
 <div class="container">
   <h1 class="mb-5 text-center">Painel Solicitante</h1>
 
-  
-  <h4 class="mt-5">Solicitações Aceitas</h4>
+  <h4 class="mt-5">Solicitações Criadas</h4>
   <div class="text-end">    
     <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#criarSolicitacaoModal">
         Criar solicitação
     </button>
+</div>
+  <table id="tabela-criadas" class="table table-borderless table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th >Serviço</th>
+        <th >Dia do serviço</th>
+        <th >Problema</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let items of solicitacoesCriadas; let i = index">
+        <tr>
+          <th>{{items.servico}}</th>
+          <th>{{items.dia | date: 'dd/MM/yyyy'}}</th>
+          <th>{{items.descricao_problema}}</th>
+          </tr>
+
+      </ng-container>
+    </tbody>
+
+
+
+
+     
+  </table>
+  
+  <h4 class="mt-5">Solicitações Aceitas</h4>
+  <div>
 
   <table id="tabela-andamento" class="table table-borderless table-hover">
     <thead class="table-dark">

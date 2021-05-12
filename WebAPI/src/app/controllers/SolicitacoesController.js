@@ -59,7 +59,13 @@ class SolicitacoesController {
 
 	async index(request, response) {
 		try{
-			 const solicitacoes = await Solicitacoes.findAll();
+			 const solicitacoes = await Solicitacoes.findAll({
+				 include: {
+					 association: "usuarios",
+					 where: request.id_usuario,
+					 attributes: []
+				 }
+			 });
 
 			 return response.json(solicitacoes);
 
