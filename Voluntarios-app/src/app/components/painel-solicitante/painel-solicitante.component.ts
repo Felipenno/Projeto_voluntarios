@@ -1,9 +1,10 @@
+import { SolicitacoesService } from './../../services/solicitacoes.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Solicitacoes } from 'src/app/models/Solicitacoes';
 import { Usuario } from 'src/app/models/Usuario';
-import { SolicitacoesService } from 'src/app/services/solicitacoes.service';
 import { Constants } from 'src/app/utils/Constants';
+import {ToastrService} from 'ngx-toastr';
 
 
 
@@ -16,12 +17,19 @@ export class PainelSolicitanteComponent implements OnInit {
 
   solicitacoes: Usuario[] = []
   solicitacoesConcluidas: Usuario[] = []
+  novaSolicitacao: Solicitacoes = new Solicitacoes()
+  //excluirSolicitacoes:Solicitacoes = new Solicitacoes()
 
   constructor(private router: Router,
     private solicitacoesServico: SolicitacoesService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
+    this.carregarListas();
+  }
+
+  carregarListas(): void{
     this.listarSolicitacoesAceitas()
     this.listarSolicitacoesConcluidas();
   }
@@ -32,9 +40,7 @@ export class PainelSolicitanteComponent implements OnInit {
         data => {
 
           this.solicitacoes = data
-          console.log( "aceitas",this.solicitacoes = data
-            )
-
+          console.log("aceitas",this.solicitacoes = data)
         }, error => {
           console.log(error)
         }
@@ -61,13 +67,28 @@ export class PainelSolicitanteComponent implements OnInit {
 
   }
 
-  cancelarSolicitacao(): void{
-    
+  cancelarSolicitacao(id:number): void{
+    this.solicitacoesServico.excluirSolicitacoes(id)
+      .subscribe({
+        next: data => {
+          this.toastr.success('Solicitacão Excluida')
+          
+        },
+        error: err => this.toastr.error('Algo deu errado!')
+      })
   }
+
 
   criarSolicitacao(): void{
+    this.novaSolicitacao.data_criacao = new Date(Date.now());
+    this.novaSolicitacao.status = Constants.STATUS_CRIADO
 
-  }
+    this.solicitacoesServico.registrarSolitacoes(this.novaSolicitacao).subscribe({
+      next: data =>{
+        this.toastr.success("Solicitação criada com sucesso!", "Atualizado");
+      },
+      error: err => this.toastr.error("Erro ao criar solicitação", "Algo deu errado")
 
+    })
 
-}
+}}

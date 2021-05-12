@@ -93,7 +93,6 @@ class UsuarioController {
 						estado: endereco.estado
 					},
 					attributes: ["estado", "cidade"],
-
 				}
 			}
 		}).then(usuario => {
