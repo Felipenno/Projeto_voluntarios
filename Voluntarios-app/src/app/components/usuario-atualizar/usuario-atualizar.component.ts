@@ -15,8 +15,6 @@ export class UsuarioAtualizarComponent implements OnInit {
   usuarioAtual: Usuario = new Usuario();
   usuarioForm: FormGroup;
 
-  //editaFlag: boolean = true ;
-
   constructor(
     private usuarioService: UsuarioService,
     private router: Router,
@@ -47,7 +45,7 @@ export class UsuarioAtualizarComponent implements OnInit {
   validacao(): void {
     this.usuarioForm = this.formBuilder.group({
       nome: ['', [Validators.required, Validators.minLength(9)]],
-      email: ['', [Validators.required, Validators.email, Validators.maxLength(20)]],
+      email: ['', [Validators.required, Validators.email, Validators.maxLength(50)]],
       cpf: ['', [Validators.required, Validators.maxLength(11)]],
       telefone: ['', [Validators.maxLength(11)]]
     })
@@ -67,12 +65,4 @@ export class UsuarioAtualizarComponent implements OnInit {
   voltarPaginaAnterior():void{
     this.router.navigate(['home'])
   }
-
-  /*editar(): void {
-    if (this.editaFlag) {
-      this.editaFlag= false;
-    } else {
-      this.editaFlag=true
-    }
-  }*/
 }
