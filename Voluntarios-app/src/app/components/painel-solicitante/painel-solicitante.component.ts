@@ -16,7 +16,7 @@ export class PainelSolicitanteComponent implements OnInit {
   solicitacoes: Usuario[] = []
   solicitacoesConcluidas: Usuario[] = []
   novaSolicitacao: Solicitacoes = new Solicitacoes()
-  excluirSolicitacoes:Solicitacoes = new Solicitacoes()
+  //excluirSolicitacoes:Solicitacoes = new Solicitacoes()
 
   constructor(private router: Router,
     private solicitacoesServico: SolicitacoesService,
@@ -24,6 +24,10 @@ export class PainelSolicitanteComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.carregarListas();
+  }
+
+  carregarListas(): void{
     this.listarSolicitacoesAceitas()
     this.listarSolicitacoesConcluidas();
   }
@@ -63,8 +67,8 @@ export class PainelSolicitanteComponent implements OnInit {
 
   }
 
-  cancelarSolicitacao(): void{
-    this.solicitacoesServico.excluirSolicitacoes(this.excluirSolicitacoes.id_solicitacoes)
+  cancelarSolicitacao(id:number): void{
+    this.solicitacoesServico.excluirSolicitacoes(id)
       .subscribe({
         next: data => {
           this.toastr.success('Solicitacão Excluida')
