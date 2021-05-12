@@ -17,7 +17,7 @@
       [ngClass]="{'is-invalid': usuario.email.errors && usuario.email.touched}"/>
       <div *ngIf="usuario.email.errors?.required" class="invalid-feedback">E-email é obrigatório</div>
       <div *ngIf="usuario.email.errors?.email" class="invalid-feedback">Formato de e-mail incorreto</div>
-      <div *ngIf="usuario.email.errors?.minlength" class="invalid-feedback">A quantidade máxima de caractéres é de 20</div>
+      <div *ngIf="usuario.email.errors?.maxlength" class="invalid-feedback">A quantidade máxima de caractéres é de 50</div>
     </div>
 
     <div class="form-group">
