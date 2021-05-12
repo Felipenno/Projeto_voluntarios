@@ -5,6 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ToastrModule } from 'ngx-toastr';
 
@@ -49,7 +50,8 @@ import { PainelSolicitanteComponent } from './components/painel-solicitante/pain
       timeOut: 3000,
       preventDuplicates: true,
       progressBar: true
-    })
+    }),
+    NgbModule
   ],
   providers: [
     {

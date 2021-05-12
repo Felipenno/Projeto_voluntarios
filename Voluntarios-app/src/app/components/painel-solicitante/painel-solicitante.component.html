@@ -14,7 +14,9 @@
           <th>Dia Serviço</th>
           <th>Criado em </th>
           <th>Avaliação </th>
-          <th></th>
+          <th>
+
+          </th>
         </tr>
       </thead>
 
@@ -27,6 +29,8 @@
               <th>{{item2.servico}}</th>
               <th>{{item2.dia | date: 'dd/MM/yyyy'}}</th>
               <th>{{item2.data_criacao | date: 'dd/MM/yyyy'}}</th>
+
+
 
               <th colspan="2" class="text-end">
                 <a (click)="concluirSolicitacao()" class="btn btn-primary ">Concluir</a>
@@ -54,6 +58,9 @@
             <th>Criado em</th>
             <th>Data final</th>
             <th>Avaliação</th> <!-- estrelinhas -->
+            <th>
+              <ngb-rating [max]="5" [rate]="3"></ngb-rating>
+            </th>
 
             <th></th>
           </tr>
@@ -69,6 +76,7 @@
                 <th>{{item2.data_criacao | date: 'dd/MM/yyyy'}}</th>
                 <th>{{item2.data_encerramento | date: 'dd/MM/yyyy'}}</th>
                 <th>{{item2.nota}}</th>
+
               <tr class="table-success">
                 <td colspan="8"></td>
               </tr>

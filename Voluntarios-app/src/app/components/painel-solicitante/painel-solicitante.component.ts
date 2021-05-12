@@ -5,6 +5,8 @@ import { Usuario } from 'src/app/models/Usuario';
 import { SolicitacoesService } from 'src/app/services/solicitacoes.service';
 import { Constants } from 'src/app/utils/Constants';
 
+
+
 @Component({
   selector: 'app-painel-solicitante',
   templateUrl: './painel-solicitante.component.html',
