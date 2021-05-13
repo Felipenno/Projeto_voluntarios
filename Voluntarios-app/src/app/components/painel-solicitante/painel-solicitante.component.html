@@ -63,7 +63,7 @@
 <!-- modal -->
 
 <div class="container">
-  <h1 class="mb-5 text-center text-dark">Painel Solicitante</h1>
+  <h1 class=" text-center text-dark">Painel Solicitante</h1>
 
   
   <div class="text-end">
@@ -113,7 +113,7 @@
           <th>Serviço</th>
           <th>Dia Serviço</th>
           <th>Criado em </th>
-          <th>Avaliação </th>
+          <th>Atribua uma nota</th>
           <th></th>
         </tr>
       </thead>
@@ -128,8 +128,7 @@
               <th>{{item2.dia | date: 'dd/MM/yyyy'}}</th>
               <th>{{item2.data_criacao | date: 'dd/MM/yyyy'}}</th>
               <th>
-                <div class="form-group">
-                  
+                <div class="form-group d-flex">
                   <select [(ngModel)]="notaSolicitacao" id="nota" type="number" class="form-select">
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -137,12 +136,14 @@
                     <option value="4">4</option>
                     <option value="5">5</option>
                   </select>
+                  <a (click)="concluirSolicitacao(item2.id_solicitacoes)" class="btn text-light bg-dark">Concluir</a>
                 </div>
+                
               </th>
 
-
+              
               <th colspan="2" class="text-end">
-                <a (click)="concluirSolicitacao(item2.id_solicitacoes)" class="btn text-light bg-dark">Concluir</a>
+                
                 <a (click)="cancelarSolicitacao(item2.id_solicitacoes)" class="btn btn-danger ms-2">Cancelar</a>
               </th>
             </tr>
