@@ -37,7 +37,7 @@ routes.get('/voluntario/:id', VoluntarioControllers.show);
 routes.get('/solicitacoes/:status/usuario/:tipo', SolicitacoesController.listarPorStatus);
 routes.put('/solicitacoes/adicionar/voluntario/:id_solicitacoes', SolicitacoesController.adicionarVoluntario);
 routes.put('/solicitacoes/cancelar/voluntario/:id_solicitacoes', SolicitacoesController.cancelarSolicitacao);
-routes.put('/solicitacoes/concluir /:id_solicitacoes', SolicitacoesController.concluirSolicitação);
+routes.put('/solicitacoes/concluir', SolicitacoesController.concluirSolicitação);
 
 routes.post('/solicitacoes', SolicitacoesController.store);
 routes.get('/solicitacoes', SolicitacoesController.index);

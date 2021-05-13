@@ -173,22 +173,8 @@ class SolicitacoesController {
 
 	async concluirSolicitação(request, response) {
 
-		const {
-			id_solicitacoes
-		} = request.params;
-		const solicitacoes = await Solicitacoes.findByPk(id_solicitacoes)
 
-		if (!solicitacoes) {
-			return response.status(400).send({
-				erro: 'Solicitação não encontrada'
-			})
-		}
-
-		await Solicitacoes.update(request.body, {
-				where: {
-					status: "Andamento"
-				}
-			})
+		await Solicitacoes.update(request.body)
 			.then(alterarStatus => {
 				if (alterarStatus == 1) {
 					response.send({

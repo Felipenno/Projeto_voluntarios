@@ -20,6 +20,9 @@ export class PainelSolicitanteComponent implements OnInit {
 
   novaSolicitacao: Solicitacoes = new Solicitacoes()
   //excluirSolicitacoes:Solicitacoes = new Solicitacoes()
+  atualizaSolicitacao: Solicitacoes = new Solicitacoes()
+  notaSolicitacao = 0;
+  
 
   constructor(private router: Router,
     private solicitacoesServico: SolicitacoesService,
@@ -78,8 +81,18 @@ export class PainelSolicitanteComponent implements OnInit {
     )
   }
 
-   concluirSolicitacao(): void{
-    /* this.solicitacoesServico.fimSolicitacao(id)
+   concluirSolicitacao(id: number): void{
+    this.solicitacoes.map(item =>
+      item.solicitacoes.find(item2 => {
+        if (item2.id_solicitacoes == id){
+          this.atualizaSolicitacao = item2
+        }
+      })
+     )
+    this.atualizaSolicitacao.status = Constants.STATUS_CONCLUIDO
+    this.atualizaSolicitacao.nota = this.notaSolicitacao
+    this.atualizaSolicitacao.data_encerramento = new Date(Date.now())
+     this.solicitacoesServico.fimSolicitacao(this.atualizaSolicitacao)
     .subscribe({
       next: data => {
         this.toastr.success('Solitacao Concluída')
@@ -87,8 +100,8 @@ export class PainelSolicitanteComponent implements OnInit {
       },
       error: err => this.toastr.error("Erro ao concluir solicitação", "Algo deu errado")
 
-    })*/
-
+    })
+ 
   } 
 
   cancelarSolicitacao(id:number): void{
