@@ -1,10 +1,10 @@
 import { SolicitacoesService } from './../../services/solicitacoes.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Solicitacoes } from 'src/app/models/Solicitacoes';
 import { Usuario } from 'src/app/models/Usuario';
 import { Constants } from 'src/app/utils/Constants';
 import {ToastrService} from 'ngx-toastr';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -14,23 +14,29 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class PainelSolicitanteComponent implements OnInit {
 
-  solicitacoes: Usuario[] = []
+  solicitacoesAbertas: Usuario[] = []
   solicitacoesCriadas: Solicitacoes[] = []
   solicitacoesConcluidas: Usuario[] = []
 
   novaSolicitacao: Solicitacoes = new Solicitacoes()
-  //excluirSolicitacoes:Solicitacoes = new Solicitacoes()
   atualizaSolicitacao: Solicitacoes = new Solicitacoes()
   notaSolicitacao = 0;
   
+  novaSolicitacaoForm: FormGroup;
 
-  constructor(private router: Router,
+  constructor(
     private solicitacoesServico: SolicitacoesService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private formBuilder : FormBuilder
   ) { }
+
+  get sf(): any{
+    return this.novaSolicitacaoForm.controls; 
+  }
 
   ngOnInit() {
     this.carregarListas();
+    this.validacao();
   }
 
   carregarListas(): void{
@@ -40,49 +46,41 @@ export class PainelSolicitanteComponent implements OnInit {
   }
 
   listarSolicitacoesAceitas(): void{
-    this.solicitacoesServico.listarSolicitacoesPorStatus(Constants.STATUS_ANDAMENTO, Constants.TIPO_VOLUNTARIO)
-      .subscribe(
-        data => {
-
-          this.solicitacoes = data
-          console.log("aceitas",this.solicitacoes = data)
-        }, error => {
-          console.log(error)
-        }
-
-      )
+    this.solicitacoesServico.listarSolicitacoesPorStatus(Constants.STATUS_ANDAMENTO, Constants.TIPO_VOLUNTARIO).subscribe({
+      next: data => {
+        this.solicitacoesAbertas = data
+      },
+      error: err => {
+        console.log(err)
+      }
+    });
   }
+
 
   listarSolicitacoesConcluidas(): void{
-    this.solicitacoesServico.listarSolicitacoesPorStatus(Constants.STATUS_CONCLUIDO, Constants.TIPO_VOLUNTARIO)
-      .subscribe(
-        data => {
-          this.solicitacoesConcluidas = data
-          console.log( "aceitas",this.solicitacoesConcluidas = data
-            )
-
-        }, error => {
-          console.log(error)
-        }
-
-      )
-  }
-  listarSolicitacoesCriadas(): void{
-    this.solicitacoesServico.listarSolicitacoes()
-    .subscribe(
-      data => {
-        this.solicitacoesCriadas = data
-        console.log("criado", this.solicitacoesCriadas = data
-        )
-      },error => {
-        console.log(error)
+    this.solicitacoesServico.listarSolicitacoesPorStatus(Constants.STATUS_CONCLUIDO, Constants.TIPO_VOLUNTARIO).subscribe({
+      next: data => {
+        this.solicitacoesConcluidas = data
+      },
+      error: err => {
+        console.log(err)
       }
+    });
+  }
 
-    )
+  listarSolicitacoesCriadas(): void{
+    this.solicitacoesServico.listarSolicitacoes().subscribe({
+      next: data => {
+        this.solicitacoesCriadas = data
+      },
+      error: err => {
+        console.log(err)
+      }
+    });
   }
 
    concluirSolicitacao(id: number): void{
-    this.solicitacoes.map(item =>
+    this.solicitacoesAbertas.map(item =>
       item.solicitacoes.find(item2 => {
         if (item2.id_solicitacoes == id){
           this.atualizaSolicitacao = item2
@@ -117,16 +115,28 @@ export class PainelSolicitanteComponent implements OnInit {
 
 
   criarSolicitacao(): void{
+    this.novaSolicitacao = this.novaSolicitacaoForm.value;
     this.novaSolicitacao.data_criacao = new Date(Date.now());
     this.novaSolicitacao.status = Constants.STATUS_CRIADO
 
-    this.solicitacoesServico.registrarSolitacoes(this.novaSolicitacao).subscribe({
-      next: data =>{
+    this.solicitacoesServico.registrarSolitacoes(this.novaSolicitacao).subscribe(
+      () => {
         this.toastr.success("Solicitação criada com sucesso!", "Atualizado");
         this.carregarListas();
       },
-      error: err => this.toastr.error("Erro ao criar solicitação", "Algo deu errado")
+      (err) => {
+        this.toastr.error("Erro ao criar solicitação", "Algo deu errado");
+        console.log(err);
+      }
+    );
+  }
 
-    })
+  validacao(): void {
+    this.novaSolicitacaoForm = this.formBuilder.group({
+      servico: ['', [Validators.required]],
+      dia: ['', [Validators.required]],
+      descricao_problema: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(200) ]],
 
-}}
+    });
+  }
+}

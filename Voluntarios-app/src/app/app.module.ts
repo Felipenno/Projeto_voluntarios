@@ -49,7 +49,7 @@ import { PainelSolicitanteComponent } from './components/painel-solicitante/pain
     CommonModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut: 3000,
+      timeOut: 2000,
       preventDuplicates: true,
       progressBar: true
     }),

@@ -1,3 +1,4 @@
+<!-- modal -->
 <div class="modal fade" id="criarSolicitacaoModal" tabindex="-1" aria-labelledby="criarSolicitacaoLabel"
   aria-hidden="true">
   <div class="modal-dialog">
@@ -7,52 +8,59 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+        <form [formGroup]="novaSolicitacaoForm">
+          <div class="form-group">
+            <label for="servico">Profissional voluntário</label>
+            <select id="servico" type="text" class="form-select" formControlName="servico"
+              [ngClass]="{'is-invalid': sf.servico.errors && sf.servico.touched}">
+              <option selected disabled>Selecione um tipo de voluntário</option>
+              <option value="Babá">Babá</option>
+              <option value="Cuidador de Pets">Cuidador de Pets</option>
+              <option value="Diarista">Diarista</option>
+              <option value="Eletricista">Eletricista</option>
+              <option value="Encanador">Encanador</option>
+              <option value="Mecânico">Mecânico</option>
+              <option value="Pedreiro">Pedreiro</option>
+              <option value="Personal Organizer">Personal Organizer</option>
+              <option value="Professor">Professor</option>
+              <option value="Tecnico em informática">Técnico em informática</option>
+              <option value="Outro">Outro</option>
+            </select>
 
-        <div class="form-group">
-          <label for="servico">Profissional voluntário</label>
+            <div *ngIf="sf.servico.errors?.required" class="invalid-feedback">Escolha um</div>
+          </div>
 
-          <select [(ngModel)]="novaSolicitacao.servico" id="servico" type="text" class="form-select">
-            <option selected>Selecione um tipo de voluntário</option>
-            <option value="Babá">Babá</option>
-            <option value="Cuidador de Pets">Cuidador de Pets</option>
-            <option value="Diarista">Diarista</option>
-            <option value="Eletricista">Eletricista</option>
-            <option value="Encanador">Encanador</option>
-            <option value="Mecânico">Mecânico</option>
-            <option value="Pedreiro">Pedreiro</option>
-            <option value="Personal Organizer">Personal Organizer</option>
-            <option value="Professor">Professor</option>
-            <option value="Tecnico em informática">Técnico em informática</option>
-            <option value="Outro">Outro</option>
-          </select>
+          <div class="form-group">
+            <label for="data">Dia do serviço:</label>
+            <input id="data" type="date" class="form-control" formControlName="dia"
+              [ngClass]="{'is-invalid': sf.dia.errors && sf.dia.touched}" />
 
+            <div *ngIf="sf.dia.errors?.required" class="invalid-feedback">Dia do serviço é obrigatório</div>
+          </div>
 
-        </div>
+          <div class="form-group">
+            <label for="descricao">Descrição do problema</label>
+            <textarea id="data" type="text" formControlName="descricao_problema" class="form-control"
+              [ngClass]="{'is-invalid': sf.descricao_problema.errors && sf.descricao_problema.touched}">
+            </textarea>
 
-        <div class="form-group">
-          <label for="data">Dia do serviço:</label>
-          <input [(ngModel)]="novaSolicitacao.dia" id="data" type="date" class="form-control" />
-
-
-        </div>
-
-        <div class="form-group">
-          <label for="descricao">Descrição do problema</label>
-          <textarea [(ngModel)]="novaSolicitacao.descricao_problema" id="data" type="text"
-            class="form-control"></textarea>
-        </div>
-
-
-
+            <div *ngIf="sf.descricao_problema.errors?.required" class="invalid-feedback">Descreva seu problema</div>
+            <div *ngIf="sf.descricao_problema.errors?.maxlength" class="invalid-feedback">Máximo de 200 caracteres</div>
+            <div *ngIf="sf.descricao_problema.errors?.minlength" class="invalid-feedback">Mínimo de 10 caracteres</div>
+          </div>
+        </form>
       </div>
+
       <div class="modal-footer">
         <button type="button" class="btn btn-danger ms-2" data-bs-dismiss="modal">Cancelar</button>
-        <button (click)="criarSolicitacao()" type="button" class="btn btn-primary" data-bs-dismiss="modal">Salvar
+        <button (click)="criarSolicitacao()" [disabled]="novaSolicitacaoForm.invalid" type="button"
+          class="btn btn-primary" data-bs-dismiss="modal">Salvar
           solicitação</button>
       </div>
     </div>
   </div>
 </div>
+<!-- modal -->
 
 <div class="container">
   <h1 class="mb-5 text-center">Painel Solicitante</h1>
@@ -106,14 +114,13 @@
           <th>Dia Serviço</th>
           <th>Criado em </th>
           <th>Avaliação </th>
-          <th>
-          </th>
+          <th></th>
         </tr>
       </thead>
 
 
       <tbody>
-        <ng-container *ngFor="let items of solicitacoes">
+        <ng-container *ngFor="let items of solicitacoesAbertas">
           <ng-container *ngFor="let item2 of items.solicitacoes">
             <tr>
               <th>{{item2.usuarios[0].nome}}</th>
@@ -148,43 +155,39 @@
           </ng-container>
         </ng-container>
       </tbody>
+    </table>
 
 
+    <h4 class="mt-5">Solicitações Concluidas</h4>
+    <div>
+      <table id="tabela-andamento" class="table table-borderless table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th>Voluntário</th>
+            <th>Serviço</th>
+            <th>Dia do Serviço</th>
+            <th>Criado em</th>
+            <th>Data final</th>
+            <th>Avaliação</th> <!-- estrelinhas -->
 
-      <h4 class="mt-5">Solicitações Concluidas</h4>
-      <div>
-        <table id="tabela-andamento" class="table table-borderless table-hover">
-          <thead class="table-dark">
-            <tr>
-              <th>Voluntário</th>
-              <th>Serviço</th>
-              <th>Dia do Serviço</th>
-              <th>Criado em</th>
-              <th>Data final</th>
-              <th>Avaliação</th> <!-- estrelinhas -->
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
+            <th></th>
+          </tr>
+        </thead>
 
-          <tbody>
-            <ng-container *ngFor="let items of solicitacoesConcluidas">
-              <ng-container *ngFor="let item2 of items.solicitacoes">
-                <tr>
-                  <th>{{item2.usuarios[0].nome}}</th>
-                  <th>{{item2.servico}}</th>
-                  <th>{{item2.dia | date: 'dd/MM/yyyy'}}</th>
-                  <th>{{item2.data_criacao | date: 'dd/MM/yyyy'}}</th>
-                  <th>{{item2.data_encerramento | date: 'dd/MM/yyyy'}}</th>
-                  <th>{{item2.nota}}</th>
-                  <th>
-
-                  </th>
-
-                <tr class="table-success">
-                  <td colspan="8"></td>
-                </tr>
-              </ng-container>
+        <tbody>
+          <ng-container *ngFor="let items of solicitacoesConcluidas">
+            <ng-container *ngFor="let item2 of items.solicitacoes">
+              <tr>
+                <th>{{item2.usuarios[0].nome}}</th>
+                <th>{{item2.servico}}</th>
+                <th>{{item2.dia | date: 'dd/MM/yyyy'}}</th>
+                <th>{{item2.data_criacao | date: 'dd/MM/yyyy'}}</th>
+                <th>{{item2.data_encerramento | date: 'dd/MM/yyyy'}}</th>
+                <th>{{item2.nota}}</th>
+              <tr class="table-success">
+                <td colspan="8"></td>
+              </tr>
             </ng-container>
-          </tbody>
-        </table>
+          </ng-container>
+        </tbody>
+      </table>

@@ -1,6 +1,4 @@
-import { templateJitUrl } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Solicitacoes } from 'src/app/models/Solicitacoes';
 import { Usuario } from 'src/app/models/Usuario';
 import { SolicitacoesService } from 'src/app/services/solicitacoes.service';
@@ -13,7 +11,6 @@ import { Constants } from 'src/app/utils/Constants';
 })
 export class UsuarioVoluntarioComponent implements OnInit {
   
-  
   solicitacaoAbertas: Solicitacoes[] = []
   solicitacaoAndamento: Usuario[] = []
   solicitacoesConcluidas: Usuario[] = [];
@@ -22,7 +19,6 @@ export class UsuarioVoluntarioComponent implements OnInit {
 
   constructor(
     private solicitacoesService : SolicitacoesService,
-    private router: Router
   ) { }
 
   ngOnInit() {
