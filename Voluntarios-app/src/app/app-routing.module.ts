@@ -12,6 +12,7 @@ import { UsuarioVoluntarioComponent } from './components/painel-voluntario/usuar
 import { PainelSolicitanteComponent } from './components/painel-solicitante/painel-solicitante.component';
 
 
+
 const routes: Routes = [
  
   { path: 'home', component: HomeComponent },

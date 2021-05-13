@@ -43,7 +43,10 @@ export class SolicitacoesService {
     cancelarSolicitacao(id_solicitacoes: number, solicitacoes: Solicitacoes): Observable<Solicitacoes>{
         return this.httpClient.put<Solicitacoes>(`${this.apiUrl}solicitacoes/cancelar/voluntario/${id_solicitacoes}`, solicitacoes);
     }
-
+    
+   /*  fimSolicitacao(id_solicitacoes: number, solicitacoes: Solicitacoes): Observable<Solicitacoes>{
+        return this.httpClient.put<Solicitacoes>(`${this.apiUrl}solicitacoes/concluir/voluntario/${id_solicitacoes}`, solicitacoes);
+    } */
 
 
 

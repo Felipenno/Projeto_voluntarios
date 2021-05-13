@@ -1,5 +1,5 @@
-
-<div class="modal fade" id="criarSolicitacaoModal" tabindex="-1" aria-labelledby="criarSolicitacaoLabel" aria-hidden="true">
+<div class="modal fade" id="criarSolicitacaoModal" tabindex="-1" aria-labelledby="criarSolicitacaoLabel"
+  aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -8,23 +8,24 @@
       </div>
       <div class="modal-body">
 
-        <div class="form-group" >
+        <div class="form-group">
           <label for="servico">Serviço</label>
-          <input [(ngModel)]="novaSolicitacao.servico"  id="servico" type="text" class="form-control"/>
+          <input [(ngModel)]="novaSolicitacao.servico" id="servico" type="text" class="form-control" />
         </div>
 
-        <div class="form-group" >
+        <div class="form-group">
           <label for="data">Dia do serviço:</label>
-          <input [(ngModel)]="novaSolicitacao.dia"  id="data" type="date" class="form-control"/>
+          <input [(ngModel)]="novaSolicitacao.dia" id="data" type="date" class="form-control" />
 
 
         </div>
 
-        <div class="form-group" >
+        <div class="form-group">
           <label for="descricao">Descrição do problema</label>
-          <textarea [(ngModel)]="novaSolicitacao.descricao_problema"  id="data" type="text" class="form-control"></textarea> 
+          <textarea [(ngModel)]="novaSolicitacao.descricao_problema" id="data" type="text"
+            class="form-control"></textarea>
         </div>
-      
+
 
 
       </div>
@@ -40,17 +41,17 @@
   <h1 class="mb-5 text-center">Painel Solicitante</h1>
 
   <h4 class="mt-5">Solicitações Criadas</h4>
-  <div class="text-end">    
+  <div class="text-end">
     <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#criarSolicitacaoModal">
-        Criar solicitação
+      Criar solicitação
     </button>
-</div>
+  </div>
   <table id="tabela-criadas" class="table table-borderless table-hover">
     <thead class="table-dark">
       <tr>
-        <th >Serviço</th>
-        <th >Dia do serviço</th>
-        <th >Problema</th>
+        <th>Serviço</th>
+        <th>Dia do serviço</th>
+        <th>Problema</th>
       </tr>
     </thead>
     <tbody>
@@ -59,7 +60,7 @@
           <th>{{items.servico}}</th>
           <th>{{items.dia | date: 'dd/MM/yyyy'}}</th>
           <th>{{items.descricao_problema}}</th>
-          </tr>
+        </tr>
 
       </ng-container>
     </tbody>
@@ -67,78 +68,85 @@
 
 
 
-     
+
   </table>
-  
+
   <h4 class="mt-5">Solicitações Aceitas</h4>
   <div>
 
-  <table id="tabela-andamento" class="table table-borderless table-hover">
-    <thead class="table-dark">
-      <tr>
-        <th >Voluntário</th>
-        <th >Telefone</th>
-        <th >Serviço</th>
-        <th >Dia Serviço</th>
-        <th >Criado em </th>
-        <th >Avaliação </th>
-        <th></th>
-      </tr>
-    </thead>
-    
-
-    <tbody>
-      <ng-container  *ngFor="let items of solicitacoes">
-        <ng-container  *ngFor="let item2 of items.solicitacoes">
+    <table id="tabela-andamento" class="table table-borderless table-hover">
+      <thead class="table-dark">
         <tr>
-          <th>{{item2.usuarios[0].nome}}</th>
-          <th>{{item2.usuarios[0].telefone}}</th>
-          <th>{{item2.servico}}</th>
-          <th>{{item2.dia | date: 'dd/MM/yyyy'}}</th>
-          <th>{{item2.data_criacao | date: 'dd/MM/yyyy'}}</th>
-
-          <th colspan="2" class="text-end">
-            <a (click)="concluirSolicitacao()" class="btn btn-primary ">Concluir</a>
-            <a (click)="cancelarSolicitacao(item2.id_solicitacoes)" class="btn btn-danger ms-2">Cancelar</a>
-          </th>
+          <th>Voluntário</th>
+          <th>Telefone</th>
+          <th>Serviço</th>
+          <th>Dia Serviço</th>
+          <th>Criado em </th>
+          <th>Avaliação </th>
+          <th></th>
         </tr>
-        
-         <tr class="table-success"><td colspan="8"></td></tr>
-      </ng-container>
-    </ng-container>
-    </tbody>
-  </table>
+      </thead>
 
 
-  <h4 class="mt-5">Solicitações Concluidas</h4>
-  <div>
-  <table id="tabela-andamento" class="table table-borderless table-hover">
-    <thead class="table-dark">
-      <tr>
-        <th >Voluntário</th>
-        <th >Serviço</th>
-        <th >Dia do Serviço</th>
-        <th >Criado em</th>
-        <th >Data final</th>
-        <th>Avaliação</th> <!-- estrelinhas -->
+      <tbody>
+        <ng-container *ngFor="let items of solicitacoes">
+          <ng-container *ngFor="let item2 of items.solicitacoes">
+            <tr>
+              <th>{{item2.usuarios[0].nome}}</th>
+              <th>{{item2.usuarios[0].telefone}}</th>
+              <th>{{item2.servico}}</th>
+              <th>{{item2.dia | date: 'dd/MM/yyyy'}}</th>
+              <th>{{item2.data_criacao | date: 'dd/MM/yyyy'}}</th>
 
-        <th></th>
-      </tr>
-    </thead>
+              <th colspan="2" class="text-end">
+                <a (click)="concluirSolicitacao()" class="btn btn-primary ">Concluir</a>
+                <a (click)="cancelarSolicitacao(item2.id_solicitacoes)" class="btn btn-danger ms-2">Cancelar</a>
+              </th>
+            </tr>
 
-    <tbody>
-      <ng-container  *ngFor="let items of solicitacoesConcluidas">
-        <ng-container  *ngFor="let item2 of items.solicitacoes">
-        <tr>
-          <th>{{item2.usuarios[0].nome}}</th>
-          <th>{{item2.servico}}</th>
-          <th>{{item2.dia | date: 'dd/MM/yyyy'}}</th>
-          <th>{{item2.data_criacao | date: 'dd/MM/yyyy'}}</th>
-          <th>{{item2.data_encerramento | date: 'dd/MM/yyyy'}}</th>
-          <th>{{item2.nota}}</th>
-         <tr class="table-success"><td colspan="8"></td></tr>
-      </ng-container>
-    </ng-container>
-    </tbody>
-  </table>
+            <tr class="table-success">
+              <td colspan="8"></td>
+            </tr>
+          </ng-container>
+        </ng-container>
+      </tbody>
+    </table>
 
+
+    <h4 class="mt-5">Solicitações Concluidas</h4>
+    <div>
+      <table id="tabela-andamento" class="table table-borderless table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th>Voluntário</th>
+            <th>Serviço</th>
+            <th>Dia do Serviço</th>
+            <th>Criado em</th>
+            <th>Data final</th>
+            <th>Avaliação</th> <!-- estrelinhas -->
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <ng-container *ngFor="let items of solicitacoesConcluidas">
+            <ng-container *ngFor="let item2 of items.solicitacoes">
+              <tr>
+                <th>{{item2.usuarios[0].nome}}</th>
+                <th>{{item2.servico}}</th>
+                <th>{{item2.dia | date: 'dd/MM/yyyy'}}</th>
+                <th>{{item2.data_criacao | date: 'dd/MM/yyyy'}}</th>
+                <th>{{item2.data_encerramento | date: 'dd/MM/yyyy'}}</th>
+                <th>{{item2.nota}}</th>
+                <th>
+
+                </th>
+
+              <tr class="table-success">
+                <td colspan="8"></td>
+              </tr>
+            </ng-container>
+          </ng-container>
+        </tbody>
+      </table>

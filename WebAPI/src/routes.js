@@ -1,4 +1,6 @@
-import { Router } from 'express';
+import {
+    Router
+} from 'express';
 import EnderecoController from './app/controllers/EnderecoController';
 import SolicitacoesController from './app/controllers/SolicitacoesController';
 import UsuarioController from './app/controllers/UsuarioController';
@@ -35,7 +37,7 @@ routes.get('/voluntario/:id', VoluntarioControllers.show);
 routes.get('/solicitacoes/:status/usuario/:tipo', SolicitacoesController.listarPorStatus);
 routes.put('/solicitacoes/adicionar/voluntario/:id_solicitacoes', SolicitacoesController.adicionarVoluntario);
 routes.put('/solicitacoes/cancelar/voluntario/:id_solicitacoes', SolicitacoesController.cancelarSolicitacao);
-routes.put('/solicitacoes/concluir/:id_solicitacoes', SolicitacoesController.concluirSolicitação);
+routes.put('/solicitacoes/concluir /:id_solicitacoes', SolicitacoesController.concluirSolicitação);
 
 routes.post('/solicitacoes', SolicitacoesController.store);
 routes.get('/solicitacoes', SolicitacoesController.index);
