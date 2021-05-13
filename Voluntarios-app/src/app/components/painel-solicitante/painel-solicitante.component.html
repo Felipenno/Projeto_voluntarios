@@ -128,9 +128,23 @@
               <th>{{item2.servico}}</th>
               <th>{{item2.dia | date: 'dd/MM/yyyy'}}</th>
               <th>{{item2.data_criacao | date: 'dd/MM/yyyy'}}</th>
+              <th>
+                <div class="form-group">
+                  <label for="nota">Nota</label>
+
+                  <select [(ngModel)]="notaSolicitacao" id="nota" type="number" class="form-select">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </div>
+              </th>
+
 
               <th colspan="2" class="text-end">
-                <a (click)="concluirSolicitacao()" class="btn btn-primary ">Concluir</a>
+                <a (click)="concluirSolicitacao(item2.id_solicitacoes)" class="btn btn-primary ">Concluir</a>
                 <a (click)="cancelarSolicitacao(item2.id_solicitacoes)" class="btn btn-danger ms-2">Cancelar</a>
               </th>
             </tr>

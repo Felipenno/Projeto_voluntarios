@@ -6,6 +6,7 @@ import { Constants } from 'src/app/utils/Constants';
 import {ToastrService} from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+
 @Component({
   selector: 'app-painel-solicitante',
   templateUrl: './painel-solicitante.component.html',
@@ -18,6 +19,9 @@ export class PainelSolicitanteComponent implements OnInit {
   solicitacoesConcluidas: Usuario[] = []
 
   novaSolicitacao: Solicitacoes = new Solicitacoes()
+  atualizaSolicitacao: Solicitacoes = new Solicitacoes()
+  notaSolicitacao = 0;
+  
   novaSolicitacaoForm: FormGroup;
 
   constructor(
@@ -75,9 +79,32 @@ export class PainelSolicitanteComponent implements OnInit {
     });
   }
 
-  concluirSolicitacao(): void{
+   concluirSolicitacao(id: number): void{
+    this.solicitacoesAbertas.map(item =>
+      item.solicitacoes.find(item2 => {
+        if (item2.id_solicitacoes == id){
+          this.atualizaSolicitacao = item2
+        }
+      })
+     )
+    this.atualizaSolicitacao.status = Constants.STATUS_CONCLUIDO
+    this.atualizaSolicitacao.nota = this.notaSolicitacao
+    this.atualizaSolicitacao.data_encerramento = new Date(Date.now())
+     this.solicitacoesServico.fimSolicitacao(this.atualizaSolicitacao.id_solicitacoes , this.atualizaSolicitacao)
+    .subscribe({
+      next: data => {
+        this.toastr.success('Solitacao Concluída')
+        this.carregarListas();
+      },
+      error: err =>{
+        this.toastr.error("Erro ao concluir solicitação", "Algo deu errado")
+        console.log(err)
+      } 
+      
 
-  }
+    })
+ 
+  } 
 
   cancelarSolicitacao(id:number): void{
     this.solicitacoesServico.excluirSolicitacoes(id)

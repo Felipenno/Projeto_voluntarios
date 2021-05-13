@@ -5,6 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 import { ToastrModule } from 'ngx-toastr';
 
@@ -22,6 +23,7 @@ import { UsuarioVoluntarioComponent } from  './components/painel-voluntario/usua
 import { PainelSolicitanteComponent } from './components/painel-solicitante/painel-solicitante.component';
 
 
+
 @NgModule({
   declarations: [
     NavComponent,
@@ -34,6 +36,7 @@ import { PainelSolicitanteComponent } from './components/painel-solicitante/pain
     EnderecoAtualizarComponent,
     UsuarioVoluntarioComponent,
     PainelSolicitanteComponent,
+    
 
 
   ],
@@ -49,7 +52,8 @@ import { PainelSolicitanteComponent } from './components/painel-solicitante/pain
       timeOut: 2000,
       preventDuplicates: true,
       progressBar: true
-    })
+    }),
+    NgbModule
   ],
   providers: [
     {

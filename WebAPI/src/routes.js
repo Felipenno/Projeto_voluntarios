@@ -1,4 +1,6 @@
-import { Router } from 'express';
+import {
+    Router
+} from 'express';
 import EnderecoController from './app/controllers/EnderecoController';
 import SolicitacoesController from './app/controllers/SolicitacoesController';
 import UsuarioController from './app/controllers/UsuarioController';
