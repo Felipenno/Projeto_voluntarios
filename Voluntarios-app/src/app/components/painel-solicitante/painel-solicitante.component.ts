@@ -90,13 +90,17 @@ export class PainelSolicitanteComponent implements OnInit {
     this.atualizaSolicitacao.status = Constants.STATUS_CONCLUIDO
     this.atualizaSolicitacao.nota = this.notaSolicitacao
     this.atualizaSolicitacao.data_encerramento = new Date(Date.now())
-     this.solicitacoesServico.fimSolicitacao(this.atualizaSolicitacao)
+     this.solicitacoesServico.fimSolicitacao(this.atualizaSolicitacao.id_solicitacoes , this.atualizaSolicitacao)
     .subscribe({
       next: data => {
         this.toastr.success('Solitacao Concluída')
         this.carregarListas();
       },
-      error: err => this.toastr.error("Erro ao concluir solicitação", "Algo deu errado")
+      error: err =>{
+        this.toastr.error("Erro ao concluir solicitação", "Algo deu errado")
+        console.log(err)
+      } 
+      
 
     })
  

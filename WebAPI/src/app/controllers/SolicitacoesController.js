@@ -173,8 +173,16 @@ class SolicitacoesController {
 
 	async concluirSolicitação(request, response) {
 
+		const {
+			id_solicitacoes
+		} = request.params;
 
-		await Solicitacoes.update(request.body)
+
+		await Solicitacoes.update(request.body, {
+				where: {
+					id_solicitacoes
+				}
+			})
 			.then(alterarStatus => {
 				if (alterarStatus == 1) {
 					response.send({
