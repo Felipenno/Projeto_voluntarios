@@ -47,7 +47,6 @@ export class NavComponent implements OnInit {
     this.router.navigate(['/endereco/atualizar']);
   }
 
-
   linkSair() {
     localStorage.removeItem('token');
     localStorage.removeItem('usertype');

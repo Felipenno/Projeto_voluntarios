@@ -1,9 +1,9 @@
-<div class="container my-5 col-8">
+<div class="container col-8">
   <h1>Dados do Usuário</h1>
   <hr>
 
   <form [formGroup]="usuarioForm">
-    <div class="form-group">
+    <div class="form-group mb-2">
       <label for="nome">Nome</label>
       <input id="nome" type="nome" class="form-control" formControlName="nome"
         [ngClass]="{'is-invalid': usuario.nome.errors && usuario.nome.touched}" />
@@ -11,7 +11,7 @@
       <div *ngIf="usuario.nome.errors?.minlength" class="invalid-feedback">A quantidade mínima de caractéres é de 9</div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group mb-2">
       <label for="email">E-mail</label>
       <input id="email" type="email" class="form-control" formControlName="email"
       [ngClass]="{'is-invalid': usuario.email.errors && usuario.email.touched}"/>
@@ -20,25 +20,25 @@
       <div *ngIf="usuario.email.errors?.maxlength" class="invalid-feedback">A quantidade máxima de caractéres é de 50</div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group mb-2">
       <label for="cpf">CPF</label>
       <input id="cpf" type="text" class="form-control" formControlName="cpf"
       [ngClass]="{'is-invalid': usuario.cpf.errors && usuario.cpf.touched}"/>
-      <div *ngIf="usuario.cpf.errors?.required" class="invalid-feedback">E-email é obrigatório</div>
-      <div *ngIf="usuario.cpf.errors?.maxlength" class="invalid-feedback">A quantidade máxima de caractéres é de 11</div>
+      <div *ngIf="usuario.cpf.errors?.required" class="invalid-feedback">CPF é obrigatório</div>
+      <div *ngIf="usuario.cpf.errors?.maxlength" class="invalid-feedback">A quantidade máxima de caractéres é de 15</div>
 
     </div>
 
-    <div class="form-group">
+    <div class="form-group mb-2">
       <label for="telefone">Telefone</label>
       <input formControlName="telefone" id="telefone" type="text" class="form-control"
       [ngClass]="{'is-invalid': usuario.telefone.errors && usuario.telefone.touched}"/>
-      <div *ngIf="usuario.telefone.errors?.required" class="invalid-feedback">E-email é obrigatório</div>
-      <div *ngIf="usuario.telefone.errors?.maxlength" class="invalid-feedback">A quantidade máxima de caractéres é de 11</div>
+      <div *ngIf="usuario.telefone.errors?.required" class="invalid-feedback">Telefone é obrigatório</div>
+      <div *ngIf="usuario.telefone.errors?.maxlength" class="invalid-feedback">A quantidade máxima de caractéres é de 15</div>
 
     </div>
 
-    <div class="mt-3 d-flex justify-content-between">
+    <div class="my-3 d-flex justify-content-between">
       <button (click)="voltarPaginaAnterior()" class="btn btn-secondary">Voltar</button>
       <button (click)="update()" class="btn btn-primary" [disabled]="usuarioForm.invalid">Atualizar</button>
     </div>

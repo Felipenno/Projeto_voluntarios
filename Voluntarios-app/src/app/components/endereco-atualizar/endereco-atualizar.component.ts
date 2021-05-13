@@ -5,7 +5,6 @@ import { ToastrService } from 'ngx-toastr';
 import { Endereco } from 'src/app/models/Endereco';
 import { EnderecoService } from 'src/app/services/endereco.service';
 
-
 @Component({
   selector: 'app-endereco-atualizar',
   templateUrl: './endereco-atualizar.component.html',
@@ -16,22 +15,23 @@ export class EnderecoAtualizarComponent implements OnInit {
   endereco: Endereco = new Endereco();
   enderecoForm: FormGroup
 
-
-
-  constructor(private enderecoService: EnderecoService,
-              private router: Router,
-              private toastr: ToastrService,
-              private formBuilder: FormBuilder) { }
-
-              get ef(): any{
-                return this.enderecoForm.controls; 
-              }
+  constructor(
+    private enderecoService: EnderecoService,
+    private router: Router,
+    private toastr: ToastrService,
+    private formBuilder: FormBuilder
+  ) { }
 
   ngOnInit(): void {
     this.preencherEndereco()
     this.validacao()
   }
-  validacao():void{
+
+  get ef(): any {
+    return this.enderecoForm.controls;
+  }
+
+  validacao(): void {
     this.enderecoForm = this.formBuilder.group({
       cep: ['', [Validators.required, Validators.maxLength(20)]],
       estado: ['', [Validators.required, Validators.maxLength(25)]],
@@ -43,7 +43,7 @@ export class EnderecoAtualizarComponent implements OnInit {
     })
   }
 
-  preencherEndereco():void{
+  preencherEndereco(): void {
     this.enderecoService.pegarEndereco().subscribe({
       next: data => {
         this.endereco = data;
@@ -53,18 +53,23 @@ export class EnderecoAtualizarComponent implements OnInit {
     })
   }
 
-  voltarPaginaAnterior():void{
-    this.router.navigate(['home'])
-  }
-
-  atualizarEndereco():void{
+  atualizarEndereco(): void {
     this.endereco = this.enderecoForm.value;
     this.enderecoService.atualizarEndereco(this.endereco).subscribe({
       next: data => {
         this.toastr.success('Atualizado com sucesso', 'Atualizado');
-        this.router.navigate(['home'])
+        this.voltaParaPainel();
       },
       error: err => this.toastr.error("Erro ao atualizar ", 'Algo deu errado!')
     })
+  }
+
+  voltaParaPainel(){
+    const usuarioPainel = localStorage.getItem('usertype')
+    switch(usuarioPainel){
+      case 's': this.router.navigate(['/painel/solicitante']); break;
+      case 'v': this.router.navigate(['/painel/voluntario']); break;
+      default: this.router.navigate(['/home']); break;
+    }
   }
 }

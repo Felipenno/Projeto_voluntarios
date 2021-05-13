@@ -46,8 +46,8 @@ export class UsuarioAtualizarComponent implements OnInit {
     this.usuarioForm = this.formBuilder.group({
       nome: ['', [Validators.required, Validators.minLength(9)]],
       email: ['', [Validators.required, Validators.email, Validators.maxLength(50)]],
-      cpf: ['', [Validators.required, Validators.maxLength(11)]],
-      telefone: ['', [Validators.maxLength(11)]]
+      cpf: ['', [Validators.required, Validators.maxLength(15)]],
+      telefone: ['', [Validators.maxLength(15)]]
     })
   }
 
@@ -57,12 +57,22 @@ export class UsuarioAtualizarComponent implements OnInit {
     .subscribe({
       next: data => {
         this.toastr.success('Cadastro atualizado com sucesso!', 'Atualizado');
+        this.voltaParaPainel();
       },
       error: err => this.toastr.error("Erro ao atualizar ", 'Algo deu errado!')
     });
   }
 
   voltarPaginaAnterior():void{
-    this.router.navigate(['home'])
+    this.voltaParaPainel();
+  }
+
+  voltaParaPainel(){
+    const usuarioPainel = localStorage.getItem('usertype')
+    switch(usuarioPainel){
+      case 's': this.router.navigate(['/painel/solicitante']); break;
+      case 'v': this.router.navigate(['/painel/voluntario']); break;
+      default: this.router.navigate(['/home']); break;
+    }
   }
 }

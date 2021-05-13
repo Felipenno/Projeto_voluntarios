@@ -2,42 +2,61 @@
   <h1>{{registroTipo}}</h1>
   <hr>
 
-  <div > 
-    <div class="form-group" >
-      <label for="email">Email</label>
-      <input [(ngModel)]="usuario.email"  id="email" type="email" class="form-control"/>
+  <form [formGroup]="usuarioForm">
+    <div class="form-group mb-2">
+      <label for="nome">Nome Completo</label>
+      <input id="nome" type="nome" class="form-control" formControlName="nome"
+        [ngClass]="{'is-invalid': usuario.nome.errors && usuario.nome.touched}" />
+      <div *ngIf="usuario.nome.errors?.required" class="invalid-feedback">Nome é obrigatório</div>
+      <div *ngIf="usuario.nome.errors?.minlength" class="invalid-feedback">A quantidade mínima de caractéres é de 9</div>
     </div>
 
-    <div class="form-group">
-      <label for="senha">Senha</label>
-      <input [(ngModel)]="usuario.senhaV" id="senha" type="password" class="form-control" />
+    <div class="form-group mb-2">
+      <label for="email">E-mail</label>
+      <input id="email" type="email" class="form-control" formControlName="email"
+      [ngClass]="{'is-invalid': usuario.email.errors && usuario.email.touched}"/>
+      <div *ngIf="usuario.email.errors?.required" class="invalid-feedback">E-email é obrigatório</div>
+      <div *ngIf="usuario.email.errors?.email" class="invalid-feedback">Formato de e-mail incorreto</div>
+      <div *ngIf="usuario.email.errors?.maxlength" class="invalid-feedback">A quantidade máxima de caractéres é de 50</div>
     </div>
 
-    <div class="form-group">
-      <label for="repetir-senha">Confirmar senha</label>
-      <input [(ngModel)]="confirmarSenha" id="repetir-senha" type="password" class="form-control"  />
+    <div class="form-group mb-2">
+      <label for="cpf">Senha</label>
+      <input id="senhaV" type="password" class="form-control" formControlName="senhaV"
+      [ngClass]="{'is-invalid': usuario.senhaV.errors && usuario.senhaV.touched}"/>
+      <div *ngIf="usuario.senhaV.errors?.required" class="invalid-feedback">A senha é obrigatória</div>
+      <div *ngIf="usuario.senhaV.errors?.minlength" class="invalid-feedback">A quantidade mínima de caractéres é de 6</div>
     </div>
 
-    <div class="form-group">
-      <label for="nome">Nome completo</label>
-      <input [(ngModel)]="usuario.nome" id="nome" type="text" class="form-control" />
+    <div class="form-group mb-2">
+      <label for="confirmarSenha">Confirmar Senha</label>
+      <input id="confirmarSenha" type="password" class="form-control" formControlName="confirmarSenha"
+      [ngClass]="{'is-invalid': usuario.confirmarSenha.errors && usuario.confirmarSenha.touched}"/>
+      <div *ngIf="usuario.confirmarSenha.errors?.required" class="invalid-feedback">É obrigatório repetir a senha</div>
+      <div *ngIf="usuario.confirmarSenha.errors?.mustMatch" class="invalid-feedback">As senhas não conferem</div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group mb-2">
       <label for="cpf">CPF</label>
-      <input [(ngModel)]="usuario.cpf" id="cpf" type="text" class="form-control" />
+      <input id="cpf" type="text" class="form-control" placeholder="000.000.000-00" formControlName="cpf"
+      [ngClass]="{'is-invalid': usuario.cpf.errors && usuario.cpf.touched}"/>
+      <div *ngIf="usuario.cpf.errors?.required" class="invalid-feedback">CPF é obrigatório</div>
+      <div *ngIf="usuario.cpf.errors?.minlength" class="invalid-feedback">A quantidade mínima de caractéres é de 11</div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group mb-2">
       <label for="telefone">Telefone</label>
-      <input [(ngModel)]="usuario.telefone" for id="telefone" type="text" class="form-control" />
+      <input formControlName="telefone" id="telefone" type="text" placeholder="(00) 00000-0000" class="form-control"
+      [ngClass]="{'is-invalid': usuario.telefone.errors && usuario.telefone.touched}"/>
+      <div *ngIf="usuario.telefone.errors?.required" class="invalid-feedback">Telefone é obrigatório</div>
+      <div *ngIf="usuario.telefone.errors?.maxlength" class="invalid-feedback">A quantidade mínima de caractéres é de 11</div>
+
     </div>
 
-    <div class="form-row mt-3">
-      <button (click)="criarUsuario()" class="btn btn-primary">Continuar</button>
-
-      <button routerLink="/home" class="btn btn-secondary ms-5">Voltar para a página inicial</button>
+    <div class="my-3 d-flex justify-content-between">
+      <button routerLink="/home" class="btn btn-secondary">Voltar para a página inicial</button>
+      <button (click)="criarUsuario()" class="btn btn-primary" [disabled]="usuarioForm.invalid">Continuar</button>
     </div>
-    
-  </div>
+
+  </form>
 </div>
