@@ -1,9 +1,9 @@
 <div class="container">
-  <h1 class="mb-5 text-center">Painel Voluntário</h1>
+  <h1 class="mb-5 text-center text-dark">Painel Voluntário</h1>
 
-  <h4 class="mt-5">Escolha uma solicitação para ajudar</h4>
-  <table class="table table-borderless table-hover align-middle">
-    <thead class="table-dark">
+  <h4 class="mt-5 text-dark">Escolha uma solicitação para ajudar</h4>
+  <table class="table table-borderless table-hover align-middle shadow">
+    <thead class="text-light bg-dark">
       <tr>
         <th >Nome</th>
         <th >Serviço</th>
@@ -23,27 +23,27 @@
           <th>{{items.usuarios[0].endereco.cidade}}</th>
           <th>{{items.dia | date: 'dd/MM/yyyy'}}</th>
           <th class="text-end">
-            <a (click)="escolherSolicitacao(items.id_solicitacoes)" class="btn btn-primary">Escolher</a>
+            <a (click)="escolherSolicitacao(items.id_solicitacoes)" class="btn text-light bg-dark">Escolher</a>
           </th>
         </tr>
 
-        <tr class="border-top border-dark">
-          <th class="table-success">Decrição do problema: </th> 
-          <th colspan="5" >
+        <tr class="">
+          <th class="table-active">Decrição do problema: </th> 
+          <th colspan="5" class="table-active" >
             <p>{{items.descricao_problema}}</p>
           </th> 
         </tr>
 
-         <tr class="table-success"><td colspan="6"></td></tr>
+         <tr class="bg-dark"><td colspan="6"></td></tr>
       
     </ng-container>
     </tbody>
   </table>
 
-  <h4 class="mt-5">Solicitações em Andamento</h4>
+  <h4 class="mt-5 text-dark">Solicitações em Andamento</h4>
   <div>
-  <table id="tabela-andamento" class="table table-borderless table-hover">
-    <thead class="table-dark">
+  <table id="tabela-andamento" class="table table-borderless table-hover shadow">
+    <thead class="text-light bg-dark">
       <tr>
         <th >Nome</th>
         <th >Serviço</th>
@@ -72,23 +72,23 @@
           </th>
         </tr>
 
-        <tr class="border-top border-dark">
-          <th class="table-success">Decrição do problema: </th> 
+        <tr class="table-active">
+          <th class="table-active">Decrição do problema: </th> 
           <th colspan="7" >
             <p>{{item2.descricao_problema}}</p>
           </th> 
         </tr>
 
-         <tr class="table-success"><td colspan="8"></td></tr>
+         <tr class="bg-dark"><td colspan="8"></td></tr>
       </ng-container>
     </ng-container>
     </tbody>
   </table>
 
 
-  <h4 class="mt-5">Solicitações Concluidas</h4>
-  <table class="table table-borderless table-hover">
-    <thead class="table-dark">
+  <h4 class="mt-5 text-dark">Solicitações Concluidas</h4>
+  <table class="table table-borderless table-hover shadow">
+    <thead class="text-light bg-dark">
       <tr>
         <th >Nome</th>
         <th >Serviço</th>
@@ -100,8 +100,8 @@
     </thead>
 
     <tbody>
-      <ng-container  *ngFor="let items of solicitacoesConcluidas; let i = index">
-        <ng-container  *ngFor="let item2 of items.solicitacoes; let i = index">
+      <ng-container  *ngFor="let items of solicitacoesConcluidas">
+        <ng-container  *ngFor="let item2 of items.solicitacoes">
         <tr>
           <th>{{item2.usuarios[0].nome}}</th>
           <th>{{item2.servico}}</th>
@@ -111,14 +111,14 @@
           <th>{{item2.nota}}</th>
         </tr>
 
-        <tr class="border-top border-dark">
-          <th class="table-success">Decrição do problema: </th> 
+        <tr class="table-active">
+          <th class="table-active">Decrição do problema: </th> 
           <th colspan="5" >
             <p>{{item2.descricao_problema}}</p>
           </th> 
         </tr>
 
-         <tr class="table-success"><td colspan="6"></td></tr>
+         <tr class="bg-dark"><td colspan="6"></td></tr>
       </ng-container>
     </ng-container>
     </tbody>

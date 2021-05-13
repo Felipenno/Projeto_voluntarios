@@ -1,5 +1,5 @@
 <div class="container col-8">
-  <h1>Agora Preencha Seu Endereço</h1>
+  <h1 class="text-dark">Agora Preencha Seu Endereço</h1>
   <hr>
 
   <form [formGroup]="enderecoForm">
@@ -67,7 +67,7 @@
       </div>
 
       <div class="my-3 d-flex justify-content-between">
-        <button (click)="salvarEndereco()" class="btn btn-primary"
+        <button (click)="salvarEndereco()" class="btn text-light bg-dark"
           [disabled]="enderecoForm.invalid">Finalizar</button>
       </div>
     </div>

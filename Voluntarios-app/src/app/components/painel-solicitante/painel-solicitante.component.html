@@ -54,7 +54,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-danger ms-2" data-bs-dismiss="modal">Cancelar</button>
         <button (click)="criarSolicitacao()" [disabled]="novaSolicitacaoForm.invalid" type="button"
-          class="btn btn-primary" data-bs-dismiss="modal">Salvar
+          class="btn text-light bg-dark" data-bs-dismiss="modal">Salvar
           solicitação</button>
       </div>
     </div>
@@ -63,16 +63,17 @@
 <!-- modal -->
 
 <div class="container">
-  <h1 class="mb-5 text-center">Painel Solicitante</h1>
+  <h1 class="mb-5 text-center text-dark">Painel Solicitante</h1>
 
-  <h4 class="mt-5">Solicitações Criadas</h4>
+  
   <div class="text-end">
-    <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#criarSolicitacaoModal">
+    <button class="btn text-light bg-dark" data-bs-toggle="modal" data-bs-target="#criarSolicitacaoModal">
       Criar solicitação
     </button>
   </div>
-  <table id="tabela-criadas" class="table table-borderless table-hover">
-    <thead class="table-dark">
+  <h4 class=" text-dark">Solicitações Criadas</h4>
+  <table id="tabela-criadas" class="table table-borderless table-hover shadow">
+    <thead class="text-light bg-dark">
       <tr>
         <th>Serviço</th>
         <th>Dia do serviço</th>
@@ -89,12 +90,11 @@
           <th>{{items.descricao_problema}}</th>
 
           <th colspan="2" class="text-end">
-            <a (click)="cancelarSolicitacao(items.id_solicitacoes)" class="btn btn-danger ms-2">Cancelar solicitação
-              criada</a>
+            <a (click)="cancelarSolicitacao(items.id_solicitacoes)" class="btn btn-danger ms-2">Cancelar solicitação</a>
           </th>
         </tr>
 
-        <tr class="table-success">
+        <tr class="bg-dark">
           <td colspan="8"></td>
         </tr>
 
@@ -102,11 +102,11 @@
     </tbody>
   </table>
 
-  <h4 class="mt-5">Solicitações Aceitas</h4>
+  <h4 class="mt-5 text-dark">Solicitações Aceitas</h4>
   <div>
 
-    <table id="tabela-andamento" class="table table-borderless table-hover">
-      <thead class="table-dark">
+    <table id="tabela-andamento" class="table table-borderless table-hover shadow">
+      <thead class="text-light bg-dark">
         <tr>
           <th>Voluntário</th>
           <th>Telefone</th>
@@ -117,7 +117,6 @@
           <th></th>
         </tr>
       </thead>
-
 
       <tbody>
         <ng-container *ngFor="let items of solicitacoesAbertas">
@@ -130,8 +129,7 @@
               <th>{{item2.data_criacao | date: 'dd/MM/yyyy'}}</th>
               <th>
                 <div class="form-group">
-                  <label for="nota">Nota</label>
-
+                  
                   <select [(ngModel)]="notaSolicitacao" id="nota" type="number" class="form-select">
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -144,12 +142,12 @@
 
 
               <th colspan="2" class="text-end">
-                <a (click)="concluirSolicitacao(item2.id_solicitacoes)" class="btn btn-primary ">Concluir</a>
+                <a (click)="concluirSolicitacao(item2.id_solicitacoes)" class="btn text-light bg-dark">Concluir</a>
                 <a (click)="cancelarSolicitacao(item2.id_solicitacoes)" class="btn btn-danger ms-2">Cancelar</a>
               </th>
             </tr>
 
-            <tr class="table-success">
+            <tr class="bg-dark">
               <td colspan="8"></td>
             </tr>
           </ng-container>
@@ -158,10 +156,10 @@
     </table>
 
 
-    <h4 class="mt-5">Solicitações Concluidas</h4>
+    <h4 class="mt-5 text-dark">Solicitações Concluidas</h4>
     <div>
-      <table id="tabela-andamento" class="table table-borderless table-hover">
-        <thead class="table-dark">
+      <table id="tabela-andamento" class="table table-borderless table-hover shadow">
+        <thead class="text-light bg-dark">
           <tr>
             <th>Voluntário</th>
             <th>Serviço</th>
@@ -184,7 +182,7 @@
                 <th>{{item2.data_criacao | date: 'dd/MM/yyyy'}}</th>
                 <th>{{item2.data_encerramento | date: 'dd/MM/yyyy'}}</th>
                 <th>{{item2.nota}}</th>
-              <tr class="table-success">
+              <tr class="bg-dark">
                 <td colspan="8"></td>
               </tr>
             </ng-container>

@@ -1,5 +1,5 @@
 <div class="container my-5 col-8">
-  <h1>{{registroTipo}}</h1>
+  <h1 class="text-dark">{{registroTipo}}</h1>
   <hr>
 
   <form [formGroup]="usuarioForm">
@@ -49,13 +49,13 @@
       <input formControlName="telefone" id="telefone" type="text" placeholder="(00) 00000-0000" class="form-control"
       [ngClass]="{'is-invalid': usuario.telefone.errors && usuario.telefone.touched}"/>
       <div *ngIf="usuario.telefone.errors?.required" class="invalid-feedback">Telefone é obrigatório</div>
-      <div *ngIf="usuario.telefone.errors?.maxlength" class="invalid-feedback">A quantidade mínima de caractéres é de 11</div>
+      <div *ngIf="usuario.telefone.errors?.minlength" class="invalid-feedback">A quantidade mínima de caractéres é de 10</div>
 
     </div>
 
     <div class="my-3 d-flex justify-content-between">
       <button routerLink="/home" class="btn btn-secondary">Voltar para a página inicial</button>
-      <button (click)="criarUsuario()" class="btn btn-primary" [disabled]="usuarioForm.invalid">Continuar</button>
+      <button (click)="criarUsuario()" class="btn text-light bg-dark" [disabled]="usuarioForm.invalid">Continuar</button>
     </div>
 
   </form>

@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-evenly align-items-center h-75">
   <img class="img-fluid d-none d-lg-block" src="assets/img/login.svg" alt="imagem-login" width="50%" height="20px">
   <div>
-    <h1>Login</h1>
+    <h1 class="text-dark">Login</h1>
 
     <form [formGroup]="loginForm">
       <div class="form-group">
@@ -30,7 +30,7 @@
       </div>
 
       <div class="form-row mt-3">
-        <button (click)="logar()" class="btn btn-primary" [disabled]="loginForm.invalid">Entrar</button>
+        <button (click)="logar()" class="btn text-light bg-dark" [disabled]="loginForm.invalid">Entrar</button>
         <button routerLink="/home" class="btn btn-secondary ms-5">Voltar para a página inicial</button>
       </div>
     </form>

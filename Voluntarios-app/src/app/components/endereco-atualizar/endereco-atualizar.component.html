@@ -1,5 +1,5 @@
 <div class="container col-8">
-  <h1>Atualizar Endereço</h1>
+  <h1 class="text-dark">Atualizar Endereço</h1>
   <hr>
 
   <form [formGroup]="enderecoForm">
@@ -68,7 +68,7 @@
 
       <div class="my-3 d-flex justify-content-between">
         <button (click)="voltaParaPainel()" class="btn btn-secondary">Cancelar</button>
-        <button (click)="atualizarEndereco()" class="btn btn-primary"
+        <button (click)="atualizarEndereco()" class="btn text-light bg-dark"
           [disabled]="enderecoForm.invalid">Salvar</button>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <div class="container col-8">
-  <h1>Dados do Usuário</h1>
+  <h1 class="text-dark">Dados do Usuário</h1>
   <hr>
 
   <form [formGroup]="usuarioForm">
@@ -40,7 +40,7 @@
 
     <div class="my-3 d-flex justify-content-between">
       <button (click)="voltarPaginaAnterior()" class="btn btn-secondary">Voltar</button>
-      <button (click)="update()" class="btn btn-primary" [disabled]="usuarioForm.invalid">Atualizar</button>
+      <button (click)="update()" class="btn text-light bg-dark" [disabled]="usuarioForm.invalid">Atualizar</button>
     </div>
 
   </form>

@@ -5,7 +5,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 import { ToastrModule } from 'ngx-toastr';
 
@@ -21,8 +20,6 @@ import { EnderecoAtualizarComponent } from './components/endereco-atualizar/ende
 import { EnderecoComponent } from './components/endereco-criar/endereco.component';
 import { UsuarioVoluntarioComponent } from  './components/painel-voluntario/usuario-voluntario.component';
 import { PainelSolicitanteComponent } from './components/painel-solicitante/painel-solicitante.component';
-
-
 
 @NgModule({
   declarations: [
@@ -53,7 +50,7 @@ import { PainelSolicitanteComponent } from './components/painel-solicitante/pain
       preventDuplicates: true,
       progressBar: true
     }),
-    NgbModule
+    
   ],
   providers: [
     {
