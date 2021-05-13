@@ -48,3 +48,4 @@ ng g g auth/auth
 
 npm install ngx-toastr --save
 npm install @angular/animations --save
+npm install bootswatch

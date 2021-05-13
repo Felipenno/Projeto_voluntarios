@@ -21,8 +21,8 @@ const routes: Routes = [
   
   { path :'endereco/atualizar', component: EnderecoAtualizarComponent, canActivate: [AuthGuard]},  
   { path: 'usuario/atualizar', component: UsuarioAtualizarComponent, canActivate: [AuthGuard] },
-  { path: 'painel/solicitante', component: PainelSolicitanteComponent},
-  { path: 'painel/voluntario', component: UsuarioVoluntarioComponent},
+  { path: 'painel/solicitante', component: PainelSolicitanteComponent, canActivate: [AuthGuard]},
+  { path: 'painel/voluntario', component: UsuarioVoluntarioComponent, canActivate: [AuthGuard]},
   
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
