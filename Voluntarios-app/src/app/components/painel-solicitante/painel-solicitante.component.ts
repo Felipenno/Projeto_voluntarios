@@ -6,7 +6,6 @@ import { Constants } from 'src/app/utils/Constants';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-
 @Component({
   selector: 'app-painel-solicitante',
   templateUrl: './painel-solicitante.component.html',

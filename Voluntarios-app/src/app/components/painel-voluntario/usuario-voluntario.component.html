@@ -1,7 +1,11 @@
 <div class="container">
-  <h1 class="mb-5 text-center text-dark">Painel Voluntário</h1>
+  <h1 class=" text-center text-dark">Painel Voluntário</h1>
 
-  <h4 class="mt-5 text-dark">Escolha uma solicitação para ajudar</h4>
+  <div class="text-end">
+    <button (click)="carregarListas()" class="btn btn-success shadow ms-5">Atualizar listas</button>
+  </div>
+
+  <h4 class="text-dark">Escolha uma solicitação para ajudar</h4>
   <table class="table table-borderless table-hover align-middle shadow">
     <thead class="text-light bg-dark">
       <tr>

@@ -57,6 +57,7 @@ export class UsuarioAtualizarComponent implements OnInit {
     .subscribe({
       next: data => {
         this.toastr.success('Cadastro atualizado com sucesso!', 'Atualizado');
+        localStorage.setItem('username', this.usuarioAtual.nome)
         this.voltaParaPainel();
       },
       error: err => this.toastr.error("Erro ao atualizar ", 'Algo deu errado!')

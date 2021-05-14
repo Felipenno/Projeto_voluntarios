@@ -2,13 +2,14 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Endereco } from "../models/Endereco";
+import { Constants } from "../utils/Constants";
 
 @Injectable({
     providedIn: 'root'
 })
 export class EnderecoService{
     
-    private apiUrl: string = 'http://localhost:8080/'
+    private apiUrl: string = Constants.HOST;
 
     constructor(private httpClient: HttpClient){}
 

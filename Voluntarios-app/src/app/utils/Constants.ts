@@ -4,4 +4,5 @@ export class Constants{
     static readonly STATUS_ANDAMENTO = 'andamento';
     static readonly STATUS_CRIADO  = 'criado';
     static readonly STATUS_CONCLUIDO = 'concluido';
+    static readonly HOST = 'http://localhost:8080/';
 }

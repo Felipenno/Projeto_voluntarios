@@ -3,13 +3,14 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Solicitacoes } from '../models/Solicitacoes';
 import { Usuario } from '../models/Usuario';
+import { Constants } from '../utils/Constants';
 
 @Injectable({
     providedIn: 'root'
 })
 export class SolicitacoesService {
 
-    private apiUrl: string = 'http://localhost:8080/'
+    private apiUrl: string = Constants.HOST;
 
     constructor(private httpClient: HttpClient) { }
 

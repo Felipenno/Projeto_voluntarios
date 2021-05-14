@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt'
 import { Login } from '../models/Login';
 import { map } from 'rxjs/operators';
+import { Constants } from '../utils/Constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private apiUrl: string = 'http://localhost:8080/'
+  private apiUrl: string = Constants.HOST;
   jwtHelper = new JwtHelperService();
 
   constructor(private httpClient: HttpClient) { }

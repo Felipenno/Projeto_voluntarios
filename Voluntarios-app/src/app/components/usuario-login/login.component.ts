@@ -51,11 +51,11 @@ export class LoginComponent implements OnInit {
         () => {
           const tipoUsuario = localStorage.getItem('usertype')
           if(tipoUsuario === 's'){
-            this.router.navigate(['/home']);
+            this.router.navigate(['/painel/solicitante']);
             this.toastr.success('Logado com sucesso', "Sucesso!");
           }
           if(tipoUsuario === 'v'){
-            this.router.navigate(['/home']);
+            this.router.navigate(['/painel/voluntario']);
             this.toastr.success('Logado com sucesso!', 'Sucesso!');
           }
         

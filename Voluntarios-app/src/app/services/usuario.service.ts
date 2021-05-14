@@ -2,13 +2,14 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Usuario } from "../models/Usuario";
+import { Constants } from "../utils/Constants";
 
 @Injectable({
     providedIn: 'root'
 })
 export class UsuarioService{
     
-    private apiUrl: string = 'http://localhost:8080/'
+    private apiUrl: string = Constants.HOST;
 
     constructor(private httpClient: HttpClient){}
 

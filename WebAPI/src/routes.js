@@ -1,10 +1,7 @@
-import {
-    Router
-} from 'express';
+import { Router } from 'express';
 import EnderecoController from './app/controllers/EnderecoController';
 import SolicitacoesController from './app/controllers/SolicitacoesController';
 import UsuarioController from './app/controllers/UsuarioController';
-import VoluntarioControllers from './app/controllers/VoluntarioControllers';
 import EnderecoController from './app/controllers/EnderecoController';
 import SessionController from './app/controllers/SessionController';
 
@@ -25,14 +22,7 @@ routes.delete('/usuario/:id', UsuarioController.destroy);
 routes.get('/enderecos', EnderecoController.listar);
 routes.put('/enderecos', EnderecoController.editar);
 routes.get('/endereco/selecionar', EnderecoController.listarUm);
-
 routes.delete('/enderecos/apagar/', EnderecoController.apagar);
-
-routes.post('/voluntario', VoluntarioControllers.store);
-routes.put('/voluntario/:id', VoluntarioControllers.update);
-routes.get('/voluntario', VoluntarioControllers.index);
-routes.delete('/voluntario/:id', VoluntarioControllers.destroy);
-routes.get('/voluntario/:id', VoluntarioControllers.show);
 
 routes.get('/solicitacoes/:status/usuario/:tipo', SolicitacoesController.listarPorStatus);
 routes.put('/solicitacoes/adicionar/voluntario/:id_solicitacoes', SolicitacoesController.adicionarVoluntario);
