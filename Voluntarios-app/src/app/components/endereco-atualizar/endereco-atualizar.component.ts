@@ -34,7 +34,7 @@ export class EnderecoAtualizarComponent implements OnInit {
   validacao(): void {
     this.enderecoForm = this.formBuilder.group({
       cep: ['', [Validators.required, Validators.maxLength(20)]],
-      estado: ['', [Validators.required, Validators.maxLength(25)]],
+      estado: ['', [Validators.required]],
       cidade: ['', [Validators.required, Validators.maxLength(40)]],
       bairro: ['', [Validators.required, Validators.maxLength(25)]],
       rua: ['', [Validators.required, Validators.maxLength(30)]],
