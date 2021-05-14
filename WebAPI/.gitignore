@@ -2,3 +2,5 @@ node_modules
 DbConfig.js
 database.js
 build
+dist
+prod

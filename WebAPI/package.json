@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon src/server.js",
-    "build": "sucrase ./src -d ./build --transforms imports"
+    "build": "sucrase ./src -d ./dist --transforms imports"
   },
   "author": "",
   "license": "ISC",
