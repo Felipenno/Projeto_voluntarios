@@ -22,7 +22,7 @@
     entrar em contato, ir à residência, prestar o serviço e receber uma avaliação e reconhecimento de
     seu círculo social por isso.
 
-    Atualmente, nossa aplicação está hospedada na nuvem, na seguinte URL:
+    Atualmente, nossa aplicação está hospedada na nuvem, na seguinte URL: https://pivoluntarios.azurewebsites.net/
 </div> 
 
 
