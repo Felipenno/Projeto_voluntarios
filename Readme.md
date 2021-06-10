@@ -22,7 +22,8 @@
     entrar em contato, ir à residência, prestar o serviço e receber uma avaliação e reconhecimento de
     seu círculo social por isso.
 
-    Atualmente, nossa aplicação está hospedada na nuvem, na seguinte URL: https://voluntarios-projeto.azurewebsites.net
+    Nossa aplicação está hospedada na nuvem(temporariamente), na seguinte URL: 
+    https://voluntarios-projeto.azurewebsites.net
 </div> 
 
 
